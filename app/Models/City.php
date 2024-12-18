@@ -9,6 +9,7 @@ class City extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name'
+        'name',
+        'country_id'
     ];
 }

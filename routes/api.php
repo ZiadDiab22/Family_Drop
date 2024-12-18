@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
@@ -27,4 +28,8 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("deleteProductType/{id}", [ProductController::class, "deleteProductType"]);
     Route::post("editProductType", [ProductController::class, "editProductType"]);
     Route::get("showProductTypes", [ProductController::class, "showProductTypes"]);
+    Route::post("addCity", [CityController::class, "addCity"]);
+    Route::get("deleteCity/{id}", [CityController::class, "deleteCity"]);
+    Route::post("editCity", [CityController::class, "editCity"]);
+    Route::get("showCities", [CityController::class, "showCities"]);
 });
