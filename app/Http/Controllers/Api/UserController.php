@@ -34,8 +34,6 @@ class UserController extends Controller
         }
 
         $validatedData['password'] = bcrypt($request->password);
-        $validatedData['type_id'] = 1;
-
 
         $user = User::create($validatedData);
 

@@ -9,5 +9,7 @@ class address extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name'
-    ];}
+        'name',
+        'city_id'
+    ];
+}

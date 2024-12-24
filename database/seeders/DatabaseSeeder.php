@@ -27,6 +27,8 @@ class DatabaseSeeder extends Seeder
             ProductClassifiesSeeder::class,
             ProductTypesSeeder::class,
             OrderStatesSeeder::class,
+            CitySeeder::class,
+            AddresseSeeder::class,
         ]);
     }
 }
