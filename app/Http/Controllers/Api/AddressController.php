@@ -30,6 +30,7 @@ class AddressController extends Controller
             ->get([
                 'addresses.id',
                 'addresses.name as addresse_name',
+                'delivery_price',
                 'city_id',
                 'ci.name as city_name',
                 'country_id',
@@ -59,6 +60,7 @@ class AddressController extends Controller
             ->get([
                 'addresses.id',
                 'addresses.name as addresse_name',
+                'delivery_price',
                 'city_id',
                 'ci.name as city_name',
                 'country_id',
@@ -98,7 +100,7 @@ class AddressController extends Controller
         }
 
         if ($request->has('name')) $ad->name = $request->name;
-
+        if ($request->has('delivery_price')) $ad->delivery_price = $request->delivery_price;
         $ad->save();
 
         $data = address::join('cities as ci', 'ci.id', 'addresses.city_id')
@@ -106,6 +108,7 @@ class AddressController extends Controller
             ->get([
                 'addresses.id',
                 'addresses.name as addresse_name',
+                'delivery_price',
                 'city_id',
                 'ci.name as city_name',
                 'country_id',
@@ -126,6 +129,7 @@ class AddressController extends Controller
             ->get([
                 'addresses.id',
                 'addresses.name as addresse_name',
+                'delivery_price',
                 'city_id',
                 'ci.name as city_name',
                 'country_id',

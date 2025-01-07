@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('city_id')->nullable()->default(null);
-            $table->unsignedInteger('address_id')->nullable()->default(null);
+            $table->unsignedInteger('country_id')->nullable()->default(null);
             $table->unsignedInteger('type_id');
             $table->string('email', 50)->unique();
             $table->string('password')->unique();
@@ -23,12 +22,10 @@ return new class extends Migration
             $table->string('code_auth')->nullable()->default(null);
             $table->integer('badget')->nullable()->default(0);
             $table->timestamps();
-            $table->foreign('city_id')->references('id')
-                ->on('cities')->onDelete('cascade');
+            $table->foreign('country_id')->references('id')
+                ->on('countries')->onDelete('cascade');
             $table->foreign('type_id')->references('id')
                 ->on('user_types')->onDelete('cascade');
-            $table->foreign('address_id')->references('id')
-                ->on('addresses')->onDelete('cascade');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

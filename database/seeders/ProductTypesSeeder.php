@@ -20,23 +20,18 @@ class ProductTypesSeeder extends Seeder
 
         Product_type::create([
             "name" => "Personal Computers",
-            "classify_id" => 1,
         ]);
         Product_type::create([
             "name" => "Mobile Phones",
-            "classify_id" => 1,
         ]);
         Product_type::create([
             "name" => "Tables",
-            "classify_id" => 2,
         ]);
         Product_type::create([
             "name" => "Fruit",
-            "classify_id" => 3,
         ]);
         Product_type::create([
             "name" => "Sciense Books",
-            "classify_id" => 4,
         ]);
     }
 }

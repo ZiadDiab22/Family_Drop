@@ -24,7 +24,6 @@ class DatabaseSeeder extends Seeder
             UsersTypesSeeder::class,
             CountrySeeder::class,
             UserSeeder::class,
-            ProductClassifiesSeeder::class,
             ProductTypesSeeder::class,
             OrderStatesSeeder::class,
             CitySeeder::class,

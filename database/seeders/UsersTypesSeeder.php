@@ -30,8 +30,5 @@ class UsersTypesSeeder extends Seeder
         User_type::create([
             "name" => "Marketer",
         ]);
-        User_type::create([
-            "name" => "Customer",
-        ]);
     }
 }

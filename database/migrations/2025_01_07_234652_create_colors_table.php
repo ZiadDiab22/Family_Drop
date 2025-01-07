@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('addresses', function (Blueprint $table) {
+        Schema::create('colors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->float('delivery_price')->nullable()->default(null);
-            $table->unsignedInteger('city_id')->nullable()->default(null);
-            $table->foreign('city_id')->references('id')
-                ->on('cities')->onDelete('cascade');
+            $table->string('code');
         });
     }
 
@@ -26,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('addresses');
+        Schema::dropIfExists('colors');
     }
 };

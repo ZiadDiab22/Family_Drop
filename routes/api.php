@@ -21,10 +21,6 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("deleteCountry/{id}", [CountryController::class, "deleteCountry"]);
     Route::post("editCountry", [CountryController::class, "editCountry"]);
     Route::get("showCountries", [CountryController::class, "showCountries"]);
-    Route::post("addProductClassify", [ProductController::class, "addProductClassify"]);
-    Route::get("deleteProductClassify/{id}", [ProductController::class, "deleteProductClassify"]);
-    Route::post("editProductClassify", [ProductController::class, "editProductClassify"]);
-    Route::get("showProductClassifies", [ProductController::class, "showProductClassifies"]);
     Route::post("addProductType", [ProductController::class, "addProductType"]);
     Route::get("deleteProductType/{id}", [ProductController::class, "deleteProductType"]);
     Route::post("editProductType", [ProductController::class, "editProductType"]);

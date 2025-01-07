@@ -9,7 +9,6 @@ class Product_type extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'name',
-        'classify_id'
+        'name'
     ];
 }

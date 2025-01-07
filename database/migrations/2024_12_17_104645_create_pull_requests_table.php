@@ -12,8 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pull_requests', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->unsignedInteger('payment_way_id');
+            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('user_id');
+            $table->string('total');
+            $table->boolean('accepted');
             $table->timestamps();
+            $table->foreign('payment_way_id')->references('id')
+                ->on('payment_ways')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')
+                ->on('users')->onDelete('cascade');
+            $table->foreign('employee_id')->references('id')
+                ->on('users')->onDelete('cascade');
         });
     }
 
