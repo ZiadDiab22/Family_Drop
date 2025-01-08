@@ -15,7 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('data');
-            $table->boolean('available');
+            $table->boolean('available')->nullable()->default(false);
         });
     }
 

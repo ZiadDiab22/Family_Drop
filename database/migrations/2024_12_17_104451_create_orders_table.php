@@ -16,11 +16,12 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('state_id');
             $table->unsignedInteger('addresse_id');
-            $table->longText('title');
+            $table->longText('title')->nullable()->default(null);
             $table->string('customer_name');
-            $table->string('customer_number');
+            $table->string('customer_number')->nullable()->default(null);
             $table->float('total_price');
             $table->integer('total_quantity');
+            $table->boolean('blocked')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');

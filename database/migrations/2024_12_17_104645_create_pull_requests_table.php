@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('user_id');
             $table->string('total');
-            $table->boolean('accepted');
+            $table->boolean('accepted')->nullable()->default(false);
+            $table->boolean('blocked')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('payment_way_id')->references('id')
                 ->on('payment_ways')->onDelete('cascade');

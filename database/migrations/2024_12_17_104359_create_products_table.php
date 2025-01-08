@@ -15,14 +15,15 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('disc');
-            $table->text('long_disc');
+            $table->text('long_disc')->nullable()->default(null);
             $table->unsignedInteger('type_id');
             $table->unsignedInteger('owner_id')->nullable()->default(null);
             $table->string('img_url')->nullable()->default(null);
             $table->float('cost_price');
-            $table->float('selling_price');
+            $table->float('selling_price')->nullable()->default(null);
             $table->integer('quantity');
-            $table->float('profit_rate');
+            $table->float('profit_rate')->nullable()->default(null);
+            $table->boolean('blocked')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('owner_id')->references('id')
                 ->on('users')->onDelete('cascade');

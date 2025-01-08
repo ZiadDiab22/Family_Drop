@@ -16,12 +16,13 @@ return new class extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('employee_id');
             $table->string('product_name');
-            $table->string('product_image');
+            $table->string('product_image')->nullable()->default(null);
             $table->string('product_quantity');
             $table->string('product_price');
             $table->string('product_disc');
             $table->string('product_place');
-            $table->boolean('accepted');
+            $table->boolean('accepted')->nullable()->default(false);
+            $table->boolean('blocked')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('user_id')->references('id')
                 ->on('users')->onDelete('cascade');

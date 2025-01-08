@@ -17,7 +17,8 @@ return new class extends Migration
             $table->unsignedInteger('employee_id');
             $table->unsignedInteger('product_id');
             $table->integer('quantity');
-            $table->boolean('accepted');
+            $table->boolean('accepted')->nullable()->default(false);
+            $table->boolean('blocked')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('mercher_id')->references('id')
                 ->on('users')->onDelete('cascade');
