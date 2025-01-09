@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->string('name');
             $table->float('delivery_price')->nullable()->default(null);
+            $table->boolean('blocked')->nullable()->default(false);
             $table->unsignedInteger('city_id')->nullable()->default(null);
             $table->foreign('city_id')->references('id')
                 ->on('cities')->onDelete('cascade');

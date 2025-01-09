@@ -22,6 +22,7 @@ return new class extends Migration
             $table->float('cost_price');
             $table->float('selling_price')->nullable()->default(null);
             $table->integer('quantity');
+            $table->integer('sales');
             $table->float('profit_rate')->nullable()->default(null);
             $table->boolean('blocked')->nullable()->default(false);
             $table->timestamps();
