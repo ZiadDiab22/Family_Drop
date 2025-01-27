@@ -20,20 +20,25 @@ class CitySeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         City::create([
-            "name" => "Damascus",
+            "name" => "دمشق",
             "country_id" => 1,
         ]);
         City::create([
-            "name" => "Homs",
+            "name" => "حمص",
             "country_id" => 1,
         ]);
         City::create([
-            "name" => "Cairo",
+            "name" => "القاهرة",
             "country_id" => 2,
         ]);
-        City::create([
-            "name" => "Amman",
-            "country_id" => 3,
-        ]);
+
+        $json = file_get_contents(resource_path('jo2.json'));
+        $data = json_decode($json, true);
+        foreach ($data as $item) {
+            DB::table('cities')->insert([
+                'name' => $item['name'],
+                'country_id' => 3,
+            ]);
+        }
     }
 }

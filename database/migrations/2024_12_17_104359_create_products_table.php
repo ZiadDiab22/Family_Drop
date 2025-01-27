@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('long_disc')->nullable()->default(null);
             $table->unsignedInteger('type_id');
             $table->unsignedInteger('owner_id')->nullable()->default(null);
-            $table->string('img_url')->nullable()->default(null);
+            $table->json('images_array')->nullable()->default(null);
             $table->float('cost_price');
             $table->float('selling_price')->nullable()->default(null);
             $table->integer('quantity');

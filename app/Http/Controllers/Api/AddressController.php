@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\address;
 use App\Models\City;
+use App\Models\Country;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
@@ -139,6 +140,33 @@ class AddressController extends Controller
         return response([
             'status' => true,
             'data' => $data
+        ]);
+    }
+
+    public function showLocations()
+    {
+        $addresses = address::join('cities as ci', 'ci.id', 'addresses.city_id')
+            ->join('countries as co', 'co.id', 'country_id')
+            ->get([
+                'addresses.id',
+                'addresses.name as addresse_name',
+                'delivery_price',
+                'city_id',
+                'ci.name as city_name',
+                'country_id',
+                'co.name as country_name'
+            ]);
+
+        $cities = City::join('countries as c', 'c.id', 'cities.country_id')
+            ->get(['cities.id', 'cities.name', 'c.id as country_id', 'c.name as country_name']);
+
+        $countries = Country::get();
+
+        return response([
+            'status' => true,
+            'countries' => $countries,
+            'cities' => $cities,
+            'addresses' => $addresses
         ]);
     }
 }

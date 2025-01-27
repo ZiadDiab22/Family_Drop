@@ -15,12 +15,18 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('product_id');
+            $table->unsignedInteger('color_id');
+            $table->unsignedInteger('size_id');
             $table->integer('quantity');
             $table->float('selling_price');
             $table->foreign('order_id')->references('id')
                 ->on('orders')->onDelete('cascade');
             $table->foreign('product_id')->references('id')
                 ->on('products')->onDelete('cascade');
+            $table->foreign('color_id')->references('id')
+                ->on('product_colors')->onDelete('cascade');
+            $table->foreign('size_id')->references('id')
+                ->on('product_sizes')->onDelete('cascade');
         });
     }
 

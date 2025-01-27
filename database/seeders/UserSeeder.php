@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
             "email" => "aa@gmail.com",
             "password" => bcrypt("111"),
             "phone_no" => "0999",
+            "country_id" => 1,
         ]);
     }
 }
