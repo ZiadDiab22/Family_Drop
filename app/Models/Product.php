@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 use Illuminate\Database\Eloquent\Model;
@@ -14,4 +15,18 @@ class Product extends Model
             set: fn($value) => json_encode($value),
         );
     }
+
+    protected $fillable = [
+        'name',
+        'type_id',
+        'disc',
+        'cost_price',
+        'quantity',
+        'sales',
+        'selling_price',
+        'profit_rate',
+        'images_array',
+        'blocked',
+        'owner_id'
+    ];
 }

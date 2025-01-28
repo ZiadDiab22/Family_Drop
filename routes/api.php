@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\adm_emp;
 use App\Http\Middleware\mark;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/user', function (Request $request) {
@@ -39,4 +40,14 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("showAddresses", [AddressController::class, "showAddresses"])->middleware(adm_emp::class);
     Route::get("showLocations", [AddressController::class, "showLocations"]);
     Route::post("addOrderTag", [OrderController::class, "addOrderTag"])->middleware(mark::class);
+    Route::post("addProduct", [ProductController::class, "addProduct"])->middleware(adm_emp::class);
+    Route::get("showProducts", [ProductController::class, "showProducts"]);
+});
+
+Route::get('products/{filename}', function ($filename) {
+    $path = base_path('public_html/products/' . $filename);
+    if (!File::exists($path)) {
+        abort(404, 'File not found');
+    }
+    return response()->file($path);;
 });
