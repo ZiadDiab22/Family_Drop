@@ -20,6 +20,17 @@ Route::get('/user', function (Request $request) {
 
 Route::post("register", [UserController::class, "register"]);
 Route::post("login", [UserController::class, "login"]);
+Route::get("showCountries", [CountryController::class, "showCountries"]);
+Route::get("showCities", [CityController::class, "showCities"]);
+Route::get("showProductTypes", [ProductController::class, "showProductTypes"]);
+Route::get("showAddresses", [AddressController::class, "showAddresses"]);
+Route::get("showLocations", [AddressController::class, "showLocations"]);
+Route::get("showProducts", [ProductController::class, "showProducts"]);
+Route::get("showSizes", [SizeController::class, "showSizes"]);
+Route::get("showColors", [ColorController::class, "showColors"]);
+Route::get("showProductSizes/{id}", [SizeController::class, "showProductSizes"]);
+Route::get("showProductColors/{id}", [ColorController::class, "showProductColors"]);
+Route::get("showTypesSizesColors", [ProductController::class, "showTypesSizesColors"]);
 
 Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("logout", [UserController::class, "logout"]);
@@ -27,23 +38,17 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addCountry", [CountryController::class, "addCountry"])->middleware(adm_emp::class);
     Route::get("deleteCountry/{id}", [CountryController::class, "deleteCountry"])->middleware(adm_emp::class);
     Route::post("editCountry", [CountryController::class, "editCountry"])->middleware(adm_emp::class);
-    Route::get("showCountries", [CountryController::class, "showCountries"])->middleware(adm_emp::class);
     Route::post("addProductType", [ProductController::class, "addProductType"])->middleware(adm_emp::class);
     Route::get("deleteProductType/{id}", [ProductController::class, "deleteProductType"])->middleware(adm_emp::class);
     Route::post("editProductType", [ProductController::class, "editProductType"])->middleware(adm_emp::class);
-    Route::get("showProductTypes", [ProductController::class, "showProductTypes"])->middleware(adm_emp::class);
     Route::post("addCity", [CityController::class, "addCity"])->middleware(adm_emp::class);
     Route::get("deleteCity/{id}", [CityController::class, "deleteCity"])->middleware(adm_emp::class);
     Route::post("editCity", [CityController::class, "editCity"])->middleware(adm_emp::class);
-    Route::get("showCities", [CityController::class, "showCities"])->middleware(adm_emp::class);
     Route::post("addAddresse", [AddressController::class, "addAddresse"])->middleware(adm_emp::class);
     Route::get("deleteAddresse/{id}", [AddressController::class, "deleteAddresse"])->middleware(adm_emp::class);
     Route::post("editAddresse", [AddressController::class, "editAddresse"])->middleware(adm_emp::class);
-    Route::get("showAddresses", [AddressController::class, "showAddresses"])->middleware(adm_emp::class);
-    Route::get("showLocations", [AddressController::class, "showLocations"]);
     Route::post("addOrderTag", [OrderController::class, "addOrderTag"])->middleware(mark::class);
     Route::post("addProduct", [ProductController::class, "addProduct"])->middleware(adm_emp::class);
-    Route::get("showProducts", [ProductController::class, "showProducts"]);
     Route::get("deleteProduct/{id}", [ProductController::class, "deleteProduct"])->middleware(adm_emp::class);
     Route::post("addSize", [SizeController::class, "addSize"])->middleware(adm_emp::class);
     Route::post("addColor", [ColorController::class, "addColor"])->middleware(adm_emp::class);
@@ -51,11 +56,6 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addProductColor", [ColorController::class, "addProductColor"])->middleware(adm_emp::class);
     Route::post("editSize", [SizeController::class, "editSize"])->middleware(adm_emp::class);
     Route::post("editColor", [ColorController::class, "editColor"])->middleware(adm_emp::class);
-    Route::get("showSizes", [SizeController::class, "showSizes"])->middleware(adm_emp::class);
-    Route::get("showColors", [ColorController::class, "showColors"])->middleware(adm_emp::class);
-    Route::get("showProductSizes/{id}", [SizeController::class, "showProductSizes"])->middleware(adm_emp::class);
-    Route::get("showProductColors/{id}", [ColorController::class, "showProductColors"])->middleware(adm_emp::class);
-    Route::get("showTypesSizesColors", [ProductController::class, "showTypesSizesColors"])->middleware(adm_emp::class);
 });
 
 Route::get('products/{filename}', function ($filename) {
