@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\product_color;
 use App\Models\product_size;
 use App\Models\Product_type;
+use App\Services\ProductService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +15,12 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+    protected $productService;
+
+    public function __construct(ProductService $productService)
+    {
+        $this->productService = $productService;
+    }
 
     public function addProductType(Request $request)
     {
@@ -156,42 +163,8 @@ class ProductController extends Controller
             }
         }
 
-        $data = product::join('product_types as pt', 'pt.id', 'products.type_id')
-            ->join('users as u', 'u.id', 'owner_id')
-            ->get([
-                'products.id',
-                'products.name',
-                'disc',
-                'long_disc',
-                'products.type_id',
-                'pt.name as type_name',
-                'owner_id',
-                'u.name as owner_name',
-                'images_array',
-                'cost_price',
-                'selling_price',
-                'quantity',
-                'sales',
-                'profit_rate',
-                'products.blocked',
-                'products.created_at',
-                'products.updated_at'
-            ]);
-
-        foreach ($data as $p) {
-            $sizes = product_size::where('product_id', $p['id'])
-                ->join('sizes as s', 'size_id', 's.id')
-                ->get(['size_id', 's.name as size_name']);
-
-            $colors = product_color::where('product_id', $p['id'])
-                ->join('colors as c', 'color_id', 'c.id')
-                ->get(['color_id', 'c.name as color_name', 'code']);
-
-            $p['sizes'] = $sizes;
-            $p['colors'] = $colors;
-        }
-
-        $types = Product_type::get();
+        $data = $this->productService->showProducts();
+        $types = $this->productService->showProductTypes();
 
         return response()->json([
             'status' => true,
@@ -203,42 +176,40 @@ class ProductController extends Controller
 
     public function showProducts()
     {
-        $data = product::join('product_types as pt', 'pt.id', 'products.type_id')
-            ->join('users as u', 'u.id', 'owner_id')
-            ->get([
-                'products.id',
-                'products.name',
-                'disc',
-                'long_disc',
-                'products.type_id',
-                'pt.name as type_name',
-                'owner_id',
-                'u.name as owner_name',
-                'images_array',
-                'cost_price',
-                'selling_price',
-                'quantity',
-                'sales',
-                'profit_rate',
-                'products.blocked',
-                'products.created_at',
-                'products.updated_at'
+        $data = $this->productService->showProducts();
+        $types = $this->productService->showProductTypes();
+
+        return response()->json([
+            'status' => true,
+            'products_types' => $types,
+            'products' => $data,
+        ]);
+    }
+
+    public function deleteProduct($id)
+    {
+        if (!(Product::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
             ]);
-
-        foreach ($data as $p) {
-            $sizes = product_size::where('product_id', $p['id'])
-                ->join('sizes as s', 'size_id', 's.id')
-                ->get(['size_id', 's.name as size_name']);
-
-            $colors = product_color::where('product_id', $p['id'])
-                ->join('colors as c', 'color_id', 'c.id')
-                ->get(['color_id', 'c.name as color_name', 'code']);
-
-            $p['sizes'] = $sizes;
-            $p['colors'] = $colors;
         }
 
-        $types = Product_type::get();
+        $product = Product::find($id);
+        $array = $product->images_array;
+
+        foreach ($array as $name) {
+            $parts = explode('products', $name);
+            $filteredParts = array_filter($parts);
+            $path = end($filteredParts);
+            Storage::disk('public_htmlProducts')->delete($path);
+        }
+
+
+        product::where('id', $id)->delete();
+
+        $data = $this->productService->showProducts();
+        $types = $this->productService->showProductTypes();
 
         return response()->json([
             'status' => true,

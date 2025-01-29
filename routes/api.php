@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\CityController;
+use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\SizeController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\adm_emp;
 use App\Http\Middleware\mark;
@@ -42,6 +44,17 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addOrderTag", [OrderController::class, "addOrderTag"])->middleware(mark::class);
     Route::post("addProduct", [ProductController::class, "addProduct"])->middleware(adm_emp::class);
     Route::get("showProducts", [ProductController::class, "showProducts"]);
+    Route::get("deleteProduct/{id}", [ProductController::class, "deleteProduct"])->middleware(adm_emp::class);
+    Route::post("addSize", [SizeController::class, "addSize"])->middleware(adm_emp::class);
+    Route::post("addColor", [ColorController::class, "addColor"])->middleware(adm_emp::class);
+    Route::post("addProductSize", [SizeController::class, "addProductSize"])->middleware(adm_emp::class);
+    Route::post("addProductColor", [ColorController::class, "addProductColor"])->middleware(adm_emp::class);
+    Route::post("editSize", [SizeController::class, "editSize"])->middleware(adm_emp::class);
+    Route::post("editColor", [ColorController::class, "editColor"])->middleware(adm_emp::class);
+    Route::get("showSizes", [SizeController::class, "showSizes"])->middleware(adm_emp::class);
+    Route::get("showColors", [ColorController::class, "showColors"])->middleware(adm_emp::class);
+    Route::get("showProductSizes/{id}", [SizeController::class, "showProductSizes"])->middleware(adm_emp::class);
+    Route::get("showProductColors/{id}", [ColorController::class, "showProductColors"])->middleware(adm_emp::class);
 });
 
 Route::get('products/{filename}', function ($filename) {
