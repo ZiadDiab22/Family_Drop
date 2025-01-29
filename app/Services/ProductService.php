@@ -7,7 +7,6 @@ use App\Models\Product;
 use App\Models\product_color;
 use App\Models\product_size;
 use App\Models\Product_type;
-use Illuminate\Support\Facades\Storage;
 
 class ProductService
 {

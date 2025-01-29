@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\color;
 use App\Models\Product;
 use App\Models\product_color;
 use App\Models\product_size;
 use App\Models\Product_type;
+use App\Models\size;
 use App\Services\ProductService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -216,6 +218,20 @@ class ProductController extends Controller
             'message' => 'product added Successfully',
             'products_types' => $types,
             'products' => $data,
+        ]);
+    }
+
+    public function showTypesSizesColors()
+    {
+        $types = Product_type::get();
+        $sizes = size::get();
+        $colors = color::get();
+
+        return response([
+            'status' => true,
+            'types' => $types,
+            'sizes' => $sizes,
+            'colors' => $colors
         ]);
     }
 }

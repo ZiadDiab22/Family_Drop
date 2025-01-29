@@ -55,6 +55,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("showColors", [ColorController::class, "showColors"])->middleware(adm_emp::class);
     Route::get("showProductSizes/{id}", [SizeController::class, "showProductSizes"])->middleware(adm_emp::class);
     Route::get("showProductColors/{id}", [ColorController::class, "showProductColors"])->middleware(adm_emp::class);
+    Route::get("showTypesSizesColors", [ProductController::class, "showTypesSizesColors"])->middleware(adm_emp::class);
 });
 
 Route::get('products/{filename}', function ($filename) {
