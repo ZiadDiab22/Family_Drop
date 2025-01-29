@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\City;
 use App\Models\Country;
+use App\Models\Payment_way;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -149,6 +149,63 @@ class UserController extends Controller
             'status' => true,
             'message' => 'edited Successfully',
             'user_data' => $user_data,
+        ]);
+    }
+
+    public function blockUser($id)
+    {
+        if (!(User::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $user = User::find($id);
+        if ($user->blocked == 0) $user->blocked = 1;
+        else $user->blocked = 0;
+        $user->save();
+
+        $data = User::where('id', '!=', Auth::user()->id)->get();
+
+        return response([
+            'status' => true,
+            'message' => 'done Successfully',
+            'data' => $data,
+        ]);
+    }
+
+    public function activatePaymentWay($id)
+    {
+        if (!(Payment_way::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $way = Payment_way::find($id);
+        if ($way->available == 0) $way->available = 1;
+        else $way->available = 0;
+        $way->save();
+
+        $data = payment_way::get();
+
+        return response([
+            'status' => true,
+            'message' => 'edited Successfully',
+            'data' => $data
+        ]);
+    }
+
+    public function showUsers()
+    {
+        $data = User::where('id', '!=', Auth::user()->id)->get();
+
+        return response([
+            'status' => true,
+            'message' => 'done Successfully',
+            'data' => $data,
         ]);
     }
 }

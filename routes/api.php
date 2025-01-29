@@ -4,7 +4,9 @@ use App\Http\Controllers\Api\AddressController;
 use App\Http\Controllers\Api\CityController;
 use App\Http\Controllers\Api\ColorController;
 use App\Http\Controllers\Api\CountryController;
+use App\Http\Controllers\Api\LinkController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\SizeController;
 use App\Http\Controllers\Api\UserController;
@@ -28,6 +30,8 @@ Route::get("showLocations", [AddressController::class, "showLocations"]);
 Route::get("showProducts", [ProductController::class, "showProducts"]);
 Route::get("showSizes", [SizeController::class, "showSizes"]);
 Route::get("showColors", [ColorController::class, "showColors"]);
+Route::get("showLinks", [LinkController::class, "showLinks"]);
+Route::get("showPaymentWays", [PaymentController::class, "showPaymentWays"]);
 Route::get("showProductSizes/{id}", [SizeController::class, "showProductSizes"]);
 Route::get("showProductColors/{id}", [ColorController::class, "showProductColors"]);
 Route::get("showTypesSizesColors", [ProductController::class, "showTypesSizesColors"]);
@@ -41,6 +45,12 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addProductType", [ProductController::class, "addProductType"])->middleware(adm_emp::class);
     Route::get("deleteProductType/{id}", [ProductController::class, "deleteProductType"])->middleware(adm_emp::class);
     Route::post("editProductType", [ProductController::class, "editProductType"])->middleware(adm_emp::class);
+    Route::post("addCity", [CityController::class, "addCity"])->middleware(adm_emp::class);
+    Route::post("addLink", [LinkController::class, "addLink"])->middleware(adm_emp::class);
+    Route::get("deleteLink/{id}", [LinkController::class, "deleteLink"])->middleware(adm_emp::class);
+    Route::post("editLink", [LinkController::class, "editLink"])->middleware(adm_emp::class);
+    Route::post("addPaymentWay", [PaymentController::class, "addPaymentWay"])->middleware(adm_emp::class);
+    Route::post("editPaymentWay", [PaymentController::class, "editPaymentWay"])->middleware(adm_emp::class);
     Route::post("addCity", [CityController::class, "addCity"])->middleware(adm_emp::class);
     Route::get("deleteCity/{id}", [CityController::class, "deleteCity"])->middleware(adm_emp::class);
     Route::post("editCity", [CityController::class, "editCity"])->middleware(adm_emp::class);
@@ -56,6 +66,9 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addProductColor", [ColorController::class, "addProductColor"])->middleware(adm_emp::class);
     Route::post("editSize", [SizeController::class, "editSize"])->middleware(adm_emp::class);
     Route::post("editColor", [ColorController::class, "editColor"])->middleware(adm_emp::class);
+    Route::get("blockUser/{id}", [UserController::class, "blockUser"])->middleware(adm_emp::class);
+    Route::get("activatePaymentWay/{id}", [UserController::class, "activatePaymentWay"])->middleware(adm_emp::class);
+    Route::get("showUsers", [UserController::class, "showUsers"])->middleware(adm_emp::class);
 });
 
 Route::get('products/{filename}', function ($filename) {
