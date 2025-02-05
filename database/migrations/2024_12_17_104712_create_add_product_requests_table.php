@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('add_product_requests', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('employee_id')->nullable()->default(null);
             $table->string('product_name');
-            $table->string('product_image')->nullable()->default(null);
+            $table->json('images_array')->nullable()->default(null);
             $table->string('product_quantity');
             $table->string('product_price');
             $table->string('product_disc');

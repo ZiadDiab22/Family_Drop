@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             OrderStatesSeeder::class,
             CitySeeder::class,
             AddresseSeeder::class,
+            ColorSizeSeeder::class,
         ]);
     }
 }

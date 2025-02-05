@@ -15,10 +15,11 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('product_id');
-            $table->unsignedInteger('color_id');
-            $table->unsignedInteger('size_id');
+            $table->unsignedInteger('color_id')->nullable()->default(null);
+            $table->unsignedInteger('size_id')->nullable()->default(null);
             $table->integer('quantity');
             $table->float('selling_price');
+            $table->float('profit');
             $table->foreign('order_id')->references('id')
                 ->on('orders')->onDelete('cascade');
             $table->foreign('product_id')->references('id')

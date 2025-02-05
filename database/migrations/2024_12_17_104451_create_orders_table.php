@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('account_name')->nullable()->default(null);
             $table->float('total_price');
             $table->integer('total_quantity');
+            $table->float('total_profit');
             $table->boolean('blocked')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('user_id')->references('id')

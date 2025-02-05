@@ -3,15 +3,73 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Add_product_request;
 use App\Models\Country;
 use App\Models\Payment_way;
+use App\Models\pull_product_request;
+use App\Models\Pull_request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Services\requestsService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+    protected $requestsService;
+
+    public function __construct(requestsService $requestsService)
+    {
+        $this->requestsService = $requestsService;
+    }
+
     public function register(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'email|required',
+            'password' => 'required',
+            'phone_no' => 'required',
+            'type_id' => 'required',
+            'country_id' => 'required',
+        ]);
+
+        if (User::where('email', $request->email)->exists()) {
+            return response()->json([
+                'status' => false,
+                'message' => "email is taken"
+            ], 200);
+        }
+
+        if (User::where('phone_no', $request->phone_no)->exists()) {
+            return response()->json([
+                'status' => false,
+                'message' => "phone number is taken"
+            ], 200);
+        }
+
+        if ($request->type_id == 1 || $request->type_id == 2) {
+            return response()->json([
+                'status' => false,
+                'message' => "this api isnt for create admins or employees"
+            ], 200);
+        }
+
+        $validatedData['password'] = bcrypt($request->password);
+
+        $user = User::create($validatedData);
+
+        $accessToken = $user->createToken('authToken')->accessToken;
+
+        $user_data = User::where('id', $user->id)->first();
+
+        return response()->json([
+            'status' => true,
+            'access_token' => $accessToken,
+            'user_data' => $user_data
+        ]);
+    }
+
+    public function addEmp(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required',
@@ -206,6 +264,21 @@ class UserController extends Controller
             'status' => true,
             'message' => 'done Successfully',
             'data' => $data,
+        ]);
+    }
+
+    public function showRequests()
+    {
+
+        $pull_requests = $this->requestsService->getPullRequests();
+        $add_product_request = $this->requestsService->getAddProductRequests();
+        $pull_product_request = $this->requestsService->getPullProductRequests();
+
+        return response([
+            'status' => true,
+            'pull_requests' => $pull_requests,
+            'add_product_request' => $add_product_request,
+            'pull_product_request' => $pull_product_request,
         ]);
     }
 }

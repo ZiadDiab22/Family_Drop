@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('pull_requests', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('payment_way_id');
-            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('employee_id')->nullable()->default(null);
             $table->unsignedInteger('user_id');
             $table->string('total');
             $table->boolean('accepted')->nullable()->default(false);

@@ -9,6 +9,7 @@ use App\Models\product_color;
 use App\Models\product_size;
 use App\Models\Product_type;
 use App\Models\size;
+use App\Models\User;
 use App\Services\ProductService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -173,6 +174,121 @@ class ProductController extends Controller
             'message' => 'product added Successfully',
             'products_types' => $types,
             'products' => $data,
+        ]);
+    }
+
+    public function editProduct(Request $request)
+    {
+        $request->validate([
+            'id' => 'required',
+        ]);
+
+        if (!(Product::where('id', $request->id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $product = product::find($request->id);
+
+        if ($request->has('name')) $product->name = $request->name;
+        if ($request->has('disc')) $product->disc = $request->disc;
+        if ($request->has('long_disc')) $product->long_disc = $request->long_disc;
+        if ($request->has('sales')) $product->sales = $request->sales;
+        if ($request->has('profit_rate')) $product->profit_rate = $request->profit_rate;
+        if ($request->has('type_id')) {
+            if (!(Product_type::where('id', $request->type_id)->exists())) {
+                return response([
+                    'status' => false,
+                    'message' => 'Wrong type_id , not found',
+                ]);
+            }
+            $product->type_id = $request->type_id;
+        }
+        if ($request->has('owner_id')) {
+            if (!(User::where('id', $request->owner_id)->exists())) {
+                return response([
+                    'status' => false,
+                    'message' => 'Wrong owner_id , not found',
+                ]);
+            }
+            $product->owner_id = $request->owner_id;
+        }
+        if ($request->has('cost_price')) {
+            if ($request->cost_price < 0)
+                return response()->json([
+                    'status' => false,
+                    'message' => "cost_price couldnt be negative value"
+                ], 200);
+            $product->cost_price = $request->cost_price;
+        }
+        if ($request->has('selling_price')) {
+            if ($request->selling_price < 0)
+                return response()->json([
+                    'status' => false,
+                    'message' => "selling_price couldnt be negative value"
+                ], 200);
+            $product->selling_price = $request->selling_price;
+        }
+        if ($request->has('quantity')) {
+            if ($request->quantity < 0)
+                return response()->json([
+                    'status' => false,
+                    'message' => "quantitiy couldnt be negative value"
+                ], 200);
+            $product->quantity = $request->quantity;
+        }
+
+        $array = [];
+        if ($request->has('images_array')) {
+            foreach ($product->images_array as $name) {
+                $parts = explode('products', $name);
+                $filteredParts = array_filter($parts);
+                $path = end($filteredParts);
+                Storage::disk('public_htmlProducts')->delete($path);
+            }
+            foreach ($request->images_array as $img) {
+                $image1 = Str::random(32) . "." . $img->getClientOriginalExtension();
+                Storage::disk('public_htmlProducts')->put($image1, file_get_contents($img));
+                $image1 = asset('products/' . $image1);
+                $array[] = $image1;
+            }
+            $product->images_array = $array;
+        }
+
+        if ($request->has('colors')) {
+            product_color::where('product_id', $request->id)->delete();
+            $colors = json_decode($request->colors, true);
+            foreach ($colors as $color_id) {
+                product_color::create([
+                    "product_id" => $request->id,
+                    "color_id" => $color_id,
+                ]);
+            }
+        }
+
+        if ($request->has('sizes')) {
+            product_size::where('product_id', $request->id)->delete();
+            $sizes = json_decode($request->sizes, true);
+            foreach ($sizes as $size_id) {
+                product_size::create([
+                    "product_id" => $request->id,
+                    "size_id" => $size_id,
+                ]);
+            }
+        }
+
+        $product->save();
+
+        $products = $this->productService->showProducts();
+        $types = $this->productService->showProductTypes();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'product edited Successfully',
+            'products_types' => $types,
+            'products' => $products,
         ]);
     }
 

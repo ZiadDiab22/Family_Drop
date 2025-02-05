@@ -8,10 +8,12 @@ use App\Http\Controllers\Api\LinkController;
 use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\RequestController;
 use App\Http\Controllers\Api\SizeController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\adm_emp;
 use App\Http\Middleware\mark;
+use App\Http\Middleware\mm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +39,7 @@ Route::get("showProductColors/{id}", [ColorController::class, "showProductColors
 Route::get("showTypesSizesColors", [ProductController::class, "showTypesSizesColors"]);
 
 Route::group(["middleware" => ["auth:api"]], function () {
+    Route::post("addEmp", [UserController::class, "addEmp"])->middleware(adm_emp::class);
     Route::get("logout", [UserController::class, "logout"]);
     Route::post("editUserData", [UserController::class, "editUserData"]);
     Route::post("addCountry", [CountryController::class, "addCountry"])->middleware(adm_emp::class);
@@ -59,6 +62,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("editAddresse", [AddressController::class, "editAddresse"])->middleware(adm_emp::class);
     Route::post("addOrderTag", [OrderController::class, "addOrderTag"])->middleware(mark::class);
     Route::post("addProduct", [ProductController::class, "addProduct"])->middleware(adm_emp::class);
+    Route::post("editProduct", [ProductController::class, "editProduct"])->middleware(adm_emp::class);
     Route::get("deleteProduct/{id}", [ProductController::class, "deleteProduct"])->middleware(adm_emp::class);
     Route::post("addSize", [SizeController::class, "addSize"])->middleware(adm_emp::class);
     Route::post("addColor", [ColorController::class, "addColor"])->middleware(adm_emp::class);
@@ -69,6 +73,11 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("blockUser/{id}", [UserController::class, "blockUser"])->middleware(adm_emp::class);
     Route::get("activatePaymentWay/{id}", [UserController::class, "activatePaymentWay"])->middleware(adm_emp::class);
     Route::get("showUsers", [UserController::class, "showUsers"])->middleware(adm_emp::class);
+    Route::get("showRequests", [UserController::class, "showRequests"])->middleware(adm_emp::class);
+    Route::get("showUserOrders", [OrderController::class, "showUserOrders"])->middleware(mark::class);
+    Route::post("pullMoneyRequest", [RequestController::class, "pullMoneyRequest"])->middleware(mm::class);
+    Route::get("showPullRequests", [RequestController::class, "showPullRequests"])->middleware(mm::class);
+    Route::get("deletePullRequest/{id}", [RequestController::class, "deletePullRequest"])->middleware(mm::class);
 });
 
 Route::get('products/{filename}', function ($filename) {

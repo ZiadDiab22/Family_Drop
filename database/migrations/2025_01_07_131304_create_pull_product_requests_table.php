@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('pull_product_requests', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('mercher_id');
-            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('employee_id')->nullable()->default(null);
             $table->unsignedInteger('product_id');
             $table->integer('quantity');
             $table->boolean('accepted')->nullable()->default(false);
