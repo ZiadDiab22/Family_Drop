@@ -6,10 +6,18 @@ use App\Http\Controllers\Controller;
 use App\Models\address;
 use App\Models\City;
 use App\Models\Country;
+use App\Services\AddresseService;
 use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
+    protected $addresseService;
+
+    public function __construct(AddresseService $addresseService)
+    {
+        $this->addresseService = $addresseService;
+    }
+
     public function addAddresse(Request $request)
     {
         $validatedData = $request->validate([
@@ -125,17 +133,7 @@ class AddressController extends Controller
 
     public function showAddresses()
     {
-        $data = address::join('cities as ci', 'ci.id', 'addresses.city_id')
-            ->join('countries as co', 'co.id', 'country_id')
-            ->get([
-                'addresses.id',
-                'addresses.name as addresse_name',
-                'delivery_price',
-                'city_id',
-                'ci.name as city_name',
-                'country_id',
-                'co.name as country_name'
-            ]);
+        $data = $this->addresseService->showAddresses();
 
         return response([
             'status' => true,

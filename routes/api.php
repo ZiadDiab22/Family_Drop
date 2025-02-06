@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\SizeController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\adm_emp;
 use App\Http\Middleware\mark;
+use App\Http\Middleware\merch;
 use App\Http\Middleware\mm;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -78,6 +79,9 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("pullMoneyRequest", [RequestController::class, "pullMoneyRequest"])->middleware(mm::class);
     Route::get("showPullRequests", [RequestController::class, "showPullRequests"])->middleware(mm::class);
     Route::get("deletePullRequest/{id}", [RequestController::class, "deletePullRequest"])->middleware(mm::class);
+    Route::post("addProductRequest", [ProductController::class, "addProductRequest"])->middleware(merch::class);
+    Route::get("showProductRequests", [ProductController::class, "showProductRequests"])->middleware(merch::class);
+    Route::get("deleteProductRequest/{id}", [ProductController::class, "deleteProductRequest"])->middleware(merch::class);
 });
 
 Route::get('products/{filename}', function ($filename) {

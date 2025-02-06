@@ -3,9 +3,11 @@
 
 namespace App\Services;
 
+use App\Models\Add_product_request;
 use App\Models\Product;
 use App\Models\product_color;
 use App\Models\product_size;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product_type;
 
 class ProductService
@@ -95,6 +97,40 @@ class ProductService
       $p['sizes'] = $sizes;
       $p['colors'] = $colors;
     }
+
+    return $data;
+  }
+
+  public function showUserAddProductRequests($id)
+  {
+    $data = DB::table('add_product_requests as ap')->where('user_id', $id)
+      ->join('users as u', 'u.id', 'user_id')
+      ->leftjoin('users as uu', 'uu.id', 'employee_id')
+      ->join('addresses as ad', 'ad.id', 'product_place')
+      ->join('cities as c', 'c.id', 'ad.city_id')
+      ->join('countries as co', 'co.id', 'c.country_id')
+      ->get([
+        'ap.id',
+        'user_id',
+        'u.name as user_name',
+        'employee_id',
+        'uu.name as employee_name',
+        'images_array',
+        'product_name',
+        'product_disc',
+        'product_quantity',
+        'product_price',
+        'product_place as addresse_id',
+        'ad.name as addresse_',
+        'ad.city_id',
+        'c.name as city',
+        'c.country_id',
+        'co.name as country',
+        'ap.accepted',
+        'ap.blocked',
+        'ap.created_at',
+        'ap.updated_at'
+      ]);
 
     return $data;
   }

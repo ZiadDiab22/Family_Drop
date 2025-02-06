@@ -20,6 +20,7 @@ class Product extends Model
         'name',
         'type_id',
         'disc',
+        'long_disc',
         'cost_price',
         'quantity',
         'sales',

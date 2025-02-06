@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Add_product_request;
+use App\Models\address;
 use App\Models\color;
 use App\Models\Product;
 use App\Models\product_color;
@@ -10,6 +12,7 @@ use App\Models\product_size;
 use App\Models\Product_type;
 use App\Models\size;
 use App\Models\User;
+use App\Services\AddresseService;
 use App\Services\ProductService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -19,10 +22,12 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     protected $productService;
+    protected $addresseService;
 
-    public function __construct(ProductService $productService)
+    public function __construct(ProductService $productService, AddresseService $addresseService)
     {
         $this->productService = $productService;
+        $this->addresseService = $addresseService;
     }
 
     public function addProductType(Request $request)
@@ -331,7 +336,6 @@ class ProductController extends Controller
 
         return response()->json([
             'status' => true,
-            'message' => 'product added Successfully',
             'products_types' => $types,
             'products' => $data,
         ]);
@@ -348,6 +352,114 @@ class ProductController extends Controller
             'types' => $types,
             'sizes' => $sizes,
             'colors' => $colors
+        ]);
+    }
+
+    public function addProductRequest(Request $request)
+    {
+        $validatedData = $request->validate([
+            'addresse_id' => 'required',
+            'product_name' => 'required',
+            'images_array' => 'required',
+            'product_quantity' => 'required',
+            'product_price' => 'required',
+            'product_disc' => 'required',
+        ]);
+
+        if ($request->product_quantity < 0) {
+            return response()->json([
+                'status' => false,
+                'message' => "quantitiy couldnt be negative value"
+            ], 200);
+        }
+        if ($request->product_price < 0) {
+            return response()->json([
+                'status' => false,
+                'message' => "price couldnt be negative value"
+            ], 200);
+        }
+
+        if (!(address::where('id', $request->addresse_id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong addresse_id , not found',
+            ]);
+        }
+
+        $validatedData['product_place'] = $request->addresse_id;
+        $validatedData['user_id'] = Auth::user()->id;
+
+        $array = [];
+
+        foreach ($request->images_array as $img) {
+            $image1 = Str::random(32) . "." . $img->getClientOriginalExtension();
+            Storage::disk('public_htmlProducts')->put($image1, file_get_contents($img));
+            $image1 = asset('products/' . $image1);
+            $array[] = $image1;
+        }
+
+        $validatedData['images_array'] = $array;
+
+        Add_product_request::create($validatedData);
+
+        $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
+        $addresses = $this->addresseService->showAddresses();
+
+        return response()->json([
+            'status' => true,
+            'message' => 'added Successfully',
+            'add_product_requests' => $add_product_requests,
+            'addresses' => $addresses,
+        ]);
+    }
+
+    public function showProductRequests()
+    {
+        $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
+        $addresses = $this->addresseService->showAddresses();
+
+        return response()->json([
+            'status' => true,
+            'add_product_requests' => $add_product_requests,
+            'addresses' => $addresses,
+        ]);
+    }
+
+    public function deleteProductRequest($id)
+    {
+        if (!(Add_product_request::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        if (!(Add_product_request::where('id', $id)->where('user_id', Auth::user()->id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'you dont have access to this product.',
+            ]);
+        }
+
+        $product = Add_product_request::find($id);
+        $array = $product->images_array;
+
+        foreach ($array as $name) {
+            $parts = explode('products', $name);
+            $filteredParts = array_filter($parts);
+            $path = end($filteredParts);
+            Storage::disk('public_htmlProducts')->delete($path);
+        }
+
+        Add_product_request::where('id', $id)->delete();
+
+        $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
+        $addresses = $this->addresseService->showAddresses();
+
+        return response()->json([
+            'status' => true,
+            'add_product_requests' => $add_product_requests,
+            'addresses' => $addresses,
         ]);
     }
 }
