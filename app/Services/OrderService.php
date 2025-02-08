@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Services;
 
 use App\Models\Order;
-use App\Models\Order_product;
 use Illuminate\Support\Facades\DB;
 
 class OrderService
@@ -38,19 +36,21 @@ class OrderService
     if ($data) {
       foreach ($data as $order) {
         $products = DB::table('order_products as op')->where('order_id', $order['id'])
-          ->join('products as p', 'product_id', 'p.id')
-          ->join('colors as c', 'color_id', 'c.id')
-          ->join('sizes as s', 'size_id', 's.id')
+          ->join('products as p', 'op.product_id', 'p.id')
+          ->leftjoin('product_colors as pc', 'op.color_id', 'pc.id')
+          ->leftjoin('product_sizes as ps', 'op.size_id', 'ps.id')
+          ->leftjoin('colors as c', 'pc.color_id', 'c.id')
+          ->leftjoin('sizes as s', 'ps.size_id', 's.id')
           ->get([
             'order_id',
-            'product_id',
+            'op.product_id',
             'p.name as product_name',
             'p.disc',
             'cost_price',
             'images_array',
-            'size_id',
+            'ps.size_id',
             's.name as size',
-            'color_id',
+            'pc.color_id',
             'c.name as color',
             'code',
             'op.quantity',
@@ -93,19 +93,21 @@ class OrderService
     if ($data) {
       foreach ($data as $order) {
         $products = DB::table('order_products as op')->where('order_id', $order['id'])
-          ->join('products as p', 'product_id', 'p.id')
-          ->join('colors as c', 'color_id', 'c.id')
-          ->join('sizes as s', 'size_id', 's.id')
+          ->join('products as p', 'op.product_id', 'p.id')
+          ->leftjoin('product_colors as pc', 'op.color_id', 'pc.id')
+          ->leftjoin('product_sizes as ps', 'op.size_id', 'ps.id')
+          ->leftjoin('colors as c', 'pc.color_id', 'c.id')
+          ->leftjoin('sizes as s', 'ps.size_id', 's.id')
           ->get([
             'order_id',
-            'product_id',
+            'op.product_id',
             'p.name as product_name',
             'p.disc',
             'cost_price',
             'images_array',
-            'size_id',
+            'ps.size_id',
             's.name as size',
-            'color_id',
+            'pc.color_id',
             'c.name as color',
             'code',
             'op.quantity',
@@ -115,7 +117,6 @@ class OrderService
         $order['products'] = $products;
       }
     }
-
     return $data;
   }
 }

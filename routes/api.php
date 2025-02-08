@@ -38,6 +38,7 @@ Route::get("showPaymentWays", [PaymentController::class, "showPaymentWays"]);
 Route::get("showProductSizes/{id}", [SizeController::class, "showProductSizes"]);
 Route::get("showProductColors/{id}", [ColorController::class, "showProductColors"]);
 Route::get("showTypesSizesColors", [ProductController::class, "showTypesSizesColors"]);
+Route::get("showProductInfo/{id}", [ProductController::class, "showProductInfo"]);
 
 Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addEmp", [UserController::class, "addEmp"])->middleware(adm_emp::class);
@@ -79,9 +80,13 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("pullMoneyRequest", [RequestController::class, "pullMoneyRequest"])->middleware(mm::class);
     Route::get("showPullRequests", [RequestController::class, "showPullRequests"])->middleware(mm::class);
     Route::get("deletePullRequest/{id}", [RequestController::class, "deletePullRequest"])->middleware(mm::class);
-    Route::post("addProductRequest", [ProductController::class, "addProductRequest"])->middleware(merch::class);
-    Route::get("showProductRequests", [ProductController::class, "showProductRequests"])->middleware(merch::class);
-    Route::get("deleteProductRequest/{id}", [ProductController::class, "deleteProductRequest"])->middleware(merch::class);
+    Route::post("addProductRequest", [RequestController::class, "addProductRequest"])->middleware(merch::class);
+    Route::get("showProductRequests", [RequestController::class, "showProductRequests"])->middleware(merch::class);
+    Route::get("deleteProductRequest/{id}", [RequestController::class, "deleteProductRequest"])->middleware(merch::class);
+    Route::post("PullProductRequest", [RequestController::class, "PullProductRequest"])->middleware(merch::class);
+    Route::get("showPullProductRequests", [RequestController::class, "showPullProductRequests"])->middleware(merch::class);
+    Route::get("deletePullProductRequest/{id}", [RequestController::class, "deletePullProductRequest"])->middleware(merch::class);
+    Route::post("addOrder", [OrderController::class, "addOrder"])->middleware(mark::class);
 });
 
 Route::get('products/{filename}', function ($filename) {

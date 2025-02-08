@@ -5,6 +5,7 @@ namespace App\Services;
 
 use App\Models\Add_product_request;
 use App\Models\pull_product_request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Pull_request;
 
 class requestsService
@@ -99,6 +100,42 @@ class requestsService
         'pull_product_requests.blocked',
         'pull_product_requests.created_at',
         'pull_product_requests.updated_at'
+      ]);
+
+    return $data;
+  }
+
+  public function getUserPullProductRequests($id)
+  {
+    $data = DB::table('pull_product_requests as pp')->where('mercher_id', $id)
+      ->join('products as p', 'p.id', 'product_id')
+      ->join('product_types as pt', 'p.type_id', 'pt.id')
+      ->leftjoin('users as u', 'u.id', 'employee_id')
+      ->join('users as uu', 'uu.id', 'mercher_id')
+      ->get([
+        'pp.id',
+        'employee_id',
+        'u.name as employee_name',
+        'mercher_id',
+        'uu.name as mercher_name',
+        'pp.quantity as request_quantity',
+        'product_id',
+        'p.name',
+        'p.disc',
+        'p.long_disc',
+        'p.type_id',
+        'pt.name as type',
+        'p.images_array',
+        'p.cost_price',
+        'p.quantity',
+        'p.sales',
+        'p.profit_rate',
+        'p.created_at as product_created_at',
+        'p.updated_at as product_updated_at',
+        'accepted',
+        'pp.blocked',
+        'pp.created_at',
+        'pp.updated_at'
       ]);
 
     return $data;

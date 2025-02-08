@@ -26,7 +26,6 @@ class CountryController extends Controller
 
     public function deleteCountry($id)
     {
-
         if (!(Country::where('id', $id)->exists())) {
             return response([
                 'status' => false,
