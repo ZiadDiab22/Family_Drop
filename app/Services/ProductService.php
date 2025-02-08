@@ -173,4 +173,64 @@ class ProductService
 
     return $data;
   }
+
+  public function showAllProductsOrdered()
+  {
+    $data = product::where('products.blocked', 0)
+      ->where('products.quantity', '>', 0)
+      ->join('product_types as pt', 'pt.id', 'products.type_id')
+      ->join('users as u', 'u.id', 'owner_id')
+      ->orderBy('sales', 'desc')
+      ->get([
+        'products.id',
+        'products.name',
+        'disc',
+        'long_disc',
+        'products.type_id',
+        'pt.name as type_name',
+        'owner_id',
+        'u.name as owner_name',
+        'images_array',
+        'cost_price',
+        'selling_price',
+        'quantity',
+        'sales',
+        'profit_rate',
+        'products.blocked',
+        'products.created_at',
+        'products.updated_at'
+      ]);
+
+    return $data;
+  }
+
+  public function showProductsOrdered($name)
+  {
+    $data = product::where('products.name', 'like', '%' . $name . '%')->where('products.blocked', 0)
+      ->where('products.quantity', '>', 0)
+      ->join('product_types as pt', 'pt.id', 'products.type_id')
+      ->join('users as u', 'u.id', 'owner_id')
+      ->orderBy('sales', 'desc')
+      ->get([
+        'products.id',
+        'products.name',
+        'disc',
+        'long_disc',
+        'products.type_id',
+        'pt.name as type_name',
+        'owner_id',
+        'u.name as owner_name',
+        'images_array',
+        'cost_price',
+        'selling_price',
+        'quantity',
+        'sales',
+        'profit_rate',
+        'products.blocked',
+        'products.created_at',
+        'products.updated_at'
+      ]);
+
+    return $data;
+  }
 }

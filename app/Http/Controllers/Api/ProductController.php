@@ -371,4 +371,24 @@ class ProductController extends Controller
             'product' => $product,
         ]);
     }
+
+    public function searchProducts(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        if ($request->name == 0) {
+            $product = $this->productService->showAllProductsOrdered();
+        } else
+            $product = $this->productService->showProductsOrdered($request->name);
+
+        $types = $this->productService->showProductTypes();
+
+        return response()->json([
+            'status' => true,
+            'products' => $product,
+            'types' => $types,
+        ]);
+    }
 }

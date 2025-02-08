@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\OrderController;
 use App\Http\Controllers\Api\PaymentController;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\RequestController;
+use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\SizeController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\adm_emp;
@@ -39,6 +40,8 @@ Route::get("showProductSizes/{id}", [SizeController::class, "showProductSizes"])
 Route::get("showProductColors/{id}", [ColorController::class, "showProductColors"]);
 Route::get("showTypesSizesColors", [ProductController::class, "showTypesSizesColors"]);
 Route::get("showProductInfo/{id}", [ProductController::class, "showProductInfo"]);
+Route::post("searchProducts", [ProductController::class, "searchProducts"]);
+Route::get("showSettings", [SettingController::class, "showSettings"]);
 
 Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addEmp", [UserController::class, "addEmp"])->middleware(adm_emp::class);
@@ -87,6 +90,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("showPullProductRequests", [RequestController::class, "showPullProductRequests"])->middleware(merch::class);
     Route::get("deletePullProductRequest/{id}", [RequestController::class, "deletePullProductRequest"])->middleware(merch::class);
     Route::post("addOrder", [OrderController::class, "addOrder"])->middleware(mark::class);
+    Route::post("editCommission", [SettingController::class, "editCommission"])->middleware(adm_emp::class);
 });
 
 Route::get('products/{filename}', function ($filename) {
