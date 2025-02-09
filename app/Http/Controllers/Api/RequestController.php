@@ -88,22 +88,29 @@ class RequestController extends Controller
 
     public function showPullRequests()
     {
-        $pull_requests = $this->requestsService->getUserPullRequests(Auth::user()->id);
-
-        if (Auth::user()->type_id == 4) {
-            $orders = $this->orderService->getUserFinishedOrders(Auth::user()->id);
+        if (Auth::user()->type_id < 3) {
+            $pull_requests = $this->requestsService->getPullRequests();
             return response([
                 'status' => true,
-                'pull_requests' => $pull_requests,
-                'orders' => $orders
+                'pull_requests' => $pull_requests
             ]);
         } else {
-            $products = $this->productService->getMercherProducts(Auth::user()->id);
-            return response([
-                'status' => true,
-                'pull_requests' => $pull_requests,
-                'products' => $products
-            ]);
+            $pull_requests = $this->requestsService->getUserPullRequests(Auth::user()->id);
+            if (Auth::user()->type_id == 4) {
+                $orders = $this->orderService->getUserFinishedOrders(Auth::user()->id);
+                return response([
+                    'status' => true,
+                    'pull_requests' => $pull_requests,
+                    'orders' => $orders
+                ]);
+            } else {
+                $products = $this->productService->getMercherProducts(Auth::user()->id);
+                return response([
+                    'status' => true,
+                    'pull_requests' => $pull_requests,
+                    'products' => $products
+                ]);
+            }
         }
     }
 
@@ -116,29 +123,44 @@ class RequestController extends Controller
             ]);
         }
 
-        $user = User::find(Auth::user()->id);
+        if (!(Pull_request::where('id', $id)->where('user_id', Auth::user()->id)->exists())) {
+            if (Auth::user()->type_id > 2)
+                return response([
+                    'status' => false,
+                    'message' => 'You dont have access to this request.',
+                ]);
+        }
+
         $req = Pull_request::find($id);
+        $user = User::find($req->user_id);
 
         $user->badget += $req->total;
         $user->save();
         Pull_request::where('id', $id)->delete();
 
-        $pull_requests = $this->requestsService->getUserPullRequests(Auth::user()->id);
-
-        if (Auth::user()->type_id == 4) {
-            $orders = $this->orderService->getUserFinishedOrders(Auth::user()->id);
+        if (Auth::user()->type_id < 3) {
+            $pull_requests = $this->requestsService->getPullRequests();
             return response([
                 'status' => true,
-                'pull_requests' => $pull_requests,
-                'orders' => $orders
+                'pull_requests' => $pull_requests
             ]);
         } else {
-            $products = $this->productService->getMercherProducts(Auth::user()->id);
-            return response([
-                'status' => true,
-                'pull_requests' => $pull_requests,
-                'products' => $products
-            ]);
+            $pull_requests = $this->requestsService->getUserPullRequests(Auth::user()->id);
+            if (Auth::user()->type_id == 4) {
+                $orders = $this->orderService->getUserFinishedOrders(Auth::user()->id);
+                return response([
+                    'status' => true,
+                    'pull_requests' => $pull_requests,
+                    'orders' => $orders
+                ]);
+            } else {
+                $products = $this->productService->getMercherProducts(Auth::user()->id);
+                return response([
+                    'status' => true,
+                    'pull_requests' => $pull_requests,
+                    'products' => $products
+                ]);
+            }
         }
     }
 
@@ -202,8 +224,11 @@ class RequestController extends Controller
 
     public function showProductRequests()
     {
-        $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
         $addresses = $this->addresseService->showAddresses();
+
+        if (Auth::user()->type_id < 3) {
+            $add_product_requests = $this->requestsService->getAddProductRequests();
+        } else $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
 
         return response()->json([
             'status' => true,
@@ -222,26 +247,32 @@ class RequestController extends Controller
         }
 
         if (!(Add_product_request::where('id', $id)->where('user_id', Auth::user()->id)->exists())) {
-            return response([
-                'status' => false,
-                'message' => 'you dont have access to this product.',
-            ]);
+            if (Auth::user()->type_id == 3)
+                return response([
+                    'status' => false,
+                    'message' => 'you dont have access to this product.',
+                ]);
         }
 
         $product = Add_product_request::find($id);
         $array = $product->images_array;
 
-        foreach ($array as $name) {
-            $parts = explode('products', $name);
-            $filteredParts = array_filter($parts);
-            $path = end($filteredParts);
-            Storage::disk('public_htmlProducts')->delete($path);
+        if ($array) {
+            foreach ($array as $name) {
+                $parts = explode('products', $name);
+                $filteredParts = array_filter($parts);
+                $path = end($filteredParts);
+                Storage::disk('public_htmlProducts')->delete($path);
+            }
         }
 
         Add_product_request::where('id', $id)->delete();
 
-        $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
         $addresses = $this->addresseService->showAddresses();
+
+        if (Auth::user()->type_id < 3) {
+            $add_product_requests = $this->requestsService->getAddProductRequests();
+        } else $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
 
         return response()->json([
             'status' => true,
@@ -298,8 +329,13 @@ class RequestController extends Controller
 
     public function showPullProductRequests()
     {
-        $pull_requests = $this->requestsService->getUserPullProductRequests(Auth::user()->id);
-        $products = $this->productService->getMercherProducts(Auth::user()->id);
+        if (Auth::user()->type_id == 3) {
+            $pull_requests = $this->requestsService->getUserPullProductRequests(Auth::user()->id);
+            $products = $this->productService->getMercherProducts(Auth::user()->id);
+        } else {
+            $pull_requests = $this->requestsService->getPullProductRequests();
+            $products = $this->productService->showProducts();
+        }
 
         return response([
             'status' => true,
@@ -317,6 +353,14 @@ class RequestController extends Controller
             ]);
         }
 
+        if (!(pull_product_request::where('id', $id)->where('mercher_id', Auth::user()->id)->exists())) {
+            if (Auth::user()->type_id == 3)
+                return response([
+                    'status' => false,
+                    'message' => 'you dont have access to this product.',
+                ]);
+        }
+
         $req = pull_product_request::find($id);
         $product = Product::find($req->product_id);
 
@@ -324,8 +368,13 @@ class RequestController extends Controller
         $product->save();
         pull_product_request::where('id', $id)->delete();
 
-        $pull_requests = $this->requestsService->getUserPullProductRequests(Auth::user()->id);
-        $products = $this->productService->getMercherProducts(Auth::user()->id);
+        if (Auth::user()->type_id == 3) {
+            $pull_requests = $this->requestsService->getUserPullProductRequests(Auth::user()->id);
+            $products = $this->productService->getMercherProducts(Auth::user()->id);
+        } else {
+            $pull_requests = $this->requestsService->getPullProductRequests();
+            $products = $this->productService->showProducts();
+        }
 
         return response([
             'status' => true,

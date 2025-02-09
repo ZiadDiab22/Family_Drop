@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\Add_product_request;
 use App\Models\Country;
 use App\Models\Payment_way;
-use App\Models\pull_product_request;
-use App\Models\Pull_request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Services\OrderService;
