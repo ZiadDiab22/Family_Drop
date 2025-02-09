@@ -81,16 +81,20 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("showRequests", [UserController::class, "showRequests"])->middleware(adm_emp::class);
     Route::get("showUserOrders", [OrderController::class, "showUserOrders"])->middleware(mark::class);
     Route::post("pullMoneyRequest", [RequestController::class, "pullMoneyRequest"])->middleware(mm::class);
+    Route::get("acceptPullMoneyRequest/{id}", [RequestController::class, "acceptPullMoneyRequest"])->middleware(adm_emp::class);
     Route::get("showPullRequests", [RequestController::class, "showPullRequests"])->middleware(mm::class);
     Route::get("deletePullRequest/{id}", [RequestController::class, "deletePullRequest"])->middleware(mm::class);
     Route::post("addProductRequest", [RequestController::class, "addProductRequest"])->middleware(merch::class);
+    Route::get("acceptAddProductRequest/{id}", [RequestController::class, "acceptAddProductRequest"])->middleware(adm_emp::class);
     Route::get("showProductRequests", [RequestController::class, "showProductRequests"])->middleware(merch::class);
     Route::get("deleteProductRequest/{id}", [RequestController::class, "deleteProductRequest"])->middleware(merch::class);
     Route::post("PullProductRequest", [RequestController::class, "PullProductRequest"])->middleware(merch::class);
+    Route::get("acceptPullProductRequest/{id}", [RequestController::class, "acceptPullProductRequest"])->middleware(adm_emp::class);
     Route::get("showPullProductRequests", [RequestController::class, "showPullProductRequests"])->middleware(merch::class);
     Route::get("deletePullProductRequest/{id}", [RequestController::class, "deletePullProductRequest"])->middleware(merch::class);
     Route::post("addOrder", [OrderController::class, "addOrder"])->middleware(mark::class);
     Route::post("editCommission", [SettingController::class, "editCommission"])->middleware(adm_emp::class);
+    Route::get("profile", [UserController::class, "profile"])->middleware(mm::class);
 });
 
 Route::get('products/{filename}', function ($filename) {

@@ -10,16 +10,22 @@ use App\Models\pull_product_request;
 use App\Models\Pull_request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Services\OrderService;
+use App\Services\ProductService;
 use App\Services\requestsService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     protected $requestsService;
+    protected $orderService;
+    protected $productService;
 
-    public function __construct(requestsService $requestsService)
+    public function __construct(requestsService $requestsService, OrderService $orderService, ProductService $productService)
     {
         $this->requestsService = $requestsService;
+        $this->orderService = $orderService;
+        $this->productService = $productService;
     }
 
     public function register(Request $request)
@@ -280,5 +286,36 @@ class UserController extends Controller
             'add_product_request' => $add_product_request,
             'pull_product_request' => $pull_product_request,
         ]);
+    }
+
+    public function profile()
+    {
+        $pull_requests = $this->requestsService->getUnfinishedUserPullRequests(Auth::user()->id);
+        $total_pull_requests = $this->requestsService->getTotalUnfinishedUserPullRequests(Auth::user()->id);
+
+        if (Auth::user()->type_id == 4) {
+            $TotalOrders = $this->orderService->getTotalFinishedCancelledNewOrders(Auth::user()->id);
+            return response([
+                'status' => true,
+                'pull_requests' => $pull_requests,
+                'total_pull_requests' => $total_pull_requests,
+                'finished_orders' => $TotalOrders[0],
+                'cancelled_orders' => $TotalOrders[1],
+                'new_orders' => $TotalOrders[2],
+            ]);
+        } else {
+            $pinned_products = $this->requestsService->getPinnedProducts(Auth::user()->id);
+            $products = $this->productService->getMercherProducts(Auth::user()->id);
+            $pulled_products = $this->requestsService->getPulledProducts(Auth::user()->id);
+
+            return response([
+                'status' => true,
+                'pull_requests' => $pull_requests,
+                'total_pull_requests' => $total_pull_requests,
+                'pinned_products' => $pinned_products,
+                'pulled_products' => $pulled_products,
+                'products' => $products,
+            ]);
+        }
     }
 }

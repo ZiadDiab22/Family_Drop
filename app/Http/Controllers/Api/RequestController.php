@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\pull_product_request;
 use App\Models\Pull_request;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use App\Services\AddresseService;
 use App\Services\OrderService;
 use App\Services\ProductService;
@@ -263,6 +264,13 @@ class RequestController extends Controller
             ]);
         }
 
+        if (!(Product::where('id', $request->product_id)->where('owner_id', Auth::user()->id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'You dont have permission to pull from this product.',
+            ]);
+        }
+
         $product = Product::find($request->product_id);
 
         if ($request->quantity > $product->quantity) {
@@ -323,6 +331,101 @@ class RequestController extends Controller
             'status' => true,
             'pull_requests' => $pull_requests,
             'products' => $products
+        ]);
+    }
+
+    public function acceptPullMoneyRequest($id)
+    {
+        if (!(Pull_request::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $req = Pull_request::find($id);
+
+        if ($req->accepted == 0) {
+            $req->accepted = 1;
+            $req->employee_id = Auth::user()->id;
+            $req->save();
+        }
+
+        $pull_requests = $this->requestsService->getPullRequests();
+
+        return response([
+            'status' => true,
+            'pull_requests' => $pull_requests
+        ]);
+    }
+
+    public function acceptPullProductRequest($id)
+    {
+        if (!(pull_product_request::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $req = pull_product_request::find($id);
+
+        if ($req->accepted == 0) {
+            $req->accepted = 1;
+            $req->employee_id = Auth::user()->id;
+            $req->save();
+        }
+
+        $pull_product_requests = $this->requestsService->getPullProductRequests();
+        $products = $this->productService->showProducts();
+        $addresses = $this->addresseService->showAddresses();
+
+        return response()->json([
+            'status' => true,
+            'pull_product_requests' => $pull_product_requests,
+            'products' => $products,
+            'addresses' => $addresses,
+        ]);
+    }
+
+    public function acceptAddProductRequest($id)
+    {
+        if (!(Add_product_request::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $req = Add_product_request::find($id);
+
+        if ($req->accepted == 0) {
+            $req->accepted = 1;
+            $req->employee_id = Auth::user()->id;
+            $req->save();
+
+            $data = [];
+            $data['name'] = $req->product_name;
+            $data['images_array'] = $req->images_array;
+            $data['quantity'] = $req->product_quantity;
+            $data['cost_price'] = $req->product_price;
+            $data['selling_price'] = $req->product_price * 1.1;
+            $data['disc'] = $req->product_disc;
+            $data['sales'] = 0;
+            $data['owner_id'] =  $req->user_id;
+            $data['type_id'] =  DB::table('product_types')->value('id');
+            Product::create($data);
+        }
+
+        $add_product_requests = $this->requestsService->getAddProductRequests();
+        $products = $this->productService->showProducts();
+        $addresses = $this->addresseService->showAddresses();
+
+        return response()->json([
+            'status' => true,
+            'add_product_requests' => $add_product_requests,
+            'products' => $products,
+            'addresses' => $addresses,
         ]);
     }
 }

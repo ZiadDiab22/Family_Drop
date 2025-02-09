@@ -119,4 +119,25 @@ class OrderService
     }
     return $data;
   }
+
+  public function getTotalFinishedCancelledNewOrders($id)
+  {
+    $data = [];
+    $data[] = DB::table('orders')
+      ->where('user_id', $id)
+      ->where('state_id', 6)
+      ->count();
+
+    $data[] = DB::table('orders')
+      ->where('user_id', $id)
+      ->where('state_id', 5)
+      ->count();
+
+    $data[] = DB::table('orders')
+      ->where('user_id', $id)
+      ->where('state_id', 1)
+      ->count();
+
+    return $data;
+  }
 }
