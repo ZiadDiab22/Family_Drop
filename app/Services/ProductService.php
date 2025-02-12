@@ -39,11 +39,11 @@ class ProductService
     foreach ($data as $p) {
       $sizes = product_size::where('product_id', $p['id'])
         ->join('sizes as s', 'size_id', 's.id')
-        ->get(['product_sizes.id', 'size_id', 's.name as size_name']);
+        ->get(['s.id', 's.name']);
 
       $colors = product_color::where('product_id', $p['id'])
         ->join('colors as c', 'color_id', 'c.id')
-        ->get(['product_colors.id', 'color_id', 'c.name as color_name', 'code']);
+        ->get(['c.id', 'c.name', 'code']);
 
       $p['sizes'] = $sizes;
       $p['colors'] = $colors;
@@ -101,7 +101,6 @@ class ProductService
 
   public function getMercherProducts($id)
   {
-
     $data = Product::where('owner_id', $id)->join('product_types as pt', 'pt.id', 'products.type_id')
       ->join('users as u', 'u.id', 'owner_id')
       ->get([
@@ -127,11 +126,11 @@ class ProductService
     foreach ($data as $p) {
       $sizes = product_size::where('product_id', $p['id'])
         ->join('sizes as s', 'size_id', 's.id')
-        ->get(['product_sizes.id', 'size_id', 's.name as size_name']);
+        ->get(['s.id', 's.name']);
 
       $colors = product_color::where('product_id', $p['id'])
         ->join('colors as c', 'color_id', 'c.id')
-        ->get(['product_colors.id', 'color_id', 'c.name as color_name', 'code']);
+        ->get(['c.id', 'c.name', 'code']);
 
       $p['sizes'] = $sizes;
       $p['colors'] = $colors;
