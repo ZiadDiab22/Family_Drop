@@ -96,6 +96,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addOrder", [OrderController::class, "addOrder"])->middleware(mark::class);
     Route::post("editCommission", [SettingController::class, "editCommission"])->middleware(adm_emp::class);
     Route::get("profile", [UserController::class, "profile"])->middleware(mm::class);
+    Route::get("showUserInfo/{id}", [UserController::class, "showUserInfo"])->middleware(adm_emp::class);
 });
 
 Route::get('products/{filename}', function ($filename) {

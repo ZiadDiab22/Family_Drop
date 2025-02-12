@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Services\OrderService;
 use App\Services\ProductService;
 use App\Services\requestsService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -17,12 +18,18 @@ class UserController extends Controller
     protected $requestsService;
     protected $orderService;
     protected $productService;
+    protected $userService;
 
-    public function __construct(requestsService $requestsService, OrderService $orderService, ProductService $productService)
-    {
+    public function __construct(
+        requestsService $requestsService,
+        OrderService $orderService,
+        ProductService $productService,
+        UserService $userService
+    ) {
         $this->requestsService = $requestsService;
         $this->orderService = $orderService;
         $this->productService = $productService;
+        $this->userService = $userService;
     }
 
     public function register(Request $request)
@@ -289,11 +296,13 @@ class UserController extends Controller
     {
         $pull_requests = $this->requestsService->getUnfinishedUserPullRequests(Auth::user()->id);
         $total_pull_requests = $this->requestsService->getTotalUnfinishedUserPullRequests(Auth::user()->id);
+        $user_info = $this->userService->getUserInfo(Auth::user()->id);
 
         if (Auth::user()->type_id == 4) {
             $TotalOrders = $this->orderService->getTotalFinishedCancelledNewOrders(Auth::user()->id);
             return response([
                 'status' => true,
+                'user_info' => $user_info,
                 'pull_requests' => $pull_requests,
                 'total_pull_requests' => $total_pull_requests,
                 'finished_orders' => $TotalOrders[0],
@@ -307,6 +316,48 @@ class UserController extends Controller
 
             return response([
                 'status' => true,
+                'user_info' => $user_info,
+                'pull_requests' => $pull_requests,
+                'total_pull_requests' => $total_pull_requests,
+                'pinned_products' => $pinned_products,
+                'pulled_products' => $pulled_products,
+                'products' => $products,
+            ]);
+        }
+    }
+
+    public function showUserInfo($id)
+    {
+        if (!(User::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $pull_requests = $this->requestsService->getUnfinishedUserPullRequests($id);
+        $total_pull_requests = $this->requestsService->getTotalUnfinishedUserPullRequests($id);
+        $user_info = $this->userService->getUserInfo($id);
+
+        if ($user_info[0]->type_id == 4) {
+            $TotalOrders = $this->orderService->getTotalFinishedCancelledNewOrders($id);
+            return response([
+                'status' => true,
+                'user_info' => $user_info,
+                'pull_requests' => $pull_requests,
+                'total_pull_requests' => $total_pull_requests,
+                'finished_orders' => $TotalOrders[0],
+                'cancelled_orders' => $TotalOrders[1],
+                'new_orders' => $TotalOrders[2],
+            ]);
+        } else {
+            $pinned_products = $this->requestsService->getPinnedProducts($id);
+            $products = $this->productService->getMercherProducts($id);
+            $pulled_products = $this->requestsService->getPulledProducts($id);
+
+            return response([
+                'status' => true,
+                'user_info' => $user_info,
                 'pull_requests' => $pull_requests,
                 'total_pull_requests' => $total_pull_requests,
                 'pinned_products' => $pinned_products,
