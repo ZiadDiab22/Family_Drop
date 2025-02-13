@@ -123,45 +123,22 @@ class RequestController extends Controller
             ]);
         }
 
-        if (!(Pull_request::where('id', $id)->where('user_id', Auth::user()->id)->exists())) {
-            if (Auth::user()->type_id > 2)
-                return response([
-                    'status' => false,
-                    'message' => 'You dont have access to this request.',
-                ]);
-        }
-
         $req = Pull_request::find($id);
         $user = User::find($req->user_id);
 
-        $user->badget += $req->total;
-        $user->save();
-        Pull_request::where('id', $id)->delete();
-
-        if (Auth::user()->type_id < 3) {
-            $pull_requests = $this->requestsService->getPullRequests();
-            return response([
-                'status' => true,
-                'pull_requests' => $pull_requests
-            ]);
-        } else {
-            $pull_requests = $this->requestsService->getUserPullRequests(Auth::user()->id);
-            if (Auth::user()->type_id == 4) {
-                $orders = $this->orderService->getUserFinishedOrders(Auth::user()->id);
-                return response([
-                    'status' => true,
-                    'pull_requests' => $pull_requests,
-                    'orders' => $orders
-                ]);
-            } else {
-                $products = $this->productService->getMercherProducts(Auth::user()->id);
-                return response([
-                    'status' => true,
-                    'pull_requests' => $pull_requests,
-                    'products' => $products
-                ]);
-            }
+        if (Pull_request::where('id', $req->id)->whereNull('employee_id')->exists()) {
+            $user->badget += $req->total;
+            $req->employee_id = Auth::user()->id;
+            $req->accepted = 0;
+            $user->save();
+            $req->save();
         }
+
+        $pull_requests = $this->requestsService->getPullRequests();
+        return response([
+            'status' => true,
+            'pull_requests' => $pull_requests
+        ]);
     }
 
     public function addProductRequest(Request $request)
@@ -211,7 +188,7 @@ class RequestController extends Controller
 
         Add_product_request::create($validatedData);
 
-        $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
+        $add_product_requests = $this->requestsService->getUserAddProductRequests(Auth::user()->id);
         $addresses = $this->addresseService->showAddresses();
 
         return response()->json([
@@ -228,7 +205,7 @@ class RequestController extends Controller
 
         if (Auth::user()->type_id < 3) {
             $add_product_requests = $this->requestsService->getAddProductRequests();
-        } else $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
+        } else $add_product_requests = $this->requestsService->getUserAddProductRequests(Auth::user()->id);
 
         return response()->json([
             'status' => true,
@@ -246,33 +223,13 @@ class RequestController extends Controller
             ]);
         }
 
-        if (!(Add_product_request::where('id', $id)->where('user_id', Auth::user()->id)->exists())) {
-            if (Auth::user()->type_id == 3)
-                return response([
-                    'status' => false,
-                    'message' => 'you dont have access to this product.',
-                ]);
-        }
-
         $product = Add_product_request::find($id);
-        $array = $product->images_array;
-
-        if ($array) {
-            foreach ($array as $name) {
-                $parts = explode('products', $name);
-                $filteredParts = array_filter($parts);
-                $path = end($filteredParts);
-                Storage::disk('public_htmlProducts')->delete($path);
-            }
-        }
-
-        Add_product_request::where('id', $id)->delete();
+        $product->accepted = 0;
+        $product->employee_id = Auth::user()->id;
+        $product->save();
 
         $addresses = $this->addresseService->showAddresses();
-
-        if (Auth::user()->type_id < 3) {
-            $add_product_requests = $this->requestsService->getAddProductRequests();
-        } else $add_product_requests = $this->productService->showUserAddProductRequests(Auth::user()->id);
+        $add_product_requests = $this->requestsService->getAddProductRequests();
 
         return response()->json([
             'status' => true,
@@ -353,28 +310,19 @@ class RequestController extends Controller
             ]);
         }
 
-        if (!(pull_product_request::where('id', $id)->where('mercher_id', Auth::user()->id)->exists())) {
-            if (Auth::user()->type_id == 3)
-                return response([
-                    'status' => false,
-                    'message' => 'you dont have access to this product.',
-                ]);
-        }
-
         $req = pull_product_request::find($id);
         $product = Product::find($req->product_id);
 
-        $product->quantity += $req->quantity;
-        $product->save();
-        pull_product_request::where('id', $id)->delete();
-
-        if (Auth::user()->type_id == 3) {
-            $pull_requests = $this->requestsService->getUserPullProductRequests(Auth::user()->id);
-            $products = $this->productService->getMercherProducts(Auth::user()->id);
-        } else {
-            $pull_requests = $this->requestsService->getPullProductRequests();
-            $products = $this->productService->showProducts();
+        if (pull_product_request::where('id', $id)->whereNull('employee_id')->exists()) {
+            $product->quantity += $req->quantity;
+            $req->accepted = 0;
+            $req->employee_id = Auth::user()->id;
+            $req->save();
+            $product->save();
         }
+
+        $pull_requests = $this->requestsService->getPullProductRequests();
+        $products = $this->productService->showProducts();
 
         return response([
             'status' => true,
@@ -437,16 +385,23 @@ class RequestController extends Controller
         ]);
     }
 
-    public function acceptAddProductRequest($id)
+    public function acceptAddProductRequest(Request $request)
     {
-        if (!(Add_product_request::where('id', $id)->exists())) {
+        $validatedData = $request->validate([
+            'id' => 'required',
+            'profit_rate' => 'required',
+            'type_id' => 'required',
+            'selling_price' => 'required',
+        ]);
+
+        if (!(Add_product_request::where('id', $request->id)->exists())) {
             return response([
                 'status' => false,
                 'message' => 'Wrong id , not found',
             ]);
         }
 
-        $req = Add_product_request::find($id);
+        $req = Add_product_request::find($request->id);
 
         if ($req->accepted == 0) {
             $req->accepted = 1;
@@ -458,11 +413,14 @@ class RequestController extends Controller
             $data['images_array'] = $req->images_array;
             $data['quantity'] = $req->product_quantity;
             $data['cost_price'] = $req->product_price;
-            $data['selling_price'] = $req->product_price * 1.1;
+            $data['selling_price'] = $request->selling_price;
             $data['disc'] = $req->product_disc;
             $data['sales'] = 0;
+            $data['blocked'] = 1;
             $data['owner_id'] =  $req->user_id;
-            $data['type_id'] =  DB::table('product_types')->value('id');
+            $data['type_id'] =  $request->type_id;
+            $data['profit_rate'] =  $request->profit_rate;
+            if ($request->has('long_disc')) $data['long_disc'] = $request->long_disc;
             Product::create($data);
         }
 

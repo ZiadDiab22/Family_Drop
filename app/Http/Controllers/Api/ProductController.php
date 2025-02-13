@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\addProductTypeRequest;
 use App\Models\color;
 use App\Models\Product;
 use App\Models\product_color;
@@ -65,19 +66,8 @@ class ProductController extends Controller
         ], 200);
     }
 
-    public function editProductType(Request $request)
+    public function editProductType(addProductTypeRequest $request)
     {
-        $request->validate([
-            'id' => 'required'
-        ]);
-
-        if (!(Product_type::where('id', $request->id)->exists())) {
-            return response([
-                'status' => false,
-                'message' => 'Wrong id , not found',
-            ]);
-        }
-
         $type = Product_type::find($request->id);
 
         if ($request->has('name')) $type->name = $request->name;

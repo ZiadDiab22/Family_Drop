@@ -4,7 +4,6 @@
 namespace App\Services;
 
 use App\Models\Add_product_request;
-use App\Models\pull_product_request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pull_request;
 
@@ -15,12 +14,20 @@ class requestsService
     $data = Pull_request::join('payment_ways as p', 'p.id', 'payment_way_id')
       ->leftjoin('users as u', 'u.id', 'employee_id')
       ->join('users as uu', 'uu.id', 'user_id')
+      ->join('countries as c', 'uu.country_id', 'c.id')
+      ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
         'pull_requests.id',
         'employee_id',
         'u.name as employee_name',
         'user_id',
         'uu.name as user_name',
+        'uu.email',
+        'uu.phone_no',
+        'uu.country_id as user_country_id',
+        'c.name as user_country',
+        'uu.type_id as user_type_id',
+        'ut.name as user_type',
         'total',
         'payment_way_id',
         'p.name',
@@ -38,12 +45,20 @@ class requestsService
     $data = Pull_request::where('user_id', $id)->join('payment_ways as p', 'p.id', 'payment_way_id')
       ->leftjoin('users as u', 'u.id', 'employee_id')
       ->join('users as uu', 'uu.id', 'user_id')
+      ->join('countries as c', 'uu.country_id', 'c.id')
+      ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
         'pull_requests.id',
         'employee_id',
         'u.name as employee_name',
         'user_id',
         'uu.name as user_name',
+        'uu.email',
+        'uu.phone_no',
+        'uu.country_id as user_country_id',
+        'c.name as user_country',
+        'uu.type_id as user_type_id',
+        'ut.name as user_type',
         'total',
         'payment_way_id',
         'p.name',
@@ -58,24 +73,83 @@ class requestsService
 
   public function getAddProductRequests()
   {
-    $data = Add_product_request::leftjoin('users as u', 'u.id', 'employee_id')
-      ->join('users as uu', 'uu.id', 'user_id')
+    $data = DB::table('add_product_requests as ap')
+      ->join('users as u', 'u.id', 'user_id')
+      ->leftjoin('users as uu', 'uu.id', 'employee_id')
+      ->join('addresses as ad', 'ad.id', 'product_place')
+      ->join('cities as c', 'c.id', 'ad.city_id')
+      ->join('countries as co', 'co.id', 'c.country_id')
+      ->join('countries as uc', 'u.country_id', 'uc.id')
+      ->join('user_types as ut', 'ut.id', 'u.type_id')
       ->get([
-        'add_product_requests.id',
-        'employee_id',
-        'u.name as employee_name',
+        'ap.id',
         'user_id',
-        'uu.name as user_name',
-        'product_name',
+        'u.name as user_name',
+        'u.email',
+        'u.phone_no',
+        'u.country_id as user_country_id',
+        'uc.name as user_country',
+        'u.type_id as user_type_id',
+        'ut.name as user_type',
+        'employee_id',
+        'uu.name as employee_name',
         'images_array',
+        'product_name',
+        'product_disc',
         'product_quantity',
         'product_price',
+        'product_place as addresse_id',
+        'ad.name as addresse_',
+        'ad.city_id',
+        'c.name as city',
+        'c.country_id',
+        'co.name as country',
+        'ap.accepted',
+        'ap.blocked',
+        'ap.created_at',
+        'ap.updated_at'
+      ]);
+
+    return $data;
+  }
+
+  public function getUserAddProductRequests($id)
+  {
+    $data = DB::table('add_product_requests as ap')->where('user_id', $id)
+      ->join('users as u', 'u.id', 'user_id')
+      ->leftjoin('users as uu', 'uu.id', 'employee_id')
+      ->join('addresses as ad', 'ad.id', 'product_place')
+      ->join('cities as c', 'c.id', 'ad.city_id')
+      ->join('countries as co', 'co.id', 'c.country_id')
+      ->join('countries as uc', 'u.country_id', 'uc.id')
+      ->join('user_types as ut', 'ut.id', 'u.type_id')
+      ->get([
+        'ap.id',
+        'user_id',
+        'u.name as user_name',
+        'u.email',
+        'u.phone_no',
+        'u.country_id as user_country_id',
+        'uc.name as user_country',
+        'u.type_id as user_type_id',
+        'ut.name as user_type',
+        'employee_id',
+        'uu.name as employee_name',
+        'images_array',
+        'product_name',
         'product_disc',
-        'product_place',
-        'accepted',
-        'add_product_requests.blocked',
-        'add_product_requests.created_at',
-        'add_product_requests.updated_at'
+        'product_quantity',
+        'product_price',
+        'product_place as addresse_id',
+        'ad.name as addresse_',
+        'ad.city_id',
+        'c.name as city',
+        'c.country_id',
+        'co.name as country',
+        'ap.accepted',
+        'ap.blocked',
+        'ap.created_at',
+        'ap.updated_at'
       ]);
 
     return $data;
@@ -83,23 +157,43 @@ class requestsService
 
   public function getPullProductRequests()
   {
-    $data = pull_product_request::leftjoin('users as u', 'u.id', 'employee_id')
-      ->join('users as uu', 'uu.id', 'mercher_id')
+    $data = DB::table('pull_product_requests as pp')
       ->join('products as p', 'p.id', 'product_id')
+      ->join('product_types as pt', 'p.type_id', 'pt.id')
+      ->leftjoin('users as u', 'u.id', 'employee_id')
+      ->join('users as uu', 'uu.id', 'mercher_id')
+      ->join('countries as c', 'uu.country_id', 'c.id')
+      ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
-        'pull_product_requests.id',
+        'pp.id',
         'employee_id',
         'u.name as employee_name',
         'mercher_id',
         'uu.name as mercher_name',
+        'uu.email',
+        'uu.phone_no',
+        'uu.country_id as mercher_country_id',
+        'c.name as mercher_country',
+        'uu.type_id as mercher_type_id',
+        'ut.name as mercher_type',
+        'pp.quantity as request_quantity',
         'product_id',
         'p.name',
         'p.disc',
-        'pull_product_requests.quantity',
+        'p.long_disc',
+        'p.type_id',
+        'pt.name as type',
+        'p.images_array',
+        'p.cost_price',
+        'p.quantity',
+        'p.sales',
+        'p.profit_rate',
+        'p.created_at as product_created_at',
+        'p.updated_at as product_updated_at',
         'accepted',
-        'pull_product_requests.blocked',
-        'pull_product_requests.created_at',
-        'pull_product_requests.updated_at'
+        'pp.blocked',
+        'pp.created_at',
+        'pp.updated_at'
       ]);
 
     return $data;
@@ -112,12 +206,20 @@ class requestsService
       ->join('product_types as pt', 'p.type_id', 'pt.id')
       ->leftjoin('users as u', 'u.id', 'employee_id')
       ->join('users as uu', 'uu.id', 'mercher_id')
+      ->join('countries as c', 'uu.country_id', 'c.id')
+      ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
         'pp.id',
         'employee_id',
         'u.name as employee_name',
         'mercher_id',
         'uu.name as mercher_name',
+        'uu.email',
+        'uu.phone_no',
+        'uu.country_id as mercher_country_id',
+        'c.name as mercher_country',
+        'uu.type_id as mercher_type_id',
+        'ut.name as mercher_type',
         'pp.quantity as request_quantity',
         'product_id',
         'p.name',
@@ -148,12 +250,20 @@ class requestsService
       ->join('payment_ways as p', 'p.id', 'payment_way_id')
       ->leftjoin('users as u', 'u.id', 'employee_id')
       ->join('users as uu', 'uu.id', 'user_id')
+      ->join('countries as c', 'uu.country_id', 'c.id')
+      ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
         'pull_requests.id',
         'employee_id',
         'u.name as employee_name',
         'user_id',
         'uu.name as user_name',
+        'uu.email',
+        'uu.phone_no',
+        'uu.country_id as user_country_id',
+        'c.name as user_country',
+        'uu.type_id as user_type_id',
+        'ut.name as user_type',
         'total',
         'payment_way_id',
         'p.name',
@@ -178,25 +288,42 @@ class requestsService
 
   public function getPinnedProducts($id)
   {
-    $data = Add_product_request::where('user_id', $id)->where('accepted', 0)
-      ->leftjoin('users as u', 'u.id', 'employee_id')
-      ->join('users as uu', 'uu.id', 'user_id')
+    $data = DB::table('add_product_requests as ap')->where('user_id', $id)
+      ->where('accepted', 0)
+      ->join('users as u', 'u.id', 'user_id')
+      ->leftjoin('users as uu', 'uu.id', 'employee_id')
+      ->join('addresses as ad', 'ad.id', 'product_place')
+      ->join('cities as c', 'c.id', 'ad.city_id')
+      ->join('countries as co', 'co.id', 'c.country_id')
+      ->join('countries as uc', 'u.country_id', 'uc.id')
+      ->join('user_types as ut', 'ut.id', 'u.type_id')
       ->get([
-        'add_product_requests.id',
-        'employee_id',
-        'u.name as employee_name',
+        'ap.id',
         'user_id',
-        'uu.name as user_name',
-        'product_name',
+        'u.name as user_name',
+        'u.email',
+        'u.phone_no',
+        'u.country_id as user_country_id',
+        'uc.name as user_country',
+        'u.type_id as user_type_id',
+        'ut.name as user_type',
+        'employee_id',
+        'uu.name as employee_name',
         'images_array',
+        'product_name',
+        'product_disc',
         'product_quantity',
         'product_price',
-        'product_disc',
-        'product_place',
-        'accepted',
-        'add_product_requests.blocked',
-        'add_product_requests.created_at',
-        'add_product_requests.updated_at'
+        'product_place as addresse_id',
+        'ad.name as addresse_',
+        'ad.city_id',
+        'c.name as city',
+        'c.country_id',
+        'co.name as country',
+        'ap.accepted',
+        'ap.blocked',
+        'ap.created_at',
+        'ap.updated_at'
       ]);
 
     return $data;
@@ -204,19 +331,26 @@ class requestsService
 
   public function getPulledProducts($id)
   {
-    $data = DB::table('pull_product_requests as pp')
-      ->where('mercher_id', $id)
+    $data = DB::table('pull_product_requests as pp')->where('mercher_id', $id)
       ->where('accepted', 1)
       ->join('products as p', 'p.id', 'product_id')
       ->join('product_types as pt', 'p.type_id', 'pt.id')
       ->leftjoin('users as u', 'u.id', 'employee_id')
       ->join('users as uu', 'uu.id', 'mercher_id')
+      ->join('countries as c', 'uu.country_id', 'c.id')
+      ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
         'pp.id',
         'employee_id',
         'u.name as employee_name',
         'mercher_id',
         'uu.name as mercher_name',
+        'uu.email',
+        'uu.phone_no',
+        'uu.country_id as mercher_country_id',
+        'c.name as mercher_country',
+        'uu.type_id as mercher_type_id',
+        'ut.name as mercher_type',
         'pp.quantity as request_quantity',
         'product_id',
         'p.name',
