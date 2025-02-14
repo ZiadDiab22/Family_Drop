@@ -373,4 +373,48 @@ class requestsService
 
     return $data;
   }
+
+  public function getProductsStats($id)
+  {
+    $data = [];
+
+    $products = DB::table('products')
+      ->where('owner_id', $id)
+      ->selectRaw('count(*) as total_products, sum(quantity) as total_quantity, sum(sales) as total_sales')
+      ->first();
+
+    array_push($data, $products->total_products, $products->total_quantity, $products->total_sales);
+
+    $reqs = DB::table('add_product_requests')
+      ->where('user_id', $id)
+      ->where('accepted', 0)
+      ->whereNull('employee_id')
+      ->select([
+        DB::raw('COUNT(*) as count'),
+        DB::raw('SUM(product_quantity) as total_quantity')
+      ])
+      ->first();
+
+    array_push($data, $reqs->count, $reqs->total_quantity);
+
+    $result = DB::table('pull_product_requests')
+      ->where('mercher_id', $id)->select([
+        DB::raw('COUNT(CASE WHEN employee_id IS NULL THEN 1 END) as pinned'),
+        DB::raw('COUNT(CASE WHEN accepted = 1 THEN 1 END) as accepted')
+      ])->first();
+
+    $data[] = $result->pinned + $result->accepted;
+
+    $result = DB::table('pull_product_requests')
+      ->where('mercher_id', $id)->select([
+        DB::raw('SUM(CASE WHEN employee_id IS NULL THEN quantity ELSE 0 END) as pinned'),
+        DB::raw('SUM(CASE WHEN accepted = 1 THEN quantity ELSE 0 END) as accepted')
+      ])->first();
+
+    $data[] = $result->pinned + $result->accepted;
+
+    $data[] = $data[1] + $data[2] + $data[4] + $data[6];
+
+    return $data;
+  }
 }

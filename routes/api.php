@@ -81,6 +81,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::get("showUsers", [UserController::class, "showUsers"])->middleware(adm_emp::class);
     Route::get("showRequests", [UserController::class, "showRequests"])->middleware(adm_emp::class);
     Route::get("showUserOrders", [OrderController::class, "showUserOrders"])->middleware(mark::class);
+    Route::get("showOrders", [OrderController::class, "showOrders"])->middleware(adm_emp::class);
     Route::post("pullMoneyRequest", [RequestController::class, "pullMoneyRequest"])->middleware(mm::class);
     Route::get("acceptPullMoneyRequest/{id}", [RequestController::class, "acceptPullMoneyRequest"])->middleware(adm_emp::class);
     Route::get("showPullRequests", [RequestController::class, "showPullRequests"]);

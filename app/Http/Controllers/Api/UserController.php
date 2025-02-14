@@ -305,20 +305,33 @@ class UserController extends Controller
                 'user_info' => $user_info,
                 'pull_requests' => $pull_requests,
                 'total_pull_requests' => $total_pull_requests,
-                'finished_orders' => $TotalOrders[0],
-                'cancelled_orders' => $TotalOrders[1],
-                'new_orders' => $TotalOrders[2],
+                'all_orders' => $TotalOrders[0],
+                'new_orders' => $TotalOrders[1],
+                'on_working_orders' => $TotalOrders[2],
+                'ended_orders' => $TotalOrders[3],
+                'under_delivery_orders' => $TotalOrders[4],
+                'cancelled_orders' => $TotalOrders[5],
+                'finished_orders' => $TotalOrders[6],
             ]);
         } else {
             $pinned_products = $this->requestsService->getPinnedProducts(Auth::user()->id);
             $products = $this->productService->getMercherProducts(Auth::user()->id);
             $pulled_products = $this->requestsService->getPulledProducts(Auth::user()->id);
+            $TotalProducts = $this->requestsService->getProductsStats(Auth::user()->id);
 
             return response([
                 'status' => true,
                 'user_info' => $user_info,
                 'pull_requests' => $pull_requests,
                 'total_pull_requests' => $total_pull_requests,
+                'total_products' => $TotalProducts[0],
+                'total_products_quantity' => $TotalProducts[1],
+                'total_products_sales' => $TotalProducts[2],
+                'total_add_requests' => $TotalProducts[3],
+                'total_add_requests_quantity' => $TotalProducts[4],
+                'total_pull_products_requests' => $TotalProducts[5],
+                'total_pull_products_requests_quantity' => $TotalProducts[6],
+                'all_products' => $TotalProducts[7],
                 'pinned_products' => $pinned_products,
                 'pulled_products' => $pulled_products,
                 'products' => $products,
@@ -346,20 +359,33 @@ class UserController extends Controller
                 'user_info' => $user_info,
                 'pull_requests' => $pull_requests,
                 'total_pull_requests' => $total_pull_requests,
-                'finished_orders' => $TotalOrders[0],
-                'cancelled_orders' => $TotalOrders[1],
-                'new_orders' => $TotalOrders[2],
+                'all_orders' => $TotalOrders[0],
+                'new_orders' => $TotalOrders[1],
+                'on_working_orders' => $TotalOrders[2],
+                'ended_orders' => $TotalOrders[3],
+                'under_delivery_orders' => $TotalOrders[4],
+                'cancelled_orders' => $TotalOrders[5],
+                'finished_orders' => $TotalOrders[6],
             ]);
         } else {
             $pinned_products = $this->requestsService->getPinnedProducts($id);
             $products = $this->productService->getMercherProducts($id);
             $pulled_products = $this->requestsService->getPulledProducts($id);
+            $TotalProducts = $this->requestsService->getProductsStats($id);
 
             return response([
                 'status' => true,
                 'user_info' => $user_info,
                 'pull_requests' => $pull_requests,
                 'total_pull_requests' => $total_pull_requests,
+                'total_products' => $TotalProducts[0],
+                'total_products_quantity' => $TotalProducts[1],
+                'total_products_sales' => $TotalProducts[2],
+                'total_add_requests' => $TotalProducts[3],
+                'total_add_requests_quantity' => $TotalProducts[4],
+                'total_pull_products_requests' => $TotalProducts[5],
+                'total_pull_products_requests_quantity' => $TotalProducts[6],
+                'all_products' => $TotalProducts[7],
                 'pinned_products' => $pinned_products,
                 'pulled_products' => $pulled_products,
                 'products' => $products,

@@ -58,6 +58,16 @@ class OrderController extends Controller
         ]);
     }
 
+    public function showOrders()
+    {
+        $data = $this->OrderService->getOrders();
+
+        return response()->json([
+            'status' => true,
+            'orders' => $data,
+        ]);
+    }
+
     public function addOrder(Request $request)
     {
         $validatedData = $request->validate([
