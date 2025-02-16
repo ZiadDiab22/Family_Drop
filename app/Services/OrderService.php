@@ -17,6 +17,7 @@ class OrderService
       ->join('user_types as ut', 'ut.id', 'u.type_id')
       ->join('cities as ci', 'ci.id', 'ad.city_id')
       ->join('countries as cc', 'cc.id', 'ci.country_id')
+      ->orderBy('id', 'asc')
       ->get([
         'orders.id',
         'user_id',
@@ -71,7 +72,12 @@ class OrderService
             'op.selling_price',
             'profit'
           ]);
+        $tags = DB::table('order_tags as t')->where('order_id', $order['id'])
+          ->join('users as u', 'u.id', 'user_id')
+          ->get(['t.id', 'order_id', 'user_id', 'u.name', 'email', 'phone_no', 'text']);
+
         $order['products'] = $products;
+        $order['tags'] = $tags;
       }
     }
 
@@ -87,6 +93,7 @@ class OrderService
       ->join('user_types as ut', 'ut.id', 'u.type_id')
       ->join('cities as ci', 'ci.id', 'ad.city_id')
       ->join('countries as cc', 'cc.id', 'ci.country_id')
+      ->orderBy('id', 'asc')
       ->get([
         'orders.id',
         'user_id',
@@ -141,7 +148,12 @@ class OrderService
             'op.selling_price',
             'profit'
           ]);
+        $tags = DB::table('order_tags as t')->where('order_id', $order['id'])
+          ->join('users as u', 'u.id', 'user_id')
+          ->get(['t.id', 'order_id', 'user_id', 'u.name', 'email', 'phone_no', 'text']);
+
         $order['products'] = $products;
+        $order['tags'] = $tags;
       }
     }
 
@@ -158,6 +170,7 @@ class OrderService
       ->join('user_types as ut', 'ut.id', 'u.type_id')
       ->join('cities as ci', 'ci.id', 'ad.city_id')
       ->join('countries as cc', 'cc.id', 'ci.country_id')
+      ->orderBy('id', 'asc')
       ->get([
         'orders.id',
         'user_id',
@@ -212,7 +225,12 @@ class OrderService
             'op.selling_price',
             'profit'
           ]);
+        $tags = DB::table('order_tags as t')->where('order_id', $order['id'])
+          ->join('users as u', 'u.id', 'user_id')
+          ->get(['t.id', 'order_id', 'user_id', 'u.name', 'email', 'phone_no', 'text']);
+
         $order['products'] = $products;
+        $order['tags'] = $tags;
       }
     }
     return $data;
