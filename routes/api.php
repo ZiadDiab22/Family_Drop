@@ -14,6 +14,7 @@ use App\Http\Controllers\Api\SizeController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\adm_emp;
 use App\Http\Middleware\AllowNonMarketers;
+use App\Http\Middleware\AllowNonMerhers;
 use App\Http\Middleware\mark;
 use App\Http\Middleware\merch;
 use App\Http\Middleware\mm;
@@ -98,6 +99,11 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("editCommission", [SettingController::class, "editCommission"])->middleware(adm_emp::class);
     Route::get("profile", [UserController::class, "profile"])->middleware(mm::class);
     Route::get("showUserInfo/{id}", [UserController::class, "showUserInfo"])->middleware(adm_emp::class);
+    Route::post("cancelOrder", [OrderController::class, "cancelOrder"])->middleware(AllowNonMerhers::class);
+    Route::post("startWorkingOrder", [OrderController::class, "startWorkingOrder"])->middleware(adm_emp::class);
+    Route::post("endingOrder", [OrderController::class, "endingOrder"])->middleware(adm_emp::class);
+    Route::post("deliveringOrder", [OrderController::class, "deliveringOrder"])->middleware(adm_emp::class);
+    Route::post("doneOrder", [OrderController::class, "doneOrder"])->middleware(adm_emp::class);
 });
 
 Route::get('products/{filename}', function ($filename) {

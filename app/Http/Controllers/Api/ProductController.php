@@ -309,13 +309,14 @@ class ProductController extends Controller
         $product = Product::find($id);
         $array = $product->images_array;
 
-        foreach ($array as $name) {
-            $parts = explode('products', $name);
-            $filteredParts = array_filter($parts);
-            $path = end($filteredParts);
-            Storage::disk('public_htmlProducts')->delete($path);
+        if ($array) {
+            foreach ($array as $name) {
+                $parts = explode('products', $name);
+                $filteredParts = array_filter($parts);
+                $path = end($filteredParts);
+                Storage::disk('public_htmlProducts')->delete($path);
+            }
         }
-
 
         product::where('id', $id)->delete();
 
