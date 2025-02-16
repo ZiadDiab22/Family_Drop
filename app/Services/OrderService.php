@@ -228,15 +228,17 @@ class OrderService
 
     $data[] = $totalOrders;
 
-    for ($i = 1; $i < 7; $i++) {
-      $stateCount = DB::table('orders')
-        ->where('user_id', $id)
-        ->where('state_id', $i)
-        ->count();
+    if ($totalOrders > 0) {
+      for ($i = 1; $i < 7; $i++) {
+        $stateCount = DB::table('orders')
+          ->where('user_id', $id)
+          ->where('state_id', $i)
+          ->count();
 
-      $percentage = round(($stateCount / $totalOrders) * 100, 2);
-      $data[] = $percentage . "%";
-    }
+        $percentage = round(($stateCount / $totalOrders) * 100, 2);
+        $data[] = $percentage . "%";
+      }
+    } else array_push($data, '0%', '0%', '0%', '0%', '0%', '0%');
 
     return $data;
   }
