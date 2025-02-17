@@ -16,6 +16,6 @@ class OrderOwnershipRule implements Rule
 
     public function message()
     {
-        return 'You are not authorized to modify this order.';
+        return 'You are not authorized to access to this order.';
     }
 }

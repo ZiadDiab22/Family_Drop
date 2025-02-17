@@ -7,6 +7,7 @@ use App\Http\Requests\CancelOrderRequest;
 use App\Http\Requests\DeliveringOrderRequest;
 use App\Http\Requests\DoneOrderRequest;
 use App\Http\Requests\EndingOrderRequest;
+use App\Http\Requests\ShowOrderInfoRequest;
 use App\Models\address;
 use App\Models\Order;
 use App\Models\Order_product;
@@ -255,6 +256,16 @@ class OrderController extends Controller
         return response()->json([
             'status' => true,
             'orders' => $data
+        ]);
+    }
+
+    public function showOrderInfo(ShowOrderInfoRequest $request)
+    {
+        $data = $this->OrderService->getOrderInfo($request->id);
+
+        return response()->json([
+            'status' => true,
+            'orders' => $data,
         ]);
     }
 }

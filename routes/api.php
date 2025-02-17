@@ -99,6 +99,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("editCommission", [SettingController::class, "editCommission"])->middleware(adm_emp::class);
     Route::get("profile", [UserController::class, "profile"])->middleware(mm::class);
     Route::get("showUserInfo/{id}", [UserController::class, "showUserInfo"])->middleware(adm_emp::class);
+    Route::post("showOrderInfo", [OrderController::class, "showOrderInfo"])->middleware(AllowNonMerhers::class);
     Route::post("cancelOrder", [OrderController::class, "cancelOrder"])->middleware(AllowNonMerhers::class);
     Route::post("startWorkingOrder", [OrderController::class, "startWorkingOrder"])->middleware(adm_emp::class);
     Route::post("endingOrder", [OrderController::class, "endingOrder"])->middleware(adm_emp::class);
