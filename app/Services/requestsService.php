@@ -3,7 +3,6 @@
 
 namespace App\Services;
 
-use App\Models\Add_product_request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pull_request;
 
@@ -29,6 +28,7 @@ class requestsService
         'uu.type_id as user_type_id',
         'ut.name as user_type',
         'total',
+        'payment_data',
         'payment_way_id',
         'p.name',
         'accepted',
@@ -60,6 +60,7 @@ class requestsService
         'uu.type_id as user_type_id',
         'ut.name as user_type',
         'total',
+        'payment_data',
         'payment_way_id',
         'p.name',
         'accepted',
@@ -265,6 +266,7 @@ class requestsService
         'uu.type_id as user_type_id',
         'ut.name as user_type',
         'total',
+        'payment_data',
         'payment_way_id',
         'p.name',
         'accepted',

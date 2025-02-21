@@ -19,12 +19,6 @@ class CountrySeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         Country::create([
-            "name" => "Syria",
-        ]);
-        Country::create([
-            "name" => "Egypt",
-        ]);
-        Country::create([
             "name" => "Jordan",
         ]);
     }

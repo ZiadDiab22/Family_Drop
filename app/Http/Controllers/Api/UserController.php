@@ -11,6 +11,8 @@ use App\Services\OrderService;
 use App\Services\ProductService;
 use App\Services\requestsService;
 use App\Services\UserService;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -66,6 +68,13 @@ class UserController extends Controller
 
         $validatedData['password'] = bcrypt($request->password);
 
+        if ($request->has('img_url')) {
+            $image1 = Str::random(32) . "." . $request->img_url->getClientOriginalExtension();
+            Storage::disk('public_htmlUsers')->put($image1, file_get_contents($request->img_url));
+            $image1 = asset('api/users/' . $image1);
+            $validatedData['img_url'] = $image1;
+        }
+
         $user = User::create($validatedData);
 
         $accessToken = $user->createToken('authToken')->accessToken;
@@ -105,6 +114,13 @@ class UserController extends Controller
         }
 
         $validatedData['password'] = bcrypt($request->password);
+
+        if ($request->has('img_url')) {
+            $image1 = Str::random(32) . "." . $request->img_url->getClientOriginalExtension();
+            Storage::disk('public_htmlUsers')->put($image1, file_get_contents($request->img_url));
+            $image1 = asset('api/users/' . $image1);
+            $validatedData['img_url'] = $image1;
+        }
 
         $user = User::create($validatedData);
 
@@ -194,9 +210,16 @@ class UserController extends Controller
             }
         }
 
+        if ($request->has('img_url')) {
+            $image1 = Str::random(32) . "." . $request->img_url->getClientOriginalExtension();
+            Storage::disk('public_htmlUsers')->put($image1, file_get_contents($request->img_url));
+            $image1 = asset('api/users/' . $image1);
+            $user->img_url = $image1;
+        }
+
         $user->save();
 
-        $user_data = User::where('users.id', auth()->user()->id)
+        $user_data = User::where('users.id', Auth::user()->id)
             ->leftjoin('countries as c', 'country_id', 'c.id')
             ->join('user_types as t', 'type_id', 't.id')
             ->get([
@@ -208,6 +231,7 @@ class UserController extends Controller
                 't.name as type_name',
                 'email',
                 'phone_no',
+                'img_url',
                 'badget',
                 'created_at',
                 'updated_at'

@@ -124,6 +124,10 @@ class ProductController extends Controller
             $validatedData['long_disc'] = $request->long_disc;
         }
 
+        if ($request->has('video_url')) {
+            $validatedData['video_url'] = $request->video_url;
+        }
+
         $array = [];
 
         if ($request->has('images_array')) {
@@ -190,6 +194,7 @@ class ProductController extends Controller
         if ($request->has('long_disc')) $product->long_disc = $request->long_disc;
         if ($request->has('sales')) $product->sales = $request->sales;
         if ($request->has('profit_rate')) $product->profit_rate = $request->profit_rate;
+        if ($request->has('video_url')) $product->video_url = $request->video_url;
         if ($request->has('type_id')) {
             if (!(Product_type::where('id', $request->type_id)->exists())) {
                 return response([
@@ -406,5 +411,25 @@ class ProductController extends Controller
             'products' => $products,
             'types' => $types,
         ]);
+    }
+
+
+    public function uploadVideo(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:mp4,mov,wmv,png,txt|max:50000'
+        ]);
+
+        $upload_file = $request->file('file')->store('videos', 'public');
+
+        return [
+            "result" => $upload_file,
+            "url" => asset('storage/' . $upload_file)
+        ];
+    }
+
+    public function installVideo(Request $request)
+    {
+        return response()->file($request->url);
     }
 }

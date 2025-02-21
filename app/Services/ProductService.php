@@ -6,7 +6,6 @@ namespace App\Services;
 use App\Models\Product;
 use App\Models\product_color;
 use App\Models\product_size;
-use Illuminate\Support\Facades\DB;
 use App\Models\Product_type;
 
 class ProductService
@@ -26,6 +25,7 @@ class ProductService
         'owner_id',
         'u.name as owner_name',
         'images_array',
+        'video_url',
         'cost_price',
         'selling_price',
         'quantity',
@@ -66,6 +66,7 @@ class ProductService
         'owner_id',
         'u.name as owner_name',
         'images_array',
+        'video_url',
         'cost_price',
         'selling_price',
         'quantity',
@@ -113,6 +114,7 @@ class ProductService
         'owner_id',
         'u.name as owner_name',
         'images_array',
+        'video_url',
         'cost_price',
         'selling_price',
         'quantity',
@@ -156,6 +158,7 @@ class ProductService
         'owner_id',
         'u.name as owner_name',
         'images_array',
+        'video_url',
         'cost_price',
         'selling_price',
         'quantity',
@@ -186,6 +189,7 @@ class ProductService
         'owner_id',
         'u.name as owner_name',
         'images_array',
+        'video_url',
         'cost_price',
         'selling_price',
         'quantity',

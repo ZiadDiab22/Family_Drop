@@ -8,14 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected function imagesArray(): Attribute
-    {
-        return Attribute::make(
-            get: fn($value) => json_decode($value, true),
-            set: fn($value) => json_encode($value),
-        );
-    }
-
     protected $fillable = [
         'name',
         'type_id',
@@ -27,7 +19,15 @@ class Product extends Model
         'selling_price',
         'profit_rate',
         'images_array',
+        'video_url',
         'blocked',
         'owner_id'
     ];
+    protected function imagesArray(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => json_decode($value, true),
+            set: fn($value) => json_encode($value),
+        );
+    }
 }

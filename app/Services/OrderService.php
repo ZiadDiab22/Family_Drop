@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Order;
+use App\Models\Order_tag;
 use Illuminate\Support\Facades\DB;
 
 class OrderService
@@ -72,9 +73,20 @@ class OrderService
             'op.selling_price',
             'profit'
           ]);
-        $tags = DB::table('order_tags as t')->where('order_id', $order['id'])
+        $tags = Order_tag::where('order_id', $order['id'])
           ->join('users as u', 'u.id', 'user_id')
-          ->get(['t.id', 'order_id', 'user_id', 'u.name', 'email', 'phone_no', 'text']);
+          ->get([
+            'order_tags.id',
+            'order_id',
+            'user_id',
+            'u.name',
+            'email',
+            'phone_no',
+            'img_url',
+            'text',
+            'order_tags.created_at',
+            'order_tags.updated_at'
+          ]);
 
         $order['products'] = $products;
         $order['tags'] = $tags;
@@ -148,9 +160,20 @@ class OrderService
             'op.selling_price',
             'profit'
           ]);
-        $tags = DB::table('order_tags as t')->where('order_id', $order['id'])
+        $tags = Order_tag::where('order_id', $order['id'])
           ->join('users as u', 'u.id', 'user_id')
-          ->get(['t.id', 'order_id', 'user_id', 'u.name', 'email', 'phone_no', 'text']);
+          ->get([
+            'order_tags.id',
+            'order_id',
+            'user_id',
+            'u.name',
+            'email',
+            'phone_no',
+            'img_url',
+            'text',
+            'order_tags.created_at',
+            'order_tags.updated_at'
+          ]);
 
         $order['products'] = $products;
         $order['tags'] = $tags;
@@ -225,9 +248,20 @@ class OrderService
             'op.selling_price',
             'profit'
           ]);
-        $tags = DB::table('order_tags as t')->where('order_id', $order['id'])
+        $tags = Order_tag::where('order_id', $order['id'])
           ->join('users as u', 'u.id', 'user_id')
-          ->get(['t.id', 'order_id', 'user_id', 'u.name', 'email', 'phone_no', 'text']);
+          ->get([
+            'order_tags.id',
+            'order_id',
+            'user_id',
+            'u.name',
+            'email',
+            'phone_no',
+            'img_url',
+            'text',
+            'order_tags.created_at',
+            'order_tags.updated_at'
+          ]);
 
         $order['products'] = $products;
         $order['tags'] = $tags;
@@ -302,9 +336,20 @@ class OrderService
             'op.selling_price',
             'profit'
           ]);
-        $tags = DB::table('order_tags as t')->where('order_id', $order['id'])
+        $tags = Order_tag::where('order_id', $order['id'])
           ->join('users as u', 'u.id', 'user_id')
-          ->get(['t.id', 'order_id', 'user_id', 'u.name', 'email', 'phone_no', 'text']);
+          ->get([
+            'order_tags.id',
+            'order_id',
+            'user_id',
+            'u.name',
+            'email',
+            'phone_no',
+            'img_url',
+            'text',
+            'order_tags.created_at',
+            'order_tags.updated_at'
+          ]);
 
         $order['products'] = $products;
         $order['tags'] = $tags;

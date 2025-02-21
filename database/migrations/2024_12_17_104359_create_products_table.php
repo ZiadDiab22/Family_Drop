@@ -19,6 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('type_id');
             $table->unsignedInteger('owner_id')->nullable()->default(null);
             $table->json('images_array')->nullable()->default(null);
+            $table->string('video_url')->nullable()->default(null);
             $table->float('cost_price');
             $table->float('selling_price')->nullable()->default(null);
             $table->integer('quantity');

@@ -44,12 +44,30 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        // 'videos' => [
+        //     'driver' => 'local',
+        //     'root' => public_path('videos'),
+        //     'visibility' => 'public',
+        // ],
 
+        'public_htmlVideos' => [
+            'driver' => 'local',
+            'root' => base_path('public_html/videos'), // Ensure it's public_path, not base_path
+            'url' => env('APP_URL') . '/public_html/videos', // Make sure this URL path matches
+            'visibility' => 'public',
+        ],
 
         'public_htmlProducts' => [
             'driver' => 'local',
             'root' => base_path('public_html/products'), // Path outside public directory
             'url' => env('APP_URL') . '/public_html/products',
+            'visibility' => 'public',
+        ],
+
+        'public_htmlUsers' => [
+            'driver' => 'local',
+            'root' => base_path('public_html/users'), // Path outside public directory
+            'url' => env('APP_URL') . '/public_html/users',
             'visibility' => 'public',
         ],
 

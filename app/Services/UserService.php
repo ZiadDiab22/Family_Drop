@@ -20,6 +20,7 @@ class UserService
         't.name as type',
         'email',
         'phone_no',
+        'img_url',
         'code_auth',
         'badget',
         'blocked',

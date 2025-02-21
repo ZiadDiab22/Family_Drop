@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\address;
 use App\Models\City;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -19,25 +20,29 @@ class CitySeeder extends Seeder
         DB::table('cities')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        City::create([
-            "name" => "دمشق",
-            "country_id" => 1,
-        ]);
-        City::create([
-            "name" => "حمص",
-            "country_id" => 1,
-        ]);
-        City::create([
-            "name" => "القاهرة",
-            "country_id" => 2,
-        ]);
-
         $json = file_get_contents(resource_path('jo2.json'));
         $data = json_decode($json, true);
+
         foreach ($data as $item) {
-            DB::table('cities')->insert([
-                'name' => $item['name'],
-                'country_id' => 3,
+            if (!isset($item['admin_name'])) {
+                continue;
+            }
+
+            $existingCity = City::where('name', $item['admin_name'])->first();
+
+            if ($existingCity) {
+                $cityId = $existingCity->id;
+            } else {
+                $city = City::create([
+                    'name' => $item['admin_name'],
+                    'country_id' => 1,
+                ]);
+                $cityId = $city->id;
+            }
+            DB::table('addresses')->insert([
+                'name' => $item['city'],
+                'delivery_price' => 5,
+                'city_id' => $cityId,
             ]);
         }
     }

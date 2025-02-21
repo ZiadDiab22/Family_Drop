@@ -44,6 +44,7 @@ Route::get("showTypesSizesColors", [ProductController::class, "showTypesSizesCol
 Route::get("showProductInfo/{id}", [ProductController::class, "showProductInfo"]);
 Route::post("searchProducts", [ProductController::class, "searchProducts"]);
 Route::get("showSettings", [SettingController::class, "showSettings"]);
+Route::post("upload", [SettingController::class, "upload"]);
 
 Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addEmp", [UserController::class, "addEmp"])->middleware(adm_emp::class);
@@ -107,10 +108,20 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("endingOrder", [OrderController::class, "endingOrder"])->middleware(adm_emp::class);
     Route::post("deliveringOrder", [OrderController::class, "deliveringOrder"])->middleware(adm_emp::class);
     Route::post("doneOrder", [OrderController::class, "doneOrder"])->middleware(adm_emp::class);
+    Route::post("uploadVideo", [ProductController::class, "uploadVideo"]);
+    Route::post("installVideo", [ProductController::class, "installVideo"]);
 });
 
 Route::get('products/{filename}', function ($filename) {
     $path = base_path('public_html/products/' . $filename);
+    if (!File::exists($path)) {
+        abort(404, 'File not found');
+    }
+    return response()->file($path);;
+});
+
+Route::get('users/{filename}', function ($filename) {
+    $path = base_path('public_html/users/' . $filename);
     if (!File::exists($path)) {
         abort(404, 'File not found');
     }

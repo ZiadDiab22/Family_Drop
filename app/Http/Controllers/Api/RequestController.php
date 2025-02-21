@@ -11,7 +11,6 @@ use App\Models\Product;
 use App\Models\pull_product_request;
 use App\Models\Pull_request;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 use App\Services\AddresseService;
 use App\Services\OrderService;
 use App\Services\ProductService;
@@ -63,6 +62,8 @@ class RequestController extends Controller
         }
 
         $validatedData['user_id'] = $user->id;
+        if ($request->has('payment_data')) $validatedData['payment_data'] = $request->payment_data;
+
         Pull_request::create($validatedData);
 
         $user->badget -= $request->total;

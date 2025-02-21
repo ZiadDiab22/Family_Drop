@@ -17,7 +17,9 @@ return new class extends Migration
             $table->unsignedInteger('country_id');
             $table->unsignedInteger('type_id');
             $table->string('email', 50)->unique();
+            $table->timestamp('email_verified_at')->nullable()->default(null);
             $table->string('password')->unique();
+            $table->string('img_url')->nullable()->default(null);
             $table->string('phone_no')->unique();
             $table->string('code_auth')->nullable()->default(null);
             $table->integer('badget')->nullable()->default(0);
