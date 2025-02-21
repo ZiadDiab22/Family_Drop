@@ -28,23 +28,22 @@ class AddressController extends Controller
         if (!(City::where('id', $request->city_id)->exists())) {
             return response([
                 'status' => false,
-                'message' => 'Wrong id , not found',
+                'message' => 'Wrong city_id , not found',
+            ]);
+        }
+
+        if ($request->has('delivery_price')) {
+            if ($request->delivery_price >= 0)
+                $validatedData['delivery_price'] = $request->delivery_price;
+            else return response([
+                'status' => false,
+                'message' => 'delivery_price should be a positive value.',
             ]);
         }
 
         address::create($validatedData);
 
-        $data = address::join('cities as ci', 'ci.id', 'addresses.city_id')
-            ->join('countries as co', 'co.id', 'country_id')
-            ->get([
-                'addresses.id',
-                'addresses.name as addresse_name',
-                'delivery_price',
-                'city_id',
-                'ci.name as city_name',
-                'country_id',
-                'co.name as country_name'
-            ]);
+        $data = $this->addresseService->showAddresses();
 
         return response([
             'status' => true,
@@ -64,17 +63,7 @@ class AddressController extends Controller
 
         address::where('id', $id)->delete();
 
-        $data = address::join('cities as ci', 'ci.id', 'addresses.city_id')
-            ->join('countries as co', 'co.id', 'country_id')
-            ->get([
-                'addresses.id',
-                'addresses.name as addresse_name',
-                'delivery_price',
-                'city_id',
-                'ci.name as city_name',
-                'country_id',
-                'co.name as country_name'
-            ]);
+        $data = $this->addresseService->showAddresses();
 
         return response([
             'status' => true,
@@ -109,20 +98,17 @@ class AddressController extends Controller
         }
 
         if ($request->has('name')) $ad->name = $request->name;
-        if ($request->has('delivery_price')) $ad->delivery_price = $request->delivery_price;
+        if ($request->has('delivery_price')) {
+            if ($request->delivery_price >= 0)
+                $ad->delivery_price = $request->delivery_price;
+            else return response([
+                'status' => false,
+                'message' => 'delivery_price should be a positive value.',
+            ]);
+        }
         $ad->save();
 
-        $data = address::join('cities as ci', 'ci.id', 'addresses.city_id')
-            ->join('countries as co', 'co.id', 'country_id')
-            ->get([
-                'addresses.id',
-                'addresses.name as addresse_name',
-                'delivery_price',
-                'city_id',
-                'ci.name as city_name',
-                'country_id',
-                'co.name as country_name'
-            ]);
+        $data = $this->addresseService->showAddresses();
 
         return response([
             'status' => true,
@@ -143,17 +129,7 @@ class AddressController extends Controller
 
     public function showLocations()
     {
-        $addresses = address::join('cities as ci', 'ci.id', 'addresses.city_id')
-            ->join('countries as co', 'co.id', 'country_id')
-            ->get([
-                'addresses.id',
-                'addresses.name as addresse_name',
-                'delivery_price',
-                'city_id',
-                'ci.name as city_name',
-                'country_id',
-                'co.name as country_name'
-            ]);
+        $addresses = $this->addresseService->showAddresses();
 
         $cities = City::join('countries as c', 'c.id', 'cities.country_id')
             ->get(['cities.id', 'cities.name', 'c.id as country_id', 'c.name as country_name']);
@@ -165,6 +141,28 @@ class AddressController extends Controller
             'countries' => $countries,
             'cities' => $cities,
             'addresses' => $addresses
+        ]);
+    }
+
+    public function blockAddresse($id)
+    {
+        if (!(address::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $ad = address::find($id);
+        if ($ad->blocked == 0) $ad->blocked = 1;
+        else $ad->blocked = 0;
+        $ad->save();
+
+        $data = $this->addresseService->showAddresses();
+
+        return response([
+            'status' => true,
+            'data' => $data
         ]);
     }
 }

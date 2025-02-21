@@ -67,7 +67,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addAddresse", [AddressController::class, "addAddresse"])->middleware(adm_emp::class);
     Route::get("deleteAddresse/{id}", [AddressController::class, "deleteAddresse"])->middleware(adm_emp::class);
     Route::post("editAddresse", [AddressController::class, "editAddresse"])->middleware(adm_emp::class);
-    Route::post("addOrderTag", [OrderController::class, "addOrderTag"])->middleware(mark::class);
+    Route::post("addOrderTag", [OrderController::class, "addOrderTag"])->middleware(AllowNonMerhers::class);
     Route::post("addProduct", [ProductController::class, "addProduct"])->middleware(adm_emp::class);
     Route::post("editProduct", [ProductController::class, "editProduct"])->middleware(adm_emp::class);
     Route::get("deleteProduct/{id}", [ProductController::class, "deleteProduct"])->middleware(adm_emp::class);
@@ -78,6 +78,8 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("editSize", [SizeController::class, "editSize"])->middleware(adm_emp::class);
     Route::post("editColor", [ColorController::class, "editColor"])->middleware(adm_emp::class);
     Route::get("blockUser/{id}", [UserController::class, "blockUser"])->middleware(adm_emp::class);
+    Route::get("blockProduct/{id}", [ProductController::class, "blockProduct"])->middleware(adm_emp::class);
+    Route::get("blockAddresse/{id}", [AddressController::class, "blockAddresse"])->middleware(adm_emp::class);
     Route::get("activatePaymentWay/{id}", [UserController::class, "activatePaymentWay"])->middleware(adm_emp::class);
     Route::get("showUsers", [UserController::class, "showUsers"])->middleware(adm_emp::class);
     Route::get("showRequests", [UserController::class, "showRequests"])->middleware(adm_emp::class);

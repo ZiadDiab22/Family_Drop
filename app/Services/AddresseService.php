@@ -15,6 +15,7 @@ class AddresseService
         'addresses.id',
         'addresses.name as addresse_name',
         'delivery_price',
+        'blocked',
         'city_id',
         'ci.name as city_name',
         'country_id',

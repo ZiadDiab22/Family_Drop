@@ -382,4 +382,29 @@ class ProductController extends Controller
             'types' => $types,
         ]);
     }
+
+    public function blockProduct($id)
+    {
+        if (!(Product::where('id', $id)->exists())) {
+            return response([
+                'status' => false,
+                'message' => 'Wrong id , not found',
+            ]);
+        }
+
+        $product = Product::find($id);
+        if ($product->blocked == 0) $product->blocked = 1;
+        else $product->blocked = 0;
+        $product->save();
+
+        $products = $this->productService->showProducts();
+        $types = $this->productService->showProductTypes();
+
+        return response([
+            'status' => true,
+            'message' => 'done Successfully',
+            'products' => $products,
+            'types' => $types,
+        ]);
+    }
 }

@@ -45,7 +45,8 @@ class OrderController extends Controller
         $validatedData['user_id'] = Auth::user()->id;
 
         Order_tag::create($validatedData);
-        $data = Order_tag::where('order_id', $request->order_id)->get();
+        //$data = Order_tag::where('order_id', $request->order_id)->get();
+        $data = $this->OrderService->getOrderInfo($request->order_id);
 
         return response([
             'status' => true,

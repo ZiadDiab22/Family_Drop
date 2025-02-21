@@ -10,6 +10,8 @@ class address extends Model
 
     protected $fillable = [
         'name',
-        'city_id','delivery_price'
+        'city_id',
+        'delivery_price',
+        'blocked'
     ];
 }
