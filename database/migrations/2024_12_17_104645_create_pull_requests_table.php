@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedInteger('payment_way_id');
             $table->unsignedInteger('employee_id')->nullable()->default(null);
             $table->unsignedInteger('user_id');
-            $table->string('total');
+            $table->float('total');
             $table->string('payment_data')->nullable()->default(null);
             $table->boolean('accepted')->nullable()->default(false);
             $table->boolean('blocked')->nullable()->default(false);

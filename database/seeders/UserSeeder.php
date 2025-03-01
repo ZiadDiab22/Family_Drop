@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Payment_way;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -17,6 +19,8 @@ class UserSeeder extends Seeder
     {
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('users')->truncate();
+        DB::table('payment_ways')->truncate();
+        DB::table('settings')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         User::create([
@@ -26,6 +30,16 @@ class UserSeeder extends Seeder
             "password" => bcrypt("111"),
             "phone_no" => "0999",
             "country_id" => 1,
+        ]);
+
+        Payment_way::create([
+            "name" => "test",
+            "data" => "test",
+        ]);
+
+        Setting::create([
+            'name' => 'Marketer Commission',
+            'value' => 50
         ]);
     }
 }

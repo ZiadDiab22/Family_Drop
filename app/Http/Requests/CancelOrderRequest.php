@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\IsNewOrderRule;
+use App\Rules\NotDoneOrderRule;
 use App\Rules\OrderOwnershipRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -13,7 +13,7 @@ class CancelOrderRequest extends FormRequest
     public function rules()
     {
         return [
-            'id' => ['required', 'exists:orders,id',new OrderOwnershipRule, new IsNewOrderRule]
+            'id' => ['required', 'exists:orders,id', new OrderOwnershipRule, new NotDoneOrderRule]
         ];
     }
 

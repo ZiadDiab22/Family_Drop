@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->json('images_array')->nullable()->default(null);
             $table->string('product_quantity');
-            $table->string('product_price');
+            $table->float('product_price');
             $table->string('product_disc');
             $table->string('product_place');
             $table->boolean('accepted')->nullable()->default(false);

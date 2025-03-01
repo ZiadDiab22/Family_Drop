@@ -15,6 +15,7 @@ class ProductService
 
     $data = Product::join('product_types as pt', 'pt.id', 'products.type_id')
       ->join('users as u', 'u.id', 'owner_id')
+      ->join('user_types as t', 't.id', 'u.type_id')
       ->get([
         'products.id',
         'products.name',
@@ -24,6 +25,11 @@ class ProductService
         'pt.name as type_name',
         'owner_id',
         'u.name as owner_name',
+        'email as owner_email',
+        'phone_no as owner_phone_no',
+        'img_url as owner_img_url',
+        'u.type_id as owner_type_id',
+        't.name as owner_type',
         'images_array',
         'video_url',
         'cost_price',
@@ -56,6 +62,7 @@ class ProductService
   {
     $data = Product::where('products.id', $id)->join('product_types as pt', 'pt.id', 'products.type_id')
       ->join('users as u', 'u.id', 'owner_id')
+      ->join('user_types as t', 't.id', 'u.type_id')
       ->get([
         'products.id',
         'products.name',
@@ -65,6 +72,11 @@ class ProductService
         'pt.name as type_name',
         'owner_id',
         'u.name as owner_name',
+        'email as owner_email',
+        'phone_no as owner_phone_no',
+        'img_url as owner_img_url',
+        'u.type_id as owner_type_id',
+        't.name as owner_type',
         'images_array',
         'video_url',
         'cost_price',
@@ -104,6 +116,7 @@ class ProductService
   {
     $data = Product::where('owner_id', $id)->join('product_types as pt', 'pt.id', 'products.type_id')
       ->join('users as u', 'u.id', 'owner_id')
+      ->join('user_types as t', 't.id', 'u.type_id')
       ->get([
         'products.id',
         'products.name',
@@ -113,6 +126,11 @@ class ProductService
         'pt.name as type_name',
         'owner_id',
         'u.name as owner_name',
+        'email as owner_email',
+        'phone_no as owner_phone_no',
+        'img_url as owner_img_url',
+        'u.type_id as owner_type_id',
+        't.name as owner_type',
         'images_array',
         'video_url',
         'cost_price',
@@ -147,6 +165,7 @@ class ProductService
       ->where('products.quantity', '>', 0)
       ->join('product_types as pt', 'pt.id', 'products.type_id')
       ->join('users as u', 'u.id', 'owner_id')
+      ->join('user_types as t', 't.id', 'u.type_id')
       ->orderBy('sales', 'desc')
       ->get([
         'products.id',
@@ -157,6 +176,11 @@ class ProductService
         'pt.name as type_name',
         'owner_id',
         'u.name as owner_name',
+        'email as owner_email',
+        'phone_no as owner_phone_no',
+        'img_url as owner_img_url',
+        'u.type_id as owner_type_id',
+        't.name as owner_type',
         'images_array',
         'video_url',
         'cost_price',
@@ -178,6 +202,7 @@ class ProductService
       ->where('products.quantity', '>', 0)
       ->join('product_types as pt', 'pt.id', 'products.type_id')
       ->join('users as u', 'u.id', 'owner_id')
+      ->join('user_types as t', 't.id', 'u.type_id')
       ->orderBy('sales', 'desc')
       ->get([
         'products.id',
@@ -188,6 +213,11 @@ class ProductService
         'pt.name as type_name',
         'owner_id',
         'u.name as owner_name',
+        'email as owner_email',
+        'phone_no as owner_phone_no',
+        'img_url as owner_img_url',
+        'u.type_id as owner_type_id',
+        't.name as owner_type',
         'images_array',
         'video_url',
         'cost_price',

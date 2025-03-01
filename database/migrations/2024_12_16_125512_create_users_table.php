@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('img_url')->nullable()->default(null);
             $table->string('phone_no')->unique();
             $table->string('code_auth')->nullable()->default(null);
-            $table->integer('badget')->nullable()->default(0);
+            $table->float('badget')->nullable()->default(0);
             $table->boolean('blocked')->nullable()->default(false);
             $table->timestamps();
             $table->foreign('country_id')->references('id')
