@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\SettingController;
 use App\Http\Controllers\Api\SizeController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Middleware\adm_emp;
+use App\Http\Middleware\AllowAdmin;
 use App\Http\Middleware\AllowNonMarketers;
 use App\Http\Middleware\AllowNonMerhers;
 use App\Http\Middleware\mark;
@@ -50,6 +51,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addEmp", [UserController::class, "addEmp"])->middleware(adm_emp::class);
     Route::get("logout", [UserController::class, "logout"]);
     Route::post("editUserData", [UserController::class, "editUserData"]);
+    Route::post("updateUserData", [UserController::class, "updateUserData"])->middleware(adm_emp::class);
     Route::post("addCountry", [CountryController::class, "addCountry"])->middleware(adm_emp::class);
     Route::get("deleteCountry/{id}", [CountryController::class, "deleteCountry"])->middleware(adm_emp::class);
     Route::post("editCountry", [CountryController::class, "editCountry"])->middleware(adm_emp::class);
@@ -110,6 +112,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("doneOrder", [OrderController::class, "doneOrder"])->middleware(adm_emp::class);
     Route::post("uploadVideo", [ProductController::class, "uploadVideo"]);
     Route::post("installVideo", [ProductController::class, "installVideo"]);
+    Route::post("showReport", [UserController::class, "showReport"])->middleware(AllowAdmin::class);
 });
 
 Route::get('products/{filename}', function ($filename) {

@@ -6,6 +6,7 @@ namespace App\Services;
 use App\Models\Product;
 use App\Models\product_color;
 use App\Models\product_size;
+use Illuminate\Support\Facades\DB;
 use App\Models\Product_type;
 
 class ProductService
@@ -229,6 +230,56 @@ class ProductService
         'products.created_at',
         'products.updated_at'
       ]);
+
+    return $data;
+  }
+
+  public function getProductStats($date1, $date2)
+  {
+    $data =  DB::table('products')
+      ->whereDate('products.created_at', '>=', $date1)
+      ->whereDate('products.created_at', '<=', $date2)
+      ->join('product_types as pt', 'pt.id', 'products.type_id')
+      ->join('users as u', 'u.id', 'owner_id')
+      ->join('user_types as t', 't.id', 'u.type_id')
+      ->get([
+        'products.id',
+        'products.name',
+        'disc',
+        'long_disc',
+        'products.type_id',
+        'pt.name as type_name',
+        'owner_id',
+        'u.name as owner_name',
+        'email as owner_email',
+        'phone_no as owner_phone_no',
+        'img_url as owner_img_url',
+        'u.type_id as owner_type_id',
+        't.name as owner_type',
+        'images_array',
+        'video_url',
+        'cost_price',
+        'selling_price',
+        'quantity',
+        'sales',
+        'profit_rate',
+        'products.blocked',
+        'products.created_at',
+        'products.updated_at'
+      ]);
+
+    foreach ($data as $p) {
+      $sizes = product_size::where('product_id', $p->id)
+        ->join('sizes as s', 'size_id', 's.id')
+        ->get(['s.id', 's.name']);
+
+      $colors = product_color::where('product_id', $p->id)
+        ->join('colors as c', 'color_id', 'c.id')
+        ->get(['c.id', 'c.name', 'code']);
+
+      $p->sizes = $sizes;
+      $p->colors = $colors;
+    }
 
     return $data;
   }

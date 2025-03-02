@@ -12,6 +12,7 @@ use App\Services\ProductService;
 use App\Services\requestsService;
 use App\Services\UserService;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -195,6 +196,15 @@ class UserController extends Controller
             }
         }
 
+        if ($request->has('type_id')) {
+            if ($request->type_id < 3) {
+                return response()->json([
+                    'status' => false,
+                    'message' => "you can only choose type : marketer or mercher"
+                ], 200);
+            }
+        }
+
         if ($request->has('email')) {
             if (User::where('email', $request->email)->where('id', '!=', auth()->user()->id)->exists()) {
                 return response()->json([
@@ -205,7 +215,7 @@ class UserController extends Controller
         }
 
         foreach ($input as $key => $value) {
-            if (in_array($key, ['name', 'country_id', 'email', 'phone_no']) && !empty($value)) {
+            if (in_array($key, ['name', 'country_id', 'type_id', 'email', 'phone_no']) && !empty($value)) {
                 $user->$key = $value;
             }
         }
@@ -215,6 +225,10 @@ class UserController extends Controller
             Storage::disk('public_htmlUsers')->put($image1, file_get_contents($request->img_url));
             $image1 = asset('api/users/' . $image1);
             $user->img_url = $image1;
+        }
+
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->password);
         }
 
         $user->save();
@@ -231,11 +245,107 @@ class UserController extends Controller
                 't.name as type_name',
                 'email',
                 'phone_no',
+                'password',
+                'email_verified_at',
                 'img_url',
                 'badget',
+                'blocked',
                 'created_at',
                 'updated_at'
-            ]);
+            ])->makeVisible(['password']);
+
+        return response()->json([
+            'status' => true,
+            'message' => 'edited Successfully',
+            'user_data' => $user_data,
+        ]);
+    }
+
+    public function updateUserData(Request $request)
+    {
+        $request->validate([
+            'user_id' => 'required',
+            'email' => 'email',
+            'type_id' => 'numeric|gt:0|lt:5',
+        ]);
+
+        if (!(User::where('id', $request->user_id)->exists())) {
+            return response()->json([
+                'status' => false,
+                'message' => "Wrong user ID"
+            ], 200);
+        }
+
+        $user = User::find($request->user_id);
+
+        $input = $request->all();
+
+        if ($request->has('country_id')) {
+            if (!(Country::where('id', $request->country_id)->exists())) {
+                return response()->json([
+                    'status' => false,
+                    'message' => "Wrong country ID"
+                ], 200);
+            }
+        }
+
+        if ($request->has('phone_no')) {
+            if (User::where('phone_no', $request->phone_no)->where('id', '!=', $user->id)->exists()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => "phone number is taken"
+                ], 200);
+            }
+        }
+
+        if ($request->has('email')) {
+            if (User::where('email', $request->email)->where('id', '!=', $user->id)->exists()) {
+                return response()->json([
+                    'status' => false,
+                    'message' => "email is taken"
+                ], 200);
+            }
+        }
+
+        foreach ($input as $key => $value) {
+            if (in_array($key, ['name', 'badget', 'country_id', 'type_id', 'email', 'phone_no']) && !empty($value)) {
+                $user->$key = $value;
+            }
+        }
+
+        if ($request->has('img_url')) {
+            $image1 = Str::random(32) . "." . $request->img_url->getClientOriginalExtension();
+            Storage::disk('public_htmlUsers')->put($image1, file_get_contents($request->img_url));
+            $image1 = asset('api/users/' . $image1);
+            $user->img_url = $image1;
+        }
+
+        if ($request->has('password')) {
+            $user->password = bcrypt($request->password);
+        }
+
+        $user->save();
+
+        $user_data = User::where('users.id', $user->id)
+            ->leftjoin('countries as c', 'country_id', 'c.id')
+            ->join('user_types as t', 'type_id', 't.id')
+            ->get([
+                'users.id',
+                'users.name',
+                'country_id',
+                'c.name as country_name',
+                'type_id',
+                't.name as type_name',
+                'email',
+                'phone_no',
+                'password',
+                'email_verified_at',
+                'img_url',
+                'badget',
+                'blocked',
+                'created_at',
+                'updated_at'
+            ])->makeVisible(['password']);
 
         return response()->json([
             'status' => true,
@@ -415,5 +525,35 @@ class UserController extends Controller
                 'products' => $products,
             ]);
         }
+    }
+
+    public function showReport(Request $request)
+    {
+        $request->validate([
+            'date1' => 'required',
+            'date2' => 'required',
+        ]);
+
+        $users = $this->userService->getUserStats($request->date1, $request->date2);
+        $orders = $this->orderService->getOrderStats($request->date1, $request->date2);
+        $products = $this->productService->getProductStats($request->date1, $request->date2);
+        $top_marketers = $this->userService->getTopMarketers($request->date1, $request->date2);
+        $top_merchers = $this->userService->getTopMerchers($request->date1, $request->date2);
+
+        return response([
+            'status' => true,
+            'merchers_count' => $users[0],
+            'marketers_count' => $users[1],
+            'all_orders' => $orders[0],
+            'new_orders' => $orders[1],
+            'on_working_orders' => $orders[2],
+            'ended_orders' => $orders[3],
+            'under_delivery_orders' => $orders[4],
+            'cancelled_orders' => $orders[5],
+            'finished_orders' => $orders[6],
+            'products' => $products,
+            'top_marketers' => $top_marketers,
+            'top_merchers' => $top_merchers,
+        ]);
     }
 }

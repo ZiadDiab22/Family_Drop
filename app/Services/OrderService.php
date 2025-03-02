@@ -382,4 +382,24 @@ class OrderService
 
     return $data;
   }
+
+  public function getOrderStats($date1, $date2)
+  {
+    $data = [];
+
+    $data[] =  DB::table('orders')
+      ->whereDate('created_at', '>=', $date1)
+      ->whereDate('created_at', '<=', $date2)
+      ->count();
+
+    for ($i = 1; $i < 7; $i++) {
+      $data[] = DB::table('orders')
+        ->where('state_id', $i)
+        ->whereDate('created_at', '>=', $date1)
+        ->whereDate('created_at', '<=', $date2)
+        ->count();
+    }
+
+    return $data;
+  }
 }

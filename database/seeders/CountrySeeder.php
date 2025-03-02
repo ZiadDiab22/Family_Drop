@@ -18,8 +18,11 @@ class CountrySeeder extends Seeder
         DB::table('countries')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
-        Country::create([
-            "name" => "Jordan",
-        ]);
+        $json = file_get_contents(resource_path('co.json'));
+        $data = json_decode($json, true);
+
+        foreach ($data as $country) {
+            Country::create(['name' => $country]);
+        }
     }
 }
