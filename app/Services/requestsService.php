@@ -283,6 +283,7 @@ class requestsService
     $data = DB::table('pull_requests')
       ->where('user_id', $id)
       ->where('accepted', 0)
+      ->whereNull('employee_id')
       ->sum('total');
 
     return $data;

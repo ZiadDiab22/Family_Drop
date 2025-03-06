@@ -124,6 +124,15 @@ class RequestController extends Controller
             ]);
         }
 
+        if (Auth::user()->type_id > 2) {
+            if (!(Pull_request::where('id', $id)->where('user_id', Auth::user()->id)->exists())) {
+                return response([
+                    'status' => false,
+                    'message' => 'You dont have access to this request',
+                ]);
+            }
+        }
+
         $req = Pull_request::find($id);
         $user = User::find($req->user_id);
 
@@ -135,7 +144,10 @@ class RequestController extends Controller
             $req->save();
         }
 
-        $pull_requests = $this->requestsService->getPullRequests();
+        if (Auth::user()->type_id > 2)
+            $pull_requests = $this->requestsService->getUserPullRequests(Auth::user()->id);
+        else $pull_requests = $this->requestsService->getPullRequests();
+
         return response([
             'status' => true,
             'pull_requests' => $pull_requests

@@ -91,7 +91,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("pullMoneyRequest", [RequestController::class, "pullMoneyRequest"])->middleware(mm::class);
     Route::get("acceptPullMoneyRequest/{id}", [RequestController::class, "acceptPullMoneyRequest"])->middleware(adm_emp::class);
     Route::get("showPullRequests", [RequestController::class, "showPullRequests"]);
-    Route::get("deletePullRequest/{id}", [RequestController::class, "deletePullRequest"])->middleware(adm_emp::class);
+    Route::get("deletePullRequest/{id}", [RequestController::class, "deletePullRequest"]);
     Route::post("addProductRequest", [RequestController::class, "addProductRequest"])->middleware(merch::class);
     Route::post("acceptAddProductRequest/{id}", [RequestController::class, "acceptAddProductRequest"])->middleware(adm_emp::class);
     Route::get("showProductRequests", [RequestController::class, "showProductRequests"])->middleware(AllowNonMarketers::class);
@@ -120,7 +120,7 @@ Route::get('products/{filename}', function ($filename) {
     if (!File::exists($path)) {
         abort(404, 'File not found');
     }
-    return response()->file($path);;
+    return response()->file($path);
 });
 
 Route::get('users/{filename}', function ($filename) {
