@@ -283,4 +283,19 @@ class ProductService
 
     return $data;
   }
+
+  public function getTopProducts($date1, $date2)
+  {
+    $data = DB::table('orders as o')->where('state_id', 6)
+      ->whereDate('o.created_at', '>=', $date1)
+      ->whereDate('o.created_at', '<=', $date2)
+      ->join('order_products as op', 'op.order_id', 'o.id')
+      ->join('products as p', 'p.id', 'op.product_id')
+      ->select('p.id', DB::raw('CAST(SUM(op.quantity) as UNSIGNED) as value'), 'p.name as label')
+      ->groupBy('p.id', 'p.name')
+      ->orderBy('value', 'desc')
+      ->get();
+
+    return $data;
+  }
 }

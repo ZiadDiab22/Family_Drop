@@ -539,11 +539,15 @@ class UserController extends Controller
         $products = $this->productService->getProductStats($request->date1, $request->date2);
         $top_marketers = $this->userService->getTopMarketers($request->date1, $request->date2);
         $top_merchers = $this->userService->getTopMerchers($request->date1, $request->date2);
+        $top_products = $this->productService->getTopProducts($request->date1, $request->date2);
+        $profits_dates_values = $this->userService->getProfitsDatesValues($request->date1, $request->date2);
+        $total_profits = collect($profits_dates_values[1])->sum();
 
         return response([
             'status' => true,
             'merchers_count' => $users[0],
             'marketers_count' => $users[1],
+            'total_profits' => $total_profits,
             'all_orders' => $orders[0],
             'new_orders' => $orders[1],
             'on_working_orders' => $orders[2],
@@ -554,6 +558,9 @@ class UserController extends Controller
             'products' => $products,
             'top_marketers' => $top_marketers,
             'top_merchers' => $top_merchers,
+            'top_products' => $top_products,
+            'profit_dates' => $profits_dates_values[0],
+            'profit_values' => $profits_dates_values[1],
         ]);
     }
 }

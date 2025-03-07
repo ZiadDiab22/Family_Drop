@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class UserService
 {
@@ -73,6 +74,56 @@ class UserService
       ->orderBy('value', 'desc')
       ->take(6)
       ->get();
+
+    return $data;
+  }
+
+  public function getProfitsDatesValues($date1, $date2)
+  {
+    $data = [];
+    $profit_dates = [];
+    $profit_values = [];
+
+    $profits = DB::table('orders')
+      ->whereDate('created_at', '>=', $date1)
+      ->whereDate('created_at', '<=', $date2)
+      ->selectRaw("
+                DATE_FORMAT(DATE(created_at), '%Y-%m') as month,
+                SUM(total_profit) as total_profit
+            ")
+      ->groupByRaw('DATE_FORMAT(DATE(created_at), "%Y-%m")')
+      ->orderByRaw('month ASC')
+      ->get();
+
+    $dates = $profits->pluck('month')->toArray();
+    $values = $profits->pluck('total_profit')->toArray();
+
+    $date1 = Carbon::parse($date1);
+    $date2 = Carbon::parse($date2);
+
+    $currentDate = clone $date1;
+    while ($currentDate <= $date2) {
+      $monthKey = $currentDate->format('Y-m');
+      $profit_dates[] = $monthKey;
+
+      $index = array_search($monthKey, $dates);
+      if ($index !== false) {
+        $profit_values[] = $values[$index];
+      } else {
+        $profit_values[] = 0;
+      }
+
+      // Move to next month
+      $currentDate->modify('first day of next month');
+    }
+
+    $marketer_percent = DB::table('settings')->value('value');
+
+    $profit_values = collect($profit_values)->map(function ($value) use ($marketer_percent) {
+      return round($value * ((100 - $marketer_percent) / 100), 2);
+    })->all();
+
+    array_push($data, $profit_dates, $profit_values);
 
     return $data;
   }
