@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Order;
+use App\Models\Order_product;
 use App\Models\Order_tag;
 use Illuminate\Support\Facades\DB;
 
@@ -52,15 +53,15 @@ class OrderService
 
     if ($data) {
       foreach ($data as $order) {
-        $products = DB::table('order_products as op')->where('order_id', $order['id'])
-          ->join('products as p', 'op.product_id', 'p.id')
-          ->leftjoin('product_colors as pc', 'op.color_id', 'pc.id')
-          ->leftjoin('product_sizes as ps', 'op.size_id', 'ps.id')
+        $products = Order_product::where('order_id', $order['id'])
+          ->join('products as p', 'order_products.product_id', 'p.id')
+          ->leftjoin('product_colors as pc', 'order_products.color_id', 'pc.id')
+          ->leftjoin('product_sizes as ps', 'order_products.size_id', 'ps.id')
           ->leftjoin('colors as c', 'pc.color_id', 'c.id')
           ->leftjoin('sizes as s', 'ps.size_id', 's.id')
           ->get([
             'order_id',
-            'op.product_id',
+            'order_products.product_id',
             'p.name as product_name',
             'p.disc',
             'cost_price',
@@ -70,8 +71,8 @@ class OrderService
             'pc.color_id',
             'c.name as color',
             'code',
-            'op.quantity',
-            'op.selling_price',
+            'order_products.quantity',
+            'order_products.selling_price',
             'profit'
           ]);
         $tags = Order_tag::where('order_id', $order['id'])
@@ -140,15 +141,15 @@ class OrderService
 
     if ($data) {
       foreach ($data as $order) {
-        $products = DB::table('order_products as op')->where('order_id', $order['id'])
-          ->join('products as p', 'op.product_id', 'p.id')
-          ->leftjoin('product_colors as pc', 'op.color_id', 'pc.id')
-          ->leftjoin('product_sizes as ps', 'op.size_id', 'ps.id')
+        $products = Order_product::where('order_id', $order['id'])
+          ->join('products as p', 'order_products.product_id', 'p.id')
+          ->leftjoin('product_colors as pc', 'order_products.color_id', 'pc.id')
+          ->leftjoin('product_sizes as ps', 'order_products.size_id', 'ps.id')
           ->leftjoin('colors as c', 'pc.color_id', 'c.id')
           ->leftjoin('sizes as s', 'ps.size_id', 's.id')
           ->get([
             'order_id',
-            'op.product_id',
+            'order_products.product_id',
             'p.name as product_name',
             'p.disc',
             'cost_price',
@@ -158,8 +159,8 @@ class OrderService
             'pc.color_id',
             'c.name as color',
             'code',
-            'op.quantity',
-            'op.selling_price',
+            'order_products.quantity',
+            'order_products.selling_price',
             'profit'
           ]);
         $tags = Order_tag::where('order_id', $order['id'])
@@ -229,15 +230,15 @@ class OrderService
 
     if ($data) {
       foreach ($data as $order) {
-        $products = DB::table('order_products as op')->where('order_id', $order['id'])
-          ->join('products as p', 'op.product_id', 'p.id')
-          ->leftjoin('product_colors as pc', 'op.color_id', 'pc.id')
-          ->leftjoin('product_sizes as ps', 'op.size_id', 'ps.id')
+        $products = Order_product::where('order_id', $order['id'])
+          ->join('products as p', 'order_products.product_id', 'p.id')
+          ->leftjoin('product_colors as pc', 'order_products.color_id', 'pc.id')
+          ->leftjoin('product_sizes as ps', 'order_products.size_id', 'ps.id')
           ->leftjoin('colors as c', 'pc.color_id', 'c.id')
           ->leftjoin('sizes as s', 'ps.size_id', 's.id')
           ->get([
             'order_id',
-            'op.product_id',
+            'order_products.product_id',
             'p.name as product_name',
             'p.disc',
             'cost_price',
@@ -247,8 +248,8 @@ class OrderService
             'pc.color_id',
             'c.name as color',
             'code',
-            'op.quantity',
-            'op.selling_price',
+            'order_products.quantity',
+            'order_products.selling_price',
             'profit'
           ]);
         $tags = Order_tag::where('order_id', $order['id'])
@@ -318,15 +319,15 @@ class OrderService
 
     if ($data) {
       foreach ($data as $order) {
-        $products = DB::table('order_products as op')->where('order_id', $order['id'])
-          ->join('products as p', 'op.product_id', 'p.id')
-          ->leftjoin('product_colors as pc', 'op.color_id', 'pc.id')
-          ->leftjoin('product_sizes as ps', 'op.size_id', 'ps.id')
+        $products = Order_product::where('order_id', $order['id'])
+          ->join('products as p', 'order_products.product_id', 'p.id')
+          ->leftjoin('product_colors as pc', 'order_products.color_id', 'pc.id')
+          ->leftjoin('product_sizes as ps', 'order_products.size_id', 'ps.id')
           ->leftjoin('colors as c', 'pc.color_id', 'c.id')
           ->leftjoin('sizes as s', 'ps.size_id', 's.id')
           ->get([
             'order_id',
-            'op.product_id',
+            'order_products.product_id',
             'p.name as product_name',
             'p.disc',
             'cost_price',
@@ -336,8 +337,8 @@ class OrderService
             'pc.color_id',
             'c.name as color',
             'code',
-            'op.quantity',
-            'op.selling_price',
+            'order_products.quantity',
+            'order_products.selling_price',
             'profit'
           ]);
         $tags = Order_tag::where('order_id', $order['id'])

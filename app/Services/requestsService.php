@@ -3,6 +3,8 @@
 
 namespace App\Services;
 
+use App\Models\Add_product_request;
+use App\Models\pull_product_request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Pull_request;
 
@@ -74,8 +76,7 @@ class requestsService
 
   public function getAddProductRequests()
   {
-    $data = DB::table('add_product_requests as ap')
-      ->join('users as u', 'u.id', 'user_id')
+    $data = Add_product_request::join('users as u', 'u.id', 'user_id')
       ->leftjoin('users as uu', 'uu.id', 'employee_id')
       ->join('addresses as ad', 'ad.id', 'product_place')
       ->join('cities as c', 'c.id', 'ad.city_id')
@@ -83,7 +84,7 @@ class requestsService
       ->join('countries as uc', 'u.country_id', 'uc.id')
       ->join('user_types as ut', 'ut.id', 'u.type_id')
       ->get([
-        'ap.id',
+        'add_product_requests.id',
         'user_id',
         'u.name as user_name',
         'u.email',
@@ -105,10 +106,10 @@ class requestsService
         'c.name as city',
         'c.country_id',
         'co.name as country',
-        'ap.accepted',
-        'ap.blocked',
-        'ap.created_at',
-        'ap.updated_at'
+        'add_product_requests.accepted',
+        'add_product_requests.blocked',
+        'add_product_requests.created_at',
+        'add_product_requests.updated_at'
       ]);
 
     return $data;
@@ -116,8 +117,7 @@ class requestsService
 
   public function getUserAddProductRequests($id)
   {
-    $data = DB::table('add_product_requests as ap')->where('user_id', $id)
-      ->join('users as u', 'u.id', 'user_id')
+    $data = Add_product_request::join('users as u', 'u.id', 'user_id')->where('user_id', $id)
       ->leftjoin('users as uu', 'uu.id', 'employee_id')
       ->join('addresses as ad', 'ad.id', 'product_place')
       ->join('cities as c', 'c.id', 'ad.city_id')
@@ -125,7 +125,7 @@ class requestsService
       ->join('countries as uc', 'u.country_id', 'uc.id')
       ->join('user_types as ut', 'ut.id', 'u.type_id')
       ->get([
-        'ap.id',
+        'add_product_requests.id',
         'user_id',
         'u.name as user_name',
         'u.email',
@@ -147,10 +147,10 @@ class requestsService
         'c.name as city',
         'c.country_id',
         'co.name as country',
-        'ap.accepted',
-        'ap.blocked',
-        'ap.created_at',
-        'ap.updated_at'
+        'add_product_requests.accepted',
+        'add_product_requests.blocked',
+        'add_product_requests.created_at',
+        'add_product_requests.updated_at'
       ]);
 
     return $data;
@@ -158,15 +158,14 @@ class requestsService
 
   public function getPullProductRequests()
   {
-    $data = DB::table('pull_product_requests as pp')
-      ->join('products as p', 'p.id', 'product_id')
+    $data = pull_product_request::join('products as p', 'p.id', 'product_id')
       ->join('product_types as pt', 'p.type_id', 'pt.id')
       ->leftjoin('users as u', 'u.id', 'employee_id')
       ->join('users as uu', 'uu.id', 'mercher_id')
       ->join('countries as c', 'uu.country_id', 'c.id')
       ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
-        'pp.id',
+        'pull_product_requests.id',
         'employee_id',
         'u.name as employee_name',
         'mercher_id',
@@ -177,7 +176,7 @@ class requestsService
         'c.name as mercher_country',
         'uu.type_id as mercher_type_id',
         'ut.name as mercher_type',
-        'pp.quantity as request_quantity',
+        'pull_product_requests.quantity as request_quantity',
         'product_id',
         'p.name',
         'p.disc',
@@ -192,9 +191,9 @@ class requestsService
         'p.created_at as product_created_at',
         'p.updated_at as product_updated_at',
         'accepted',
-        'pp.blocked',
-        'pp.created_at',
-        'pp.updated_at'
+        'pull_product_requests.blocked',
+        'pull_product_requests.created_at',
+        'pull_product_requests.updated_at'
       ]);
 
     return $data;
@@ -202,15 +201,14 @@ class requestsService
 
   public function getUserPullProductRequests($id)
   {
-    $data = DB::table('pull_product_requests as pp')->where('mercher_id', $id)
-      ->join('products as p', 'p.id', 'product_id')
+    $data = pull_product_request::join('products as p', 'p.id', 'product_id')->where('mercher_id', $id)
       ->join('product_types as pt', 'p.type_id', 'pt.id')
       ->leftjoin('users as u', 'u.id', 'employee_id')
       ->join('users as uu', 'uu.id', 'mercher_id')
       ->join('countries as c', 'uu.country_id', 'c.id')
       ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
-        'pp.id',
+        'pull_product_requests.id',
         'employee_id',
         'u.name as employee_name',
         'mercher_id',
@@ -221,7 +219,7 @@ class requestsService
         'c.name as mercher_country',
         'uu.type_id as mercher_type_id',
         'ut.name as mercher_type',
-        'pp.quantity as request_quantity',
+        'pull_product_requests.quantity as request_quantity',
         'product_id',
         'p.name',
         'p.disc',
@@ -236,11 +234,10 @@ class requestsService
         'p.created_at as product_created_at',
         'p.updated_at as product_updated_at',
         'accepted',
-        'pp.blocked',
-        'pp.created_at',
-        'pp.updated_at'
+        'pull_product_requests.blocked',
+        'pull_product_requests.created_at',
+        'pull_product_requests.updated_at'
       ]);
-
     return $data;
   }
 
@@ -291,9 +288,8 @@ class requestsService
 
   public function getPinnedProducts($id)
   {
-    $data = DB::table('add_product_requests as ap')->where('user_id', $id)
+    $data = Add_product_request::join('users as u', 'u.id', 'user_id')->where('user_id', $id)
       ->where('accepted', 0)
-      ->join('users as u', 'u.id', 'user_id')
       ->leftjoin('users as uu', 'uu.id', 'employee_id')
       ->join('addresses as ad', 'ad.id', 'product_place')
       ->join('cities as c', 'c.id', 'ad.city_id')
@@ -301,7 +297,7 @@ class requestsService
       ->join('countries as uc', 'u.country_id', 'uc.id')
       ->join('user_types as ut', 'ut.id', 'u.type_id')
       ->get([
-        'ap.id',
+        'add_product_requests.id',
         'user_id',
         'u.name as user_name',
         'u.email',
@@ -323,10 +319,10 @@ class requestsService
         'c.name as city',
         'c.country_id',
         'co.name as country',
-        'ap.accepted',
-        'ap.blocked',
-        'ap.created_at',
-        'ap.updated_at'
+        'add_product_requests.accepted',
+        'add_product_requests.blocked',
+        'add_product_requests.created_at',
+        'add_product_requests.updated_at'
       ]);
 
     return $data;
@@ -334,16 +330,16 @@ class requestsService
 
   public function getPulledProducts($id)
   {
-    $data = DB::table('pull_product_requests as pp')->where('mercher_id', $id)
+    $data = pull_product_request::join('products as p', 'p.id', 'product_id')
+      ->where('mercher_id', $id)
       ->where('accepted', 1)
-      ->join('products as p', 'p.id', 'product_id')
       ->join('product_types as pt', 'p.type_id', 'pt.id')
       ->leftjoin('users as u', 'u.id', 'employee_id')
       ->join('users as uu', 'uu.id', 'mercher_id')
       ->join('countries as c', 'uu.country_id', 'c.id')
       ->join('user_types as ut', 'ut.id', 'uu.type_id')
       ->get([
-        'pp.id',
+        'pull_product_requests.id',
         'employee_id',
         'u.name as employee_name',
         'mercher_id',
@@ -354,7 +350,7 @@ class requestsService
         'c.name as mercher_country',
         'uu.type_id as mercher_type_id',
         'ut.name as mercher_type',
-        'pp.quantity as request_quantity',
+        'pull_product_requests.quantity as request_quantity',
         'product_id',
         'p.name',
         'p.disc',
@@ -369,9 +365,9 @@ class requestsService
         'p.created_at as product_created_at',
         'p.updated_at as product_updated_at',
         'accepted',
-        'pp.blocked',
-        'pp.created_at',
-        'pp.updated_at'
+        'pull_product_requests.blocked',
+        'pull_product_requests.created_at',
+        'pull_product_requests.updated_at'
       ]);
 
     return $data;
