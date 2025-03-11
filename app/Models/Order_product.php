@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class Order_product extends Model
 {
@@ -17,4 +18,12 @@ class Order_product extends Model
         'selling_price',
         'profit'
     ];
+
+    protected function imagesArray(): Attribute
+    {
+        return Attribute::make(
+            get: fn($value) => json_decode($value, true),
+            set: fn($value) => json_encode($value),
+        );
+    }
 }
