@@ -420,11 +420,11 @@ class ProductController extends Controller
             'file' => 'required|file|mimes:mp4,mov,wmv,png,txt|max:50000'
         ]);
 
-        $upload_file = $request->file('file')->store('videos', 'public');
+        $upload_file = Storage::disk('videos')->putFile('', $request->file('file'), 'public');
 
         return [
             "result" => $upload_file,
-            "url" => asset('storage/' . $upload_file)
+            "url" => asset('api/videos/' . $upload_file)
         ];
     }
 
