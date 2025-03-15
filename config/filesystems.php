@@ -44,11 +44,12 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
-        // 'videos' => [
-        //     'driver' => 'local',
-        //     'root' => public_path('videos'),
-        //     'visibility' => 'public',
-        // ],
+
+        'videos' => [
+            'driver' => 'local',
+            'root' => base_path('public_html/videos'),
+            'visibility' => 'public',
+        ],
 
         'public_htmlVideos' => [
             'driver' => 'local',

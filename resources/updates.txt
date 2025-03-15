@@ -1,0 +1,11 @@
+- Files that are not updated yet on the server (Email Verification "Mailgun") : 
+after : composer require symfony/mailgun-mailer symfony/http-client
+
+. app/Models/User
+. config/mail
+. config/services
+. routes/api
+. routes/web
+. env
+. composer.json
+. composer.lock

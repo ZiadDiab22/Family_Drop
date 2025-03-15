@@ -19,9 +19,15 @@ use App\Http\Middleware\AllowNonMerhers;
 use App\Http\Middleware\mark;
 use App\Http\Middleware\merch;
 use App\Http\Middleware\mm;
+use App\Mail\TestMail;
+use App\Mail\CustomVerificationEmail;
+use App\Models\User;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -46,6 +52,7 @@ Route::get("showProductInfo/{id}", [ProductController::class, "showProductInfo"]
 Route::post("searchProducts", [ProductController::class, "searchProducts"]);
 Route::get("showSettings", [SettingController::class, "showSettings"]);
 Route::post("upload", [SettingController::class, "upload"]);
+Route::post("installVideo", [ProductController::class, "installVideo"]);
 
 Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addEmp", [UserController::class, "addEmp"])->middleware(adm_emp::class);
@@ -111,12 +118,42 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("deliveringOrder", [OrderController::class, "deliveringOrder"])->middleware(adm_emp::class);
     Route::post("doneOrder", [OrderController::class, "doneOrder"])->middleware(adm_emp::class);
     Route::post("uploadVideo", [ProductController::class, "uploadVideo"]);
-    Route::post("installVideo", [ProductController::class, "installVideo"]);
     Route::post("showReport", [UserController::class, "showReport"])->middleware(AllowAdmin::class);
+
+    Route::post('verify', function (Request $request) {
+        if (!$request->user()->hasVerifiedEmail()) {
+            $request->user()->sendEmailVerificationNotification();
+
+            return response()->json([
+                'message' => 'Verification email sent successfully'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Email is already verified'
+        ], 400);
+    });
+});
+
+
+Route::get('send', function () {
+    Mail::to('zdiab6967@gmail.com')->send(new TestMail());
+    return response()->json([
+        'status' => true,
+        'message' => 'send successfully',
+    ]);
 });
 
 Route::get('products/{filename}', function ($filename) {
     $path = base_path('public_html/products/' . $filename);
+    if (!File::exists($path)) {
+        abort(404, 'File not found');
+    }
+    return response()->file($path);
+});
+
+Route::get('videos/{filename}', function ($filename) {
+    $path = base_path('public_html/videos/' . $filename);
     if (!File::exists($path)) {
         abort(404, 'File not found');
     }

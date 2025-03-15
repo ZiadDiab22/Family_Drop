@@ -1,0 +1,3532 @@
+{
+	"info": {
+		"_postman_id": "8eb543df-4133-4403-8917-ab49a35e21fb",
+		"name": "Family Drop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29923848",
+		"_collection_link": "https://grey-zodiac-883859.postman.co/workspace/School~9598faf0-b43c-4a13-b86c-56094dea3817/collection/29923848-8eb543df-4133-4403-8917-ab49a35e21fb?action=share&source=collection_link&creator=29923848"
+	},
+	"item": [
+		{
+			"name": "register",
+			"protocolProfileBehavior": {
+				"followRedirects": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "rr",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "deroula6@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "502",
+							"type": "text"
+						},
+						{
+							"key": "phone_no",
+							"value": "502",
+							"type": "text"
+						},
+						{
+							"key": "type_id",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "country_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "img_url",
+							"type": "file",
+							"src": [],
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/register",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"protocolProfileBehavior": {
+				"followRedirects": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"zdiab6967@gmail.com\",\r\n    \"password\":\"0938268502\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/login",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTQ4NWY5MmRiNjFiNzFiNjY3ZTFjYjgzYjQ5ZjkyMDM0ODI4OTg0ZmQ4MDMyMDhiMmI2MWM3ZDhmZGViNDQ0MDhhNjczODE5NzcxYTU1YTgiLCJpYXQiOjE3MzQ5NTQ5MjkuNTQ1Njk4LCJuYmYiOjE3MzQ5NTQ5MjkuNTQ1NzAxLCJleHAiOjE3NjY0OTA5MjkuMzQ4NzQsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ckEVddvW3Uwzw9bnOdXM8VwaXdsBuRHduFYjmf7N5IGW572k8UY5d39pIprYRZyAbZmXBgrKp6pzZSYBvzZrl3ECkWP7YtGSX2-WLw-JKoOs5puZkZAYorg3Lt9WjBZVgE0yo37xiWV4m9iqGjEBNepCJKz4QvL6ukpFCdYA_kLhzP4TK-Ux6YXE3img7GF28nAM3Lw3tHp5G5-c8hRGttQBRFxlwNci46TftYps2jcZRHvl59TZCCTjcPeNw7Mz0Y14nzRfcmd1ow2gwyq9SdXPPVUhotxHXrSrfpXVRf2Bw-6uoLibU8hE3KFcN4rWt4uWwaFZD8K56rs5IKiOUW3DS1tk0kQndm-Yrf8bUiV_ZvqKNvzEd4ckrMdn5ZMxhys3p4H77YBwKjVR3sbOOhjRqDhWHOh_gTspFlaISiuY-LSKtbmqt5es6Y9NYp3X2wC7EsK_KMP02f8dlyNYzNNw4nyafEelQiXUn1jdEbJqGIAF473OSRP5SCIBy7oGT9NZVjKozI19Ae2e_RQNxWDxeixuvHAlXLGs9hk8PzjK62-yctv0TxrsWb1uF2VlaBj7VJ0kUrMmVhXgxRWMoToJ9MK9xacUfpTUxWsudNvWumxfCJsJhbFLeCEjdC8Spy48iZfm5Y5dAauvIxLtc9X03rwPhfrLWWPvpeQ3C2M",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/logout",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCountry",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzQ2MjFmZWQ5Y2UyZDYxY2U0MWNkNjlkYmQ5NjU5ZDFjNTNhYTE5MWM0MmMyMDczNjliZGQzYzg1ZTA5ZjI2MjQyMzYxMjY3MGQ1MmZlMDMiLCJpYXQiOjE3Mzc5Mzg0MDEuMTE3ODg1LCJuYmYiOjE3Mzc5Mzg0MDEuMTE3ODk0LCJleHAiOjE3Njk0NzQzOTkuMTg1ODMzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.IW865Jbg2fmX3ugRCsTBEM5tUV_zJYejXWX1rSb-4O12y0Plswxc0bn3tqdoMnq4Oa4Z8-AJTftUGJdYmYsZiCbzMNeHmuCDEdb_zDOI5tCnCcGsIi0TyjDYoO3_Q4-weG3G4yS9xci253vBZf1al3JvMWzkxrURj1D77k8YY3XzM7S2fGMnA70j9u9razeweMgVm2HVN3vIsZv_DGHxSNl_gtcpEM2jmOyodXbizA0KJ4GDLN53FeVrNCQd2luchp29A0ZYqu-iteXpIp34T8FN__ZPshXEcGhRzc2gQq_D-aLg6SqPMtz-D663VvYuKjibWatupqlm_ihzxTqg2YdZQv8uiErGyUpUHkqe6Pnnyj882zOw_JbjMDQfUGFKl0jUvzQuGd3RYYhxON-CJy3ApEswjctsg_LjZib6Fbs_wuqOi5HdKSZZMBIxoHJqFEbbk6-VgBX3QOdURs98GpouPGAXjvKYOZi6WIWDxJfP0wxngsvwXBTlmB-QPVgrOYJblL2n_XQc4Fctmnqh2y0iEZ2ETVMfxYX05wh-abCWGhAzBgBjyf4aBqjBAhf8UDI478J4Te3_sYrJFeDiPkfabC1GXee3q_4ib1VoZzAc9Z35P77VX6sWZPzRk5NmxBMeUhAzvIt-dEd_sSkoOMeusnBkKv8V0kuJOJFLung",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"hahah\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addCountry",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addCountry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCountry",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FhMjM4Njk3NWFhYTZiZTc0MDcwYTliYjA1ZTE2MDE3ZGIyMjRlZGM4N2YzYzgxYWI2NjI5MGI2MDViZmRiZTQxZjMyMmVhZjAxYzc0N2QiLCJpYXQiOjE3MzQ0NDEyMjMuMDk3NTQ2LCJuYmYiOjE3MzQ0NDEyMjMuMDk3NTQ5LCJleHAiOjE3NjU5NzcyMjIuMzg2NzgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KNFYWt6Kd7veVWgeh4ahivJcwUOFc8WJ_JmUQVhbNZEy4AAp5wbNWL6zuPgh5drwVE9Q9z1qEyiEQAJVvVyjLmPUVbZdsjB-gz_Zn-08XRQnDKxpuzy3XouqV_mqM6fZJOF4E6lPVMH2vhWJWErs51j12YX0GjcmSJ0U2eNX6ogEYUgjpQZfgZ0yjeobeoGHZ7zxI0v9eCB6aX1bzdRNZlldfmP3ZyQkXhrXEBvJMF5OmgRxwtLZdj84RktTZdVyyovL6cVibkR0W1gE04ghNthMycxGKH17O00lFGq0l1F1Sl4rUe_YqlSkM0QMOaGvMyjd01S21r8JUG5plyuogSKmwtvkka9zJBaIMql9O1ljiNfoi28gm0jGy2UK9S4KcdtLXKib1wWvvt6t_5NvSiCA4od8TMhdXm6k-lgpDf6Cyowe_5_XKM6VeTygtK_QgHjRUlkX_38g3_Vw3QHPRy3tpbmuVItp_Xph-EjERJwliMy1fOjQH_ekySAnB8XEQDX6mtN2iPOxLQy2fdJm2o_jloa3Sxl3nlJnR3YBOLAfL-E0AxpzLpiPhckRD50wC8p0av2gENn592KQIhdR7PGkEGdqvAUAfo0u3mOG5e9JGCxypgLm34D_aDmcB7l6czG8BO0yVipFq-FNgOo7FwagADBb-hm34rzY0Ip3dlM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteCountry/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteCountry",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editCountry",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FhMjM4Njk3NWFhYTZiZTc0MDcwYTliYjA1ZTE2MDE3ZGIyMjRlZGM4N2YzYzgxYWI2NjI5MGI2MDViZmRiZTQxZjMyMmVhZjAxYzc0N2QiLCJpYXQiOjE3MzQ0NDEyMjMuMDk3NTQ2LCJuYmYiOjE3MzQ0NDEyMjMuMDk3NTQ5LCJleHAiOjE3NjU5NzcyMjIuMzg2NzgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KNFYWt6Kd7veVWgeh4ahivJcwUOFc8WJ_JmUQVhbNZEy4AAp5wbNWL6zuPgh5drwVE9Q9z1qEyiEQAJVvVyjLmPUVbZdsjB-gz_Zn-08XRQnDKxpuzy3XouqV_mqM6fZJOF4E6lPVMH2vhWJWErs51j12YX0GjcmSJ0U2eNX6ogEYUgjpQZfgZ0yjeobeoGHZ7zxI0v9eCB6aX1bzdRNZlldfmP3ZyQkXhrXEBvJMF5OmgRxwtLZdj84RktTZdVyyovL6cVibkR0W1gE04ghNthMycxGKH17O00lFGq0l1F1Sl4rUe_YqlSkM0QMOaGvMyjd01S21r8JUG5plyuogSKmwtvkka9zJBaIMql9O1ljiNfoi28gm0jGy2UK9S4KcdtLXKib1wWvvt6t_5NvSiCA4od8TMhdXm6k-lgpDf6Cyowe_5_XKM6VeTygtK_QgHjRUlkX_38g3_Vw3QHPRy3tpbmuVItp_Xph-EjERJwliMy1fOjQH_ekySAnB8XEQDX6mtN2iPOxLQy2fdJm2o_jloa3Sxl3nlJnR3YBOLAfL-E0AxpzLpiPhckRD50wC8p0av2gENn592KQIhdR7PGkEGdqvAUAfo0u3mOG5e9JGCxypgLm34D_aDmcB7l6czG8BO0yVipFq-FNgOo7FwagADBb-hm34rzY0Ip3dlM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":4,\r\n    \"name\":\"jjjj\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editCountry",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editCountry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showCountries",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FhMjM4Njk3NWFhYTZiZTc0MDcwYTliYjA1ZTE2MDE3ZGIyMjRlZGM4N2YzYzgxYWI2NjI5MGI2MDViZmRiZTQxZjMyMmVhZjAxYzc0N2QiLCJpYXQiOjE3MzQ0NDEyMjMuMDk3NTQ2LCJuYmYiOjE3MzQ0NDEyMjMuMDk3NTQ5LCJleHAiOjE3NjU5NzcyMjIuMzg2NzgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KNFYWt6Kd7veVWgeh4ahivJcwUOFc8WJ_JmUQVhbNZEy4AAp5wbNWL6zuPgh5drwVE9Q9z1qEyiEQAJVvVyjLmPUVbZdsjB-gz_Zn-08XRQnDKxpuzy3XouqV_mqM6fZJOF4E6lPVMH2vhWJWErs51j12YX0GjcmSJ0U2eNX6ogEYUgjpQZfgZ0yjeobeoGHZ7zxI0v9eCB6aX1bzdRNZlldfmP3ZyQkXhrXEBvJMF5OmgRxwtLZdj84RktTZdVyyovL6cVibkR0W1gE04ghNthMycxGKH17O00lFGq0l1F1Sl4rUe_YqlSkM0QMOaGvMyjd01S21r8JUG5plyuogSKmwtvkka9zJBaIMql9O1ljiNfoi28gm0jGy2UK9S4KcdtLXKib1wWvvt6t_5NvSiCA4od8TMhdXm6k-lgpDf6Cyowe_5_XKM6VeTygtK_QgHjRUlkX_38g3_Vw3QHPRy3tpbmuVItp_Xph-EjERJwliMy1fOjQH_ekySAnB8XEQDX6mtN2iPOxLQy2fdJm2o_jloa3Sxl3nlJnR3YBOLAfL-E0AxpzLpiPhckRD50wC8p0av2gENn592KQIhdR7PGkEGdqvAUAfo0u3mOG5e9JGCxypgLm34D_aDmcB7l6czG8BO0yVipFq-FNgOo7FwagADBb-hm34rzY0Ip3dlM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showCountries",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showCountries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addProductType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDFiM2Q3ODE2ZjllMDdmMDk3YmZkNGI2NzA3N2QwZGEyZDcxMWFiOTAwZjQwYmZiNGY0YmY4YTAwNDMxMGQ2NzFjNzJlODNkNDI4YjlhZDYiLCJpYXQiOjE3MzQ5NTUwNjYuMDUwMzQzLCJuYmYiOjE3MzQ5NTUwNjYuMDUwMzQ1LCJleHAiOjE3NjY0OTEwNjYuMDQyODgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.ddxOEC2n92Us-jcj4OgEtGiuKSOtwCXkVK2ZQ2RmcHLQ836wq47RmvvhQJz4zbJwjCkmTcHKcP6TABL0jmjP2CnZvd_3h30Q4YAkOPnoZfYdZGtokKgROU9JdKvhMq32xh6y_b_3-ywc-hbFT6s-RSBn8_56S9_ThyL5HNM468AkTsghiTp7-6i6FkYhgryUDR2jYMpBcML-W0SjKOtadVngMaPdCOWiDHC3gDABrUOhPFpro6d7OHfWCd3fqVUmSu_kGzOfFP9XRAOc-fQR7VeoCh3XCdr65qpjwqzYOp352ucolvCxhtsRkPRqcpEi4qO8j-CpcrLCxq1V9-v1egGw8ANCpzLBiVrhDSlv8vg3PsU46CLjy_XJBImDZGCubDrK-FXWMoAkoS-SG7wlvNPs0ElmqTI6-1Z6OOmKUOa4ld7g8GV1A8tZafQ6-X896N1OU18kwI6_ngUxbdimw9ius5aileQpBKKIFFnh80x08R0AXk7NfLiq-jMy5-aSaFsxyr7rNmewi3vZZhbnXTRfSQzr7S03EKgl-3fuZe0crl7Sv6uKJsh_eTTwnG-iiTfTUMUezhxRbFPPx9P-1zdL72KYK3AFQziyAc1Pp6unompn4O9qbXY_9NxK7R5VJAFSVYHQhPRxnKT5GnhUDrV5edqEKb8f-wDUKCsK82U",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"kk\",\r\n    \"classify_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addProductType",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addProductType"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProductType",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FhMjM4Njk3NWFhYTZiZTc0MDcwYTliYjA1ZTE2MDE3ZGIyMjRlZGM4N2YzYzgxYWI2NjI5MGI2MDViZmRiZTQxZjMyMmVhZjAxYzc0N2QiLCJpYXQiOjE3MzQ0NDEyMjMuMDk3NTQ2LCJuYmYiOjE3MzQ0NDEyMjMuMDk3NTQ5LCJleHAiOjE3NjU5NzcyMjIuMzg2NzgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KNFYWt6Kd7veVWgeh4ahivJcwUOFc8WJ_JmUQVhbNZEy4AAp5wbNWL6zuPgh5drwVE9Q9z1qEyiEQAJVvVyjLmPUVbZdsjB-gz_Zn-08XRQnDKxpuzy3XouqV_mqM6fZJOF4E6lPVMH2vhWJWErs51j12YX0GjcmSJ0U2eNX6ogEYUgjpQZfgZ0yjeobeoGHZ7zxI0v9eCB6aX1bzdRNZlldfmP3ZyQkXhrXEBvJMF5OmgRxwtLZdj84RktTZdVyyovL6cVibkR0W1gE04ghNthMycxGKH17O00lFGq0l1F1Sl4rUe_YqlSkM0QMOaGvMyjd01S21r8JUG5plyuogSKmwtvkka9zJBaIMql9O1ljiNfoi28gm0jGy2UK9S4KcdtLXKib1wWvvt6t_5NvSiCA4od8TMhdXm6k-lgpDf6Cyowe_5_XKM6VeTygtK_QgHjRUlkX_38g3_Vw3QHPRy3tpbmuVItp_Xph-EjERJwliMy1fOjQH_ekySAnB8XEQDX6mtN2iPOxLQy2fdJm2o_jloa3Sxl3nlJnR3YBOLAfL-E0AxpzLpiPhckRD50wC8p0av2gENn592KQIhdR7PGkEGdqvAUAfo0u3mOG5e9JGCxypgLm34D_aDmcB7l6czG8BO0yVipFq-FNgOo7FwagADBb-hm34rzY0Ip3dlM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteProductType/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteProductType",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editProductType",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmI3MzZjNDM0NGIxYmZmZGFmNWUxMGE2NGEwOGYyMTc0ZmU5MzY1MjFjZjIyZDcwYzY2ODMyMGNmYmI2YjQxZWRlMThmNWE3Zjk1NDRhNGQiLCJpYXQiOjE3MzkzNjI3NTEuNTE1NzE2LCJuYmYiOjE3MzkzNjI3NTEuNTE1NzI0LCJleHAiOjE3NzA4OTg3NDkuODQzNTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.fS_n23ByGWM-d3ZdDEH9FlzgKl3G2BWPtk6Y8oaR5nAwOTMJ4qAyHUwInoaMxVXIel3DdX6ESkoDORY1tRuXHjKKNawlq-9IZbChuHQ7zXyycBcQhdj6TBRd_ZDepnUG6x6oEkpfrnVm26nwFQ-LRsO6kBtHsoOiNN4oaw2ETqZ4fUmRoz9aOduhRJYKDQzUvDc_9tu79RN_EE3SSgipDbgTlw_apoUpsiSOdPHT28t6bSt9ducvAKhPe_3uwkjm4ufXoVXSDEanxGQRWG3nr3CwTSTwKmEHdTNlDSx8lnmBbbaG-SxfXIfWm97xiGFDeLK211bT_Ht8HOQd1JtrLBZpdVNJxz7aBgY0nEJQ77gtyl46K3qYYPMzOATSYSvXWEddsjrrlj7qHIFuBxtL7_1Cpcqg3pTgxVc757NnZlRWu3XpST2Xb3xC0-u2ZVYyU30Zkc3RZGZeAyWSrNiRbZatcwncQvY2pqD4iCqldwSCl_a03x8iJjHjxIsFpMLLywz3XApi_QULe-gkdt0SPcXezaWDTfiH9YEfU6megosRceVLPDdsusp4W2WgS4HyasaDBm5SoDgX1jvZiSk7-TKmwvRdOvUWzp54nM2_wENAJgBZJ5_XX9ApQWbYcDGGGWHWJQlO5wXiVLb-2x5q4qq2KxRxDE_wWNnvu0tm38c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"abccr\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editProductType",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editProductType"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showProductTypes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FhMjM4Njk3NWFhYTZiZTc0MDcwYTliYjA1ZTE2MDE3ZGIyMjRlZGM4N2YzYzgxYWI2NjI5MGI2MDViZmRiZTQxZjMyMmVhZjAxYzc0N2QiLCJpYXQiOjE3MzQ0NDEyMjMuMDk3NTQ2LCJuYmYiOjE3MzQ0NDEyMjMuMDk3NTQ5LCJleHAiOjE3NjU5NzcyMjIuMzg2NzgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KNFYWt6Kd7veVWgeh4ahivJcwUOFc8WJ_JmUQVhbNZEy4AAp5wbNWL6zuPgh5drwVE9Q9z1qEyiEQAJVvVyjLmPUVbZdsjB-gz_Zn-08XRQnDKxpuzy3XouqV_mqM6fZJOF4E6lPVMH2vhWJWErs51j12YX0GjcmSJ0U2eNX6ogEYUgjpQZfgZ0yjeobeoGHZ7zxI0v9eCB6aX1bzdRNZlldfmP3ZyQkXhrXEBvJMF5OmgRxwtLZdj84RktTZdVyyovL6cVibkR0W1gE04ghNthMycxGKH17O00lFGq0l1F1Sl4rUe_YqlSkM0QMOaGvMyjd01S21r8JUG5plyuogSKmwtvkka9zJBaIMql9O1ljiNfoi28gm0jGy2UK9S4KcdtLXKib1wWvvt6t_5NvSiCA4od8TMhdXm6k-lgpDf6Cyowe_5_XKM6VeTygtK_QgHjRUlkX_38g3_Vw3QHPRy3tpbmuVItp_Xph-EjERJwliMy1fOjQH_ekySAnB8XEQDX6mtN2iPOxLQy2fdJm2o_jloa3Sxl3nlJnR3YBOLAfL-E0AxpzLpiPhckRD50wC8p0av2gENn592KQIhdR7PGkEGdqvAUAfo0u3mOG5e9JGCxypgLm34D_aDmcB7l6czG8BO0yVipFq-FNgOo7FwagADBb-hm34rzY0Ip3dlM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showProductTypes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showProductTypes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addCity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FhMjM4Njk3NWFhYTZiZTc0MDcwYTliYjA1ZTE2MDE3ZGIyMjRlZGM4N2YzYzgxYWI2NjI5MGI2MDViZmRiZTQxZjMyMmVhZjAxYzc0N2QiLCJpYXQiOjE3MzQ0NDEyMjMuMDk3NTQ2LCJuYmYiOjE3MzQ0NDEyMjMuMDk3NTQ5LCJleHAiOjE3NjU5NzcyMjIuMzg2NzgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KNFYWt6Kd7veVWgeh4ahivJcwUOFc8WJ_JmUQVhbNZEy4AAp5wbNWL6zuPgh5drwVE9Q9z1qEyiEQAJVvVyjLmPUVbZdsjB-gz_Zn-08XRQnDKxpuzy3XouqV_mqM6fZJOF4E6lPVMH2vhWJWErs51j12YX0GjcmSJ0U2eNX6ogEYUgjpQZfgZ0yjeobeoGHZ7zxI0v9eCB6aX1bzdRNZlldfmP3ZyQkXhrXEBvJMF5OmgRxwtLZdj84RktTZdVyyovL6cVibkR0W1gE04ghNthMycxGKH17O00lFGq0l1F1Sl4rUe_YqlSkM0QMOaGvMyjd01S21r8JUG5plyuogSKmwtvkka9zJBaIMql9O1ljiNfoi28gm0jGy2UK9S4KcdtLXKib1wWvvt6t_5NvSiCA4od8TMhdXm6k-lgpDf6Cyowe_5_XKM6VeTygtK_QgHjRUlkX_38g3_Vw3QHPRy3tpbmuVItp_Xph-EjERJwliMy1fOjQH_ekySAnB8XEQDX6mtN2iPOxLQy2fdJm2o_jloa3Sxl3nlJnR3YBOLAfL-E0AxpzLpiPhckRD50wC8p0av2gENn592KQIhdR7PGkEGdqvAUAfo0u3mOG5e9JGCxypgLm34D_aDmcB7l6czG8BO0yVipFq-FNgOo7FwagADBb-hm34rzY0Ip3dlM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Homs\",\r\n    \"country_id\":8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addCity",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addCity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCity",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FhMjM4Njk3NWFhYTZiZTc0MDcwYTliYjA1ZTE2MDE3ZGIyMjRlZGM4N2YzYzgxYWI2NjI5MGI2MDViZmRiZTQxZjMyMmVhZjAxYzc0N2QiLCJpYXQiOjE3MzQ0NDEyMjMuMDk3NTQ2LCJuYmYiOjE3MzQ0NDEyMjMuMDk3NTQ5LCJleHAiOjE3NjU5NzcyMjIuMzg2NzgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KNFYWt6Kd7veVWgeh4ahivJcwUOFc8WJ_JmUQVhbNZEy4AAp5wbNWL6zuPgh5drwVE9Q9z1qEyiEQAJVvVyjLmPUVbZdsjB-gz_Zn-08XRQnDKxpuzy3XouqV_mqM6fZJOF4E6lPVMH2vhWJWErs51j12YX0GjcmSJ0U2eNX6ogEYUgjpQZfgZ0yjeobeoGHZ7zxI0v9eCB6aX1bzdRNZlldfmP3ZyQkXhrXEBvJMF5OmgRxwtLZdj84RktTZdVyyovL6cVibkR0W1gE04ghNthMycxGKH17O00lFGq0l1F1Sl4rUe_YqlSkM0QMOaGvMyjd01S21r8JUG5plyuogSKmwtvkka9zJBaIMql9O1ljiNfoi28gm0jGy2UK9S4KcdtLXKib1wWvvt6t_5NvSiCA4od8TMhdXm6k-lgpDf6Cyowe_5_XKM6VeTygtK_QgHjRUlkX_38g3_Vw3QHPRy3tpbmuVItp_Xph-EjERJwliMy1fOjQH_ekySAnB8XEQDX6mtN2iPOxLQy2fdJm2o_jloa3Sxl3nlJnR3YBOLAfL-E0AxpzLpiPhckRD50wC8p0av2gENn592KQIhdR7PGkEGdqvAUAfo0u3mOG5e9JGCxypgLm34D_aDmcB7l6czG8BO0yVipFq-FNgOo7FwagADBb-hm34rzY0Ip3dlM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteCity/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteCity",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editCity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FhMjM4Njk3NWFhYTZiZTc0MDcwYTliYjA1ZTE2MDE3ZGIyMjRlZGM4N2YzYzgxYWI2NjI5MGI2MDViZmRiZTQxZjMyMmVhZjAxYzc0N2QiLCJpYXQiOjE3MzQ0NDEyMjMuMDk3NTQ2LCJuYmYiOjE3MzQ0NDEyMjMuMDk3NTQ5LCJleHAiOjE3NjU5NzcyMjIuMzg2NzgzLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.KNFYWt6Kd7veVWgeh4ahivJcwUOFc8WJ_JmUQVhbNZEy4AAp5wbNWL6zuPgh5drwVE9Q9z1qEyiEQAJVvVyjLmPUVbZdsjB-gz_Zn-08XRQnDKxpuzy3XouqV_mqM6fZJOF4E6lPVMH2vhWJWErs51j12YX0GjcmSJ0U2eNX6ogEYUgjpQZfgZ0yjeobeoGHZ7zxI0v9eCB6aX1bzdRNZlldfmP3ZyQkXhrXEBvJMF5OmgRxwtLZdj84RktTZdVyyovL6cVibkR0W1gE04ghNthMycxGKH17O00lFGq0l1F1Sl4rUe_YqlSkM0QMOaGvMyjd01S21r8JUG5plyuogSKmwtvkka9zJBaIMql9O1ljiNfoi28gm0jGy2UK9S4KcdtLXKib1wWvvt6t_5NvSiCA4od8TMhdXm6k-lgpDf6Cyowe_5_XKM6VeTygtK_QgHjRUlkX_38g3_Vw3QHPRy3tpbmuVItp_Xph-EjERJwliMy1fOjQH_ekySAnB8XEQDX6mtN2iPOxLQy2fdJm2o_jloa3Sxl3nlJnR3YBOLAfL-E0AxpzLpiPhckRD50wC8p0av2gENn592KQIhdR7PGkEGdqvAUAfo0u3mOG5e9JGCxypgLm34D_aDmcB7l6czG8BO0yVipFq-FNgOo7FwagADBb-hm34rzY0Ip3dlM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"1\",\r\n    \"name\":\"Homs\",\r\n    \"country_id\":4\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editCity",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editCity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showCities",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNmVlMDRiMTc4N2NkZWQ4NzM1YWRhMDQ5MTY5ZTE4NGQ2NTc3NjVhNmNjNWY2ZGRhMDk5NWU4NGQzYmQzODNhNjE5Mjg3MWIzMjNkOGJlYWQiLCJpYXQiOjE3Mzc5MzMzOTQuMTQ4NjA2LCJuYmYiOjE3Mzc5MzMzOTQuMTQ4NjA5LCJleHAiOjE3Njk0NjkzOTMuNTM2NzA4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.DbKZxBmJ0re_YUDQQgt7klRMdoTQeEABiMhniQbZuLaxvCPdnki_QE3GAJ6BNzDAmhH1HkJoKL2a-YXORs1598bJ1cwvv14mFU9WJDbL9kCKpWrtbgM8R1NPDz42Jlu8AV4G73xyvpHUDdQwkb6AQ_n5lH2UoXIx6sjwUd6FrE1AQ1T8a2KCkqaPe5eASkk8Vv38avBYcWR1yCFqotsy4GFAklUx9zV0jquHzXc5HvqXRBoinblm7n86vImkRl2zSFEA0V01LTzMRq_YkwVSmuL2u1vFT6liylqi9vIQi5t88cTR34Bjg6HLxq_mXkqYa4QPgyNKu4RTyNHrFXEjg0_EntsJr0qQ0enxB0TzssXw0p0NHhwlSKMavBGDo7NX0dAMJ5nm2aweD3h5ACKHGDScpsahf3MsUwyNCiTYT2CswAOpCaoCtm3-0wC7O-kmWOxorcRlc5o7e1zg3d40N2YKTV-ajTfMe6vq6bl6z182PA61lQy3b7cZTWnNAgWK9frNlh45fxox_y-KGrkRdT_1YQP4wpMJveiQ0pA6pYzahhl3wrEb26rVNs319YaBnQ68RUIkoiI37Sydsq2yvC5PNNn5igkO1TEEaeiNfEozOhp42xRUIAPBGTr6YcL-zFwx3DIiW8xiVBn2Ye2BBnlY5yOHbDvliedzda_08wE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showCities",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showCities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addAddresse",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjA1NjdjMGMyYzM5OGY1NGU1MDVmZmU0OGNlNTZkMmZiOTljOWRlNTY2NDU5NzU1YjQ0NTMyNTFjYTU1MDk0ODg2NDk3NDJmODM3OTM0MzAiLCJpYXQiOjE3NDAwOTI0OTYuMjQ1NjM4LCJuYmYiOjE3NDAwOTI0OTYuMjQ1NjQ3LCJleHAiOjE3NzE2Mjg0OTYuMjI0NjA2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kiSElkkEF17b6NKyC-vz3Ga0IBJCuZmPGxE39l2CLSzNX9nCPg46kNVjFMLSoieS2ZD1jAw6w5J3_Z883s9PyUd9lk5m4Wg6YrJSrOHcPGFXiDUI8-KonkLF0ii6gnrmbTiMh_B8LTicrFJVClBoEJ0wj7Kfnv39Hd0ge7qGsaY7TW3Xyn9fQDZVxYUfWhEjLv3J1C6BhLLZ5AgQQ60LOFYbvE3daCM8KHJwMnI0LSm4MAwUv6i-n4cKBQeEAqcvYm7hkqYwJPId1AjERHB6n55HdVJWPp9b3dY8_xIRqBYMCkWDkQQRsBr-dy8fgDzVbwzeKgw68pML9eyA6M_UJapk79j6OJCjUuAcu3ZTkV4f8_yBP_YzlvI042mIhKdDagX2JB8UiRlc-Z79EBzyc0bjVIidB9Wvoyj3jsv7qKyDMpohpRFkT8sHhSdfA5hh_E569INGcFXRSRE2JzOgm-GLXZ90u7iQo-TY_xrgMRt_mlCjkII_Sg2vAmJlWf43L6yRlktzNqLaH7ljRRwXWzJN6gdkI6i1-N6uvlkvRJVJ07DkVCONHJlSRKLd_Lyr-IwTMh3EZ3FZBuEba6RADCO7cdz1Sc_2IGH3LcW2_b32Mr0TP8CnpbUOOFcrOdGfwqpGJczXuA54k7MZOlPf8XyJfsV-O9W9ko7-xfdKo-o",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"bab toma\",\r\n    \"city_id\":40,\r\n    \"delivery_price\":10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addAddresse",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addAddresse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteAddresse",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjA1NjdjMGMyYzM5OGY1NGU1MDVmZmU0OGNlNTZkMmZiOTljOWRlNTY2NDU5NzU1YjQ0NTMyNTFjYTU1MDk0ODg2NDk3NDJmODM3OTM0MzAiLCJpYXQiOjE3NDAwOTI0OTYuMjQ1NjM4LCJuYmYiOjE3NDAwOTI0OTYuMjQ1NjQ3LCJleHAiOjE3NzE2Mjg0OTYuMjI0NjA2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kiSElkkEF17b6NKyC-vz3Ga0IBJCuZmPGxE39l2CLSzNX9nCPg46kNVjFMLSoieS2ZD1jAw6w5J3_Z883s9PyUd9lk5m4Wg6YrJSrOHcPGFXiDUI8-KonkLF0ii6gnrmbTiMh_B8LTicrFJVClBoEJ0wj7Kfnv39Hd0ge7qGsaY7TW3Xyn9fQDZVxYUfWhEjLv3J1C6BhLLZ5AgQQ60LOFYbvE3daCM8KHJwMnI0LSm4MAwUv6i-n4cKBQeEAqcvYm7hkqYwJPId1AjERHB6n55HdVJWPp9b3dY8_xIRqBYMCkWDkQQRsBr-dy8fgDzVbwzeKgw68pML9eyA6M_UJapk79j6OJCjUuAcu3ZTkV4f8_yBP_YzlvI042mIhKdDagX2JB8UiRlc-Z79EBzyc0bjVIidB9Wvoyj3jsv7qKyDMpohpRFkT8sHhSdfA5hh_E569INGcFXRSRE2JzOgm-GLXZ90u7iQo-TY_xrgMRt_mlCjkII_Sg2vAmJlWf43L6yRlktzNqLaH7ljRRwXWzJN6gdkI6i1-N6uvlkvRJVJ07DkVCONHJlSRKLd_Lyr-IwTMh3EZ3FZBuEba6RADCO7cdz1Sc_2IGH3LcW2_b32Mr0TP8CnpbUOOFcrOdGfwqpGJczXuA54k7MZOlPf8XyJfsV-O9W9ko7-xfdKo-o",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteAddresse/8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteAddresse",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editAddresse",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjA1NjdjMGMyYzM5OGY1NGU1MDVmZmU0OGNlNTZkMmZiOTljOWRlNTY2NDU5NzU1YjQ0NTMyNTFjYTU1MDk0ODg2NDk3NDJmODM3OTM0MzAiLCJpYXQiOjE3NDAwOTI0OTYuMjQ1NjM4LCJuYmYiOjE3NDAwOTI0OTYuMjQ1NjQ3LCJleHAiOjE3NzE2Mjg0OTYuMjI0NjA2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kiSElkkEF17b6NKyC-vz3Ga0IBJCuZmPGxE39l2CLSzNX9nCPg46kNVjFMLSoieS2ZD1jAw6w5J3_Z883s9PyUd9lk5m4Wg6YrJSrOHcPGFXiDUI8-KonkLF0ii6gnrmbTiMh_B8LTicrFJVClBoEJ0wj7Kfnv39Hd0ge7qGsaY7TW3Xyn9fQDZVxYUfWhEjLv3J1C6BhLLZ5AgQQ60LOFYbvE3daCM8KHJwMnI0LSm4MAwUv6i-n4cKBQeEAqcvYm7hkqYwJPId1AjERHB6n55HdVJWPp9b3dY8_xIRqBYMCkWDkQQRsBr-dy8fgDzVbwzeKgw68pML9eyA6M_UJapk79j6OJCjUuAcu3ZTkV4f8_yBP_YzlvI042mIhKdDagX2JB8UiRlc-Z79EBzyc0bjVIidB9Wvoyj3jsv7qKyDMpohpRFkT8sHhSdfA5hh_E569INGcFXRSRE2JzOgm-GLXZ90u7iQo-TY_xrgMRt_mlCjkII_Sg2vAmJlWf43L6yRlktzNqLaH7ljRRwXWzJN6gdkI6i1-N6uvlkvRJVJ07DkVCONHJlSRKLd_Lyr-IwTMh3EZ3FZBuEba6RADCO7cdz1Sc_2IGH3LcW2_b32Mr0TP8CnpbUOOFcrOdGfwqpGJczXuA54k7MZOlPf8XyJfsV-O9W9ko7-xfdKo-o",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":10,\r\n    \"name\":\"Bab touma\",\r\n    \"city_id\":20,\r\n    \"delivery_price\":5000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editAddresse",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editAddresse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showAddresses",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDEyN2RiYTZiMDNiNzZiZjIyMGQ4OWQ5NTUzZDY3MzI0Nzk4MDA3YmZjM2FhMDYzZDgyNzM0ZDE1YTIzZjRkODI2NzAzOWQ3OGM4NTJkODEiLCJpYXQiOjE3Mzg4NDk2MjYuNjYzMDE4LCJuYmYiOjE3Mzg4NDk2MjYuNjYzMDI1LCJleHAiOjE3NzAzODU2MjUuMjg3MzksInN1YiI6IjEiLCJzY29wZXMiOltdfQ.LLHyVjqVRDBCQRudrpOq9WtJ9Ond3oDF-rxyzpKbfqrJ_ZlqXc3oFAYNzlgCULJhhl4f1RPbCvPG4tkISZHxy3MkWZ7RBxnq6wHgFdwopcP8UgtmP10R8mw2u9fncfWUrUkPWiKp7Hvi5Wk9yCJtOzhGH3_3ZylI_dh0XGbadg57kH9FjEmwp-vdgsaOUnDZlLYunYezamsxU_x0PaKB9jTADCiKdk9IX3K8UKdjD_rI50-0kPVOjc_FR3suTqbzf38W-kg1Giw6jP3bxVEYTyzewucSyHm4670U-ZfKyOvLBHKfdCTdYqWfkRANcrKP-KY-Ow7HltJkgnUU6Tzs-UP5vnaFlx3-SWKsJn-t-tpZdKIhe433RwZsYHx16_pdJJbq0mb9wEIoaaWGwNJUHmi1uxALeQ3cGIxwcf2hraLlaAIuNgzFiIkq7mOPKNLaI-rMGYNspWHXnXKgJsf8prE2IBtlNljpTgYfZnSyKNyFgNwipp3Zg2_6aN2LdA3T-wRhB1Ed_gqAoOCcyQvcjW7gMRqld7pFkbbnFCdcj1mdpNGGirlHlBMk9OoxLipAko1f7PzwndHrVR31OI0QclxcPROw2lurL9U6cMvdvjPZ3ZJ0f0l7iALAM2d0cnTc__bAWogbP4H7Vd2zqFtA2VcLDeBwhjiNJzaeJureZi8",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showAddresses",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showAddresses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editUserData",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWVkNmQ1MmEyNWY1Njc4YTJjODkxMTI1MGNiMDZjMzZjZjc3Y2RkODAyYTMzZTU2YTNkZGRmMGZkMDdlMzhmOGVkZDZiZjlmN2NkMGY0MTgiLCJpYXQiOjE3NDA4NTc1MjQuODU5MDg3LCJuYmYiOjE3NDA4NTc1MjQuODU5MDkyLCJleHAiOjE3NzIzOTM1MjQuNzQ3MDcxLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.AmbTnVr886T2TP_rADR3bOH9vvVJvse8KkyScxMPWGspTgDvEjRByPKSgdy9PBgPfHi3tSBbtSrl8k8k11ehG_YEfGsT2sJz6kMUpzuD4TwFTXPQCm36Sa36h2jqxRIyC_0_sXCDXE4WUjuyAhG-QaSUEI663hLfRk9KHcnbFolLkrcA6FDLT5jkRXm-czYwcf5t0u_J85Fn35g9novJw_qHWkzq5GSZfIAGEEuY3mAjNz8HoTzeLPpSsciYws2TAQECpnzTst-SZ1voLha_wvli-jUzo-1dAf220pzjP9ky3TzrqnKtEHDFktJuZuihyAeEwoLcAlSZ6CMAL78y4pZMtqQQv6d8uKmh6s3LGk-Ic0yb4vnbjk40mKMN6-JTQmRYl6I3LGOLdODFkqamJHuSUyJBxcFK92OAeGOLUHQHH1HPxqm8IAFqxhm5SqxH2yECwycEzyy5ikxnYc-rkxmTsDJOgrw_u8PzOxTEKuus2tZu820fsK4s0rkALCA5K-awmnwP3iKF2-Em0D8dxjVROWN8abXEpWPKkhLc77WZETHitMfHPD5i9cGYPvZAbV27MZhxYllGwnymYFdCMQcuNMcLMZCqFAas_T1zI6Qq_n7Pibt7IoCVde1e7dHKb40pmsYVAi9VbHNfUazqv0scSEWSfxgYEjuzCR6l-Hk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "ayham",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "2025",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editUserData",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editUserData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showLocations",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2EyZWZhNjFmYmIyYTQ2MzY1MjE2NjcwYjQ5ZjZlYzY2NWQ4YjZhYmFhOGVjMGQ3YmEzNTcwMjlhYWNkMzM3YzFkOWZkMzlmZmY4MDVkZGIiLCJpYXQiOjE3Mzc5MzQ2MDMuNTE5MTgzLCJuYmYiOjE3Mzc5MzQ2MDMuNTE5MTg2LCJleHAiOjE3Njk0NzA2MDMuNDMzNjk2LCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.CaAgiwenJ0Ln1sDsPDal8yQ7BbkvM5TuosMv9r9GF_OpmlbJxZ2QprWr0DBqynAoReT6mge1nxxUXQTbFmIWaGHNZ3frQ0UNb64Oldf4J2t8kVFgNtMc1V2t3-PfCpk-3bBcJGpSzaj4smrZeMuaT6ZnuhxTsQJFlSwNaFur7HicqYNhTL-9EPF5m23yQlwODvXzZQsMf0DVB-6WQ0OU1neRDEIpItbD4AC4mXA0QOBVm0TKgscpF2FIK60nL4iAFDo1onxdMtmWsAHgXNMH6rOtsoD0EwClHcuIZwHpCe9wPYKelELDhRqXwxyyfOH6YBvHbiwH3Zs4P-yrIFk7r3daWzmtEbaZPeHLxnIHBlF9UCCJ1FxtLHE2xmk2RTuHhPd9D4lvBCutPdjK-0gPN5FZppJePFMcrWmEqLZ7rxcssg5V_J80FVjmEYYDVBgvyWXO3BtKOxbdE0P7V0yvvaHXb08wRnTvCC1y2rQ32Ex-XbBhO2lRHie6HnvqrIC6r14VuaejjsSGN-l2YClr9g4tSiHoH5K_tICPER5GwuUnFLLmeqKQkfli3b-zUFXSUCBUSo2CZo1fM6Nz00R5LaCoCsTVewjQhJLJBwCuIOsPa2uGMgDabaIKW9x99Qe4z0bhOjXAdv60y7V7JczzkW3bkijKu7zS8U8F4xBdeek",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showLocations",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showLocations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addOrderTag",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNWZhNzNiZTQ3YjNmNzE5MWFiNjhiNjMyZmYxMjUyNzdjNDcxMDFiODU4NzAxYThhNjhiNWJhMmZlMjBkYjA5ZjFhMTZiNDc1N2ZjNDlkNzgiLCJpYXQiOjE3NDAxMTM5MzMuMzYyNDc5LCJuYmYiOjE3NDAxMTM5MzMuMzYyNDk3LCJleHAiOjE3NzE2NDk5MzMuMzQyNzA5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.qKw-Pe-JnWBB4NfLUthFKRyf1oarc3rFbWib15p0xNbA2ERelFvCh_b0mZwDFMo4NMdgQX3Mbx3hs3ZJGQ5kIw-_Bj0zVSh3LKMqh5lbfCM-FycHomMhJr1_9np1ZMUM1wlclp36bOOW-B7Bk6c1qC5TXv_FVw7w_QMdLI850rBstQ99lq3vyPfxG-bTv6Gdj-T6Enps2TiuG-ASbF6im4XRzHglGUZmib6O943yPR1xxLk67wx-j9PsiZCiRt9xH0DQH6FH6_sG04wetXsHlVmKG0TQYzywwqOWms9F8E5wl8FDOcSiLO5zz3-cDzwx_aUcpngplN53Ka0ojjTVYKoG3jEV9o4yDeNt6h79fIMZ9iSpaYs3aiR6TlbWsJVwHPjLRzHzDSJrZkhobebYLMUEroViRPKUg6MgjlQBaIHOHp-y4q6Kpz8g8yebZLcgCn2-43NNji6LoAkrarNpu2adMZ_4gBrbBureWK95TkH0WGTE4wxNrXc6vCaXek2vHNpt65HJ1LjVShb1qMd5FGmCfZPWVfogyORMF0uaXPraq3outmc3mEl7zJqdmPT0yMA0gowZU8mjONZOTC5jm25xG3ekSF_d4V6rcvEAZaAB0vCbVC-rhoaUcelcI21HAayUzh7trlXiwXZxkTZDBSt-o-4vaQTeoy_UxZv_CSk",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"order_id\":1,\r\n    \"text\":\"yes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addOrderTag",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addOrderTag"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addProduct",
+			"protocolProfileBehavior": {
+				"followRedirects": false
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWE4N2UxMDg3NWRhOTk3NDcyMTI4YWI3M2Q0NmNjNWVhMGU3MTk4Mjk1NWFmOGNhMTEyODA1OGExMjQ2OTc1MDg4ZTg1YjgzNDEwMzA5NWYiLCJpYXQiOjE3NDA4NTg4MzEuOTQ3NzY0LCJuYmYiOjE3NDA4NTg4MzEuOTQ3NzczLCJleHAiOjE3NzIzOTQ4MzEuOTM1NTQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.iVewjobYCY8kbs2Lj0WegfzY-Vn9mbkWFVmsOLh9pk6B6jwfxZ-r0eyvOaMCanqLlgadyeHS__ApWUNQWrqpu12rVA_O-4d94rHi6d4QpUmGnMke0nCdm05YKHsSA0CUp9FNsrqYHncMDmzKyn99TpZ65bEZQso-45CohigVhI1cLBO20-mvVWZV8u_rblhuGU33-nSPNWfM-_rOTqnylHS80_fw0WESRRH3N_s-EOxaO3DCYlE7oTW2-8tQurwheelpmLFV8WiNwQz0Kf9ZThvvvFPpV5bAYOgkK9f_4GYpEXztCtNO-kluKQvcPBX_zWg-TWObw6h8deGIjW7uCKXnxWwmKuOccUZ3vIg_jRTMOHglyDU5xV0_Ypo0ljhD6HEHCIijXmh6xyleh2EnFTuUobtvWBRKb_Ai4Hvt0RVg-s6YzlAgoBKi8sGleMCEUBYzIPu-QYyHXqbS81aa5TC5cnxa1Ngu3hghAk2ZQfWzr81aVdXwRvJ5UgaLFTHP9jDI7_KjhMR4DTlCBeo9yJwFfz6gTKQxFtvnoOFDOZlqe_R7_tV0QewxQfHRh8G9imD7YEpLy_VIYZwvdzlPl9XQ3h-y1VC73jVncx5wbsl3gjFyajTQw-45k5f6BmNTwuFZc4ynfRCZmrDCk0a0rxi3wQPuTj_lBbHrWmtkt6A",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "hhhh",
+							"type": "text"
+						},
+						{
+							"key": "type_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "disc",
+							"value": "ncfkfdnflkc,kfnvcjdn",
+							"type": "text"
+						},
+						{
+							"key": "cost_price",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "quantity",
+							"value": "500",
+							"type": "text"
+						},
+						{
+							"key": "sales",
+							"value": "0",
+							"type": "text"
+						},
+						{
+							"key": "selling_price",
+							"value": "120",
+							"type": "text"
+						},
+						{
+							"key": "profit_rate",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "images_array[]",
+							"type": "file",
+							"src": [
+								"/C:/Users/ASUS/Pictures/لقطة الشاشة 2024-08-20 013936.png",
+								"/C:/Users/ASUS/Pictures/التقاط.PNG"
+							]
+						},
+						{
+							"key": "colors",
+							"value": "[1,2]",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "sizes",
+							"value": "[4,3]",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "long_disc",
+							"value": "hahaha",
+							"type": "text"
+						},
+						{
+							"key": "video_url",
+							"value": "http://127.0.0.1:8000/storage/videos/DJNHx7j94M2QsNCWtLVUanlhVeBEWlZHsCEY6zVM.png",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addProduct",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showProducts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWJhOTk1ZDVjNGQxOTMwZjE3NTNkOGU0YTM4ZWI2MzgwNzMyYmVjMzQ0OGIzY2UxY2I5OGM3ZjA3OGYxODM5YjNhNDNhYmYzNWQ0MjQ2MWQiLCJpYXQiOjE3NDA3OTM1MTkuMjY3MDg1LCJuYmYiOjE3NDA3OTM1MTkuMjY3MDksImV4cCI6MTc3MjMyOTUxOS4yNTE3ODUsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.ccuDvxHWrtujFEAx8fiEKu7n4usR_4c_FwweVQY7AqAWw2sVcPMHQMOPVNRZyqQXmqp8U_y5NuCaqGzJgRDf6LhYmCM6-1j-wpa5byUMF6gHiv9svs0zURtG9qupuLxSI5ZVmOjP68daDe8Ud1U4MkKChvze_AZ5gaUfuonAl2HXOLt7D7WJSVlbw5JHNQpuLUNIE9p0bNHCXXYWpQHooopHOjd8ZnBAa5whCzszPAgdhcx-AruRgnrvhsnJKA2mfPPfMRwv3_HPbcaSjZWUCEsJX6HFh8pQ4jY6AS1Ww7X6UAf5pNsKua98zjxKYgujqvTiSGUDjJLR6P_YsTGqpRn4lAipX9jLHbsoW0gZimpPwNHWDtS20wt9AYXfCXZYkznX-Ds870SOarDn7YBIrYcnDBBAFu31Xf2w0ED5KgwvygNpJSot8GJuhXLhPthH0euAzaN7gRE-5lNTXbwT75YfDI_Am5_oC43i443f26VE_dLTSUB-Swd9g-sPgNxJQw34DiejxqzzPCQhY9X3Hzzo9qqdyz4x7Qg2xDpfaej3_qyXxyIlx3kz7KyPju1hpmYIAig_8jo68GX7_7yd37jOLY-TqFan8c1sgOOgYccheRct7KUhg_5BEJk6IzlO7_qeAnaCtSxDiwvi_9KI7VLTESLRs_EQor_vstNma3E",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showProducts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addSize",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"15 feet\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addSize",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addSize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addColor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"blue\",\r\n    \"code\":\"#001223\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addColor",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addColor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showSizes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmI3MzZjNDM0NGIxYmZmZGFmNWUxMGE2NGEwOGYyMTc0ZmU5MzY1MjFjZjIyZDcwYzY2ODMyMGNmYmI2YjQxZWRlMThmNWE3Zjk1NDRhNGQiLCJpYXQiOjE3MzkzNjI3NTEuNTE1NzE2LCJuYmYiOjE3MzkzNjI3NTEuNTE1NzI0LCJleHAiOjE3NzA4OTg3NDkuODQzNTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.fS_n23ByGWM-d3ZdDEH9FlzgKl3G2BWPtk6Y8oaR5nAwOTMJ4qAyHUwInoaMxVXIel3DdX6ESkoDORY1tRuXHjKKNawlq-9IZbChuHQ7zXyycBcQhdj6TBRd_ZDepnUG6x6oEkpfrnVm26nwFQ-LRsO6kBtHsoOiNN4oaw2ETqZ4fUmRoz9aOduhRJYKDQzUvDc_9tu79RN_EE3SSgipDbgTlw_apoUpsiSOdPHT28t6bSt9ducvAKhPe_3uwkjm4ufXoVXSDEanxGQRWG3nr3CwTSTwKmEHdTNlDSx8lnmBbbaG-SxfXIfWm97xiGFDeLK211bT_Ht8HOQd1JtrLBZpdVNJxz7aBgY0nEJQ77gtyl46K3qYYPMzOATSYSvXWEddsjrrlj7qHIFuBxtL7_1Cpcqg3pTgxVc757NnZlRWu3XpST2Xb3xC0-u2ZVYyU30Zkc3RZGZeAyWSrNiRbZatcwncQvY2pqD4iCqldwSCl_a03x8iJjHjxIsFpMLLywz3XApi_QULe-gkdt0SPcXezaWDTfiH9YEfU6megosRceVLPDdsusp4W2WgS4HyasaDBm5SoDgX1jvZiSk7-TKmwvRdOvUWzp54nM2_wENAJgBZJ5_XX9ApQWbYcDGGGWHWJQlO5wXiVLb-2x5q4qq2KxRxDE_wWNnvu0tm38c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showSizes",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showSizes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showColors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMmI3MzZjNDM0NGIxYmZmZGFmNWUxMGE2NGEwOGYyMTc0ZmU5MzY1MjFjZjIyZDcwYzY2ODMyMGNmYmI2YjQxZWRlMThmNWE3Zjk1NDRhNGQiLCJpYXQiOjE3MzkzNjI3NTEuNTE1NzE2LCJuYmYiOjE3MzkzNjI3NTEuNTE1NzI0LCJleHAiOjE3NzA4OTg3NDkuODQzNTEsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.fS_n23ByGWM-d3ZdDEH9FlzgKl3G2BWPtk6Y8oaR5nAwOTMJ4qAyHUwInoaMxVXIel3DdX6ESkoDORY1tRuXHjKKNawlq-9IZbChuHQ7zXyycBcQhdj6TBRd_ZDepnUG6x6oEkpfrnVm26nwFQ-LRsO6kBtHsoOiNN4oaw2ETqZ4fUmRoz9aOduhRJYKDQzUvDc_9tu79RN_EE3SSgipDbgTlw_apoUpsiSOdPHT28t6bSt9ducvAKhPe_3uwkjm4ufXoVXSDEanxGQRWG3nr3CwTSTwKmEHdTNlDSx8lnmBbbaG-SxfXIfWm97xiGFDeLK211bT_Ht8HOQd1JtrLBZpdVNJxz7aBgY0nEJQ77gtyl46K3qYYPMzOATSYSvXWEddsjrrlj7qHIFuBxtL7_1Cpcqg3pTgxVc757NnZlRWu3XpST2Xb3xC0-u2ZVYyU30Zkc3RZGZeAyWSrNiRbZatcwncQvY2pqD4iCqldwSCl_a03x8iJjHjxIsFpMLLywz3XApi_QULe-gkdt0SPcXezaWDTfiH9YEfU6megosRceVLPDdsusp4W2WgS4HyasaDBm5SoDgX1jvZiSk7-TKmwvRdOvUWzp54nM2_wENAJgBZJ5_XX9ApQWbYcDGGGWHWJQlO5wXiVLb-2x5q4qq2KxRxDE_wWNnvu0tm38c",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showColors",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showColors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editSize",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"5 ft\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editSize",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editSize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editColor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"name\":\"blue\",\r\n    \"code\":\"#56473\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editColor",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editColor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addProductColor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\":17,\r\n    \"color_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addProductColor",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addProductColor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addProductSize",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\":16,\r\n    \"size_id\":3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addProductSize",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addProductSize"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showProductSizes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showProductSizes/16",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showProductSizes",
+						"16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showProductColors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showProductColors/17",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showProductColors",
+						"17"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProduct",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTNiNTU5OWMzZGUxNzkxOThiZjI2MjI2ZWYyNGYzZGJlY2E2OTUyZGRiZTVkZWM0NjY4YTkxY2Y1YTE1ZTFhZjJhNTUwYjg0OGRkMjcwNWMiLCJpYXQiOjE3Mzk2NzQ5OTIuODQyNTU5LCJuYmYiOjE3Mzk2NzQ5OTIuODQyNTY2LCJleHAiOjE3NzEyMTA5OTIuNzkxMDQ0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.AKIrDPbxDU_AVjPPZNNsyaCqzlIY-5QwI5LmuOxGuad-bHdWAyZZt56itBn63EkWWVV6BI0JAr3Dgjlon7qAtppC39GemcKB9l-CJ4fj0wWUgH6cbVftfh3NKsE0Hq-XzkzvVH9RUsbxSWlHWjzE8SFdW7SMdDxkGDyYkAK9nB_16VIuXkS5tmMgSEMPCA08VqdXsusJks_vJ0CH07sEFr3pfStS0clv7issge51xnhtBJSRpizHWiIWc_lN_potxaJPaNz2sMZml6Iqyg3iwtvQL-dDGZ_G53X0xpiYsxpPMlty4CARN99fIBlueA8XuSmL2z6ZhYAVFVeW9EDhTG8dJNjVO73Z3uyV--mfyY6qRiAOHf-WBQp_ZeKrOOHcE0H-J-qYAD5u2638X3Kro_7yVda_lyxEkg2BaWZCgtMul-gsQ-YYjgHOhULvj0j5CL_PPmTvWPC2RTBlHNVKiu8sDMAkgvCHJ2oX0iz4suOreV7djJZ9clyeYUsyhn6cQdwo1irUw2L-hYaKpS726Zc4x_RY8L-BJOa4NDgOCKqPb8x70dNbwoH5zMFYur0b0Rv56y5l4k1Pc2JM9nXTwMcTNn9PgA8Bji15VcRCO8z7xkEgp0k2N7q26GgWg1smf6CLdgd3r1JIzUjRQAFc1RBw-QRscMNDiVY4vdhN7BQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteProduct/12",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteProduct",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showTypesSizesColors",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showTypesSizesColors",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showTypesSizesColors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addLink",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"snapchat\",\r\n    \"value\":\"https:/dkekmsdx\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addLink",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addLink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showLinks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showLinks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showLinks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteLink",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteLink/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteLink",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editLink",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"name\":\"whatsapp\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editLink",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editLink"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addPaymentWay",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"one\",\r\n    \"data\":\"sxn,msjnxnxj\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addPaymentWay",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addPaymentWay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editPaymentWay",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":1,\r\n    \"data\":\"11\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editPaymentWay",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editPaymentWay"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showPaymentWays",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showPaymentWays",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showPaymentWays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blockUser",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/blockUser/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"blockUser",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "activatePaymentWay",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/activatePaymentWay/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"activatePaymentWay",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjZlN2NjMTFkZmFiZDBlN2ViNzc5MDRmM2RlNzRiNTAwNTdiOWZjNTU0OGJhYmFlZDA1NTM4MTM2Y2Y4MGQwZWEyNjEyYTI3MTAzNTQzNzMiLCJpYXQiOjE3MzgwOTY4MTguMDMxMTM2LCJuYmYiOjE3MzgwOTY4MTguMDMxMTQzLCJleHAiOjE3Njk2MzI4MTYuMjMwOTk3LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.pnWSyGkYRgHPZPkP5ex1VjxhEstwVRmXapD5g3btO76V_M92W7lV_HeUzcAjMDODIr--ngGyxSfb0i29SBojxwtKbc62Aek2uPRJHB57CIxcLF3UhI1Mcsb8_fBklOz-QhxzxeWhwzdHdX88apcqQr26ScIHE-faDCeEwckiwDQnUeYaTEJUSiwogSIGOQWW5OYKsIw_aHXotCFTCwhwFhOUmnZomvY3tzfvZOFYR0QZUzj8LxPGNVLoguzBJdSCbxUIggIZScNvWT1oXG07Uz7FHiaxXsf6WkYmgOXgsMAN0eGSqlWtRt4LZEjDfn4FdcKcX31W4RT1bhMhP8Hu4GJo0dBoNGMPMXdRXMslKtBY_a-waDBHWyr7XXZGBH6vnbYQVcc9xrS9pADcvaIpjrB5_Ar6BYJkG2yS8OYYgagjGPMu-QPRU8zUoDnISWmllj8sURqHNy6FDQ0OhVMcA7jwVJD4DLq3hZQKQ6ELYibvkXbZJ1Fzd71amyKMCPxMPlxC_vI5pGoUWogPZAOza2kpxCHS6y03eQYB4LR7PYA_qgrrZkyuDrjjrMWZXYzJFqjP7tLleiQas0rWK_rw_pWG8g08ThhAnLfjH7vKPM6sRQtLdZUVe4zQCmPBTmDE-A9fO1aVBZNvg8OKKjAdZANX_l3x1bTKADbZk5e2nok",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showUsers",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addEmp",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNWZhNzNiZTQ3YjNmNzE5MWFiNjhiNjMyZmYxMjUyNzdjNDcxMDFiODU4NzAxYThhNjhiNWJhMmZlMjBkYjA5ZjFhMTZiNDc1N2ZjNDlkNzgiLCJpYXQiOjE3NDAxMTM5MzMuMzYyNDc5LCJuYmYiOjE3NDAxMTM5MzMuMzYyNDk3LCJleHAiOjE3NzE2NDk5MzMuMzQyNzA5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.qKw-Pe-JnWBB4NfLUthFKRyf1oarc3rFbWib15p0xNbA2ERelFvCh_b0mZwDFMo4NMdgQX3Mbx3hs3ZJGQ5kIw-_Bj0zVSh3LKMqh5lbfCM-FycHomMhJr1_9np1ZMUM1wlclp36bOOW-B7Bk6c1qC5TXv_FVw7w_QMdLI850rBstQ99lq3vyPfxG-bTv6Gdj-T6Enps2TiuG-ASbF6im4XRzHglGUZmib6O943yPR1xxLk67wx-j9PsiZCiRt9xH0DQH6FH6_sG04wetXsHlVmKG0TQYzywwqOWms9F8E5wl8FDOcSiLO5zz3-cDzwx_aUcpngplN53Ka0ojjTVYKoG3jEV9o4yDeNt6h79fIMZ9iSpaYs3aiR6TlbWsJVwHPjLRzHzDSJrZkhobebYLMUEroViRPKUg6MgjlQBaIHOHp-y4q6Kpz8g8yebZLcgCn2-43NNji6LoAkrarNpu2adMZ_4gBrbBureWK95TkH0WGTE4wxNrXc6vCaXek2vHNpt65HJ1LjVShb1qMd5FGmCfZPWVfogyORMF0uaXPraq3outmc3mEl7zJqdmPT0yMA0gowZU8mjONZOTC5jm25xG3ekSF_d4V6rcvEAZaAB0vCbVC-rhoaUcelcI21HAayUzh7trlXiwXZxkTZDBSt-o-4vaQTeoy_UxZv_CSk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "ayham",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ah@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "33",
+							"type": "text"
+						},
+						{
+							"key": "phone_no",
+							"value": "1923245",
+							"type": "text"
+						},
+						{
+							"key": "type_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "country_id",
+							"value": "3",
+							"type": "text"
+						},
+						{
+							"key": "img_url",
+							"type": "file",
+							"src": "/C:/Users/ASUS/Pictures/getLogoImg.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addEmp",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addEmp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showRequests",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiM2FmZDA0NzI5OGUwYmQ1ODQyODViNTBhODFjMzJjNDQ5YWU0OGNkZTQyZmQ3YTA2ZDlkNTU5YTYxNmNiMWQyOWQ0MjBlZGFmNmNhYmVhYjYiLCJpYXQiOjE3Mzg2MTc5NDcuMzQyNjA1LCJuYmYiOjE3Mzg2MTc5NDcuMzQyNjA5LCJleHAiOjE3NzAxNTM5NDYuODA5MDI4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.hpx_gNkUrwEQT8F3q3Pw1h4HfQZHATlM3g-cbHsMgKpz9uHzlktZQqD9Ps_Phxv4MwFbEdqyKb2TkqFILNv7sA08xJK_496UpQZcbxbxiO66IlHFztehFK1HJwQxhd8wlKB2YFFBDg5nqwbgOKvakvqG7eCev1Uvc1wCJQP450t9WzFMBZeY059mG8eZPscRHbkigxMueB7jTQNMk_5DTElyyVxRb6pyrk5RQD4oKizv3mlbwHmXGi4ydf7XIdGdxgzCiIOY9u0mAem6whD58k8G1f_3CQ_3BKF3ejCPjB5aOAOHptnjgaRkWy_cYX2wwOAW3i7JYiMrWcpWpru4Al0Aqc642x0r0cgQrPn1008SSTWKBNebHCt5o5jX3IuurmVyaumMYli-bQ7EzwB7HIzTLalmsWuIkI-A7madxHgq-h2390JBgpEFfvlB06jMHM_apD0fVkA7vg_svHNc1ZmNpannJ4kblVXIwPLs7YqQcD5h3OL3vwK8DJtPnJY_Fxw3elpIhzbx3OcwCbgChwuhp6hjJLEL_SSXNeuIvBB57tOJR91Msucf4HJ5t-b3XmYIc5FgSAwr8hCAgZlUgToCrk0e_IM7S_rAf3shmpwHnZMc_88cUFkSXgKgyj7wasQ2eGfVXfRqm_rozoSafZCMw-CCJ0gmwoDROnvEBcc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showRequests",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showRequests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editProduct",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTk5OTY3YjMzMmI4YjBlOGM4MThkMjBhMzdiMzg2YWQ1ZjA1ZDIwMjUzNDEzZWQwYWM1NGU0YTFhMWNlMGJiNzliMzE3MDc4NGM5Y2FhNGUiLCJpYXQiOjE3NDAxNzA5NzAuMDM2NzgyLCJuYmYiOjE3NDAxNzA5NzAuMDM2Nzg1LCJleHAiOjE3NzE3MDY5NjkuMzg3MDYyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JIFdxRTccbmKbm2xIFJ0dN-v-Gw4FXGqS9K0KbXG4b9r54zZfyDOUvEJhZck6m_jY-xaU9QXJlnwEKq0y8shsZ4Es_6mXwohNeRs1GUZwgTO1CjXXL2Fb3GWvwEbYLEqbQ71Egv1K1NsEzLFzU8cls3pNoxhSQ-EdUkMHvCTnkiAOJ2d3K3Yf7qLtcbT7jnlKcSermdcndx9D8iffcxEz39zAwyAioQVUlifY-V54ImCfUQQDAaFutgyoyoX3ripV6CGdK-xc0Y8anKiQHjUoExxN5QDw_vmt3UmGqBai0a0p_fa3vaJbRFPp9qWa3CjcOQOfkfQn2bRfIGVBQ_Duri29lLlEXIPTtkyLyab3AtyGVLxAJ-RXi1cZHdzr0_TgI6b26I3u1llv8hty8nCG3meEThTQeO_HZk4H6vFG1g-r61-_CQWqQpmG4wn6_YMyTXhAfzz_1Jg4XpZo4kDb0DkxqXJGTUIwgJi4G0dSAszKrFbjscnTlRR_d8lFC4KrjsR20vF9bzJSzBfQQG41WdKUWkCXQdZj8zoV6x_taWEi9HU_TVfUhgdu5bkEMd538TzSfwfTA7gHWNos87Nwadba6xe2qikd1Z1Ragx9tGwn1IOLgvH62XcesxpI1WVoAvZIszGK2qWBn5vi6uaEX8uKYhgF1G3cpTKy_8s45g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "long_disc",
+							"value": "xxxyy",
+							"type": "text"
+						},
+						{
+							"key": "colors",
+							"value": "[1,4]",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "sizes",
+							"value": "[2,1]",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "images_array[]",
+							"type": "file",
+							"src": [
+								"/C:/Users/ASUS/Pictures/لقطة الشاشة 2023-10-17 073328.png",
+								"/C:/Users/ASUS/Pictures/لقطة الشاشة 2023-09-19 141722.png",
+								"/C:/Users/ASUS/Pictures/ahmad3.png"
+							],
+							"disabled": true
+						},
+						{
+							"key": "video_url",
+							"value": "http://127.0.0.1:8000/storage/videos/DJNHx7j94M2QsNCWtLVUanlhVeBEWlZHsCEY6zVM.png",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editProduct",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showUserOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showUserOrders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showUserOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pullMoneyRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzA1NWZlMTQ4NDc3ZTU2N2E1YTI5MGVhNDE2ZWI3MWE3Mjc0ZGNjNjNhMGY4ODg3NDYwZGVkMTgyZjYyOTJiMjRjY2JlYTE4ZjM4NjU1NDMiLCJpYXQiOjE3NDEyNzg1MTguNzE2NDMxLCJuYmYiOjE3NDEyNzg1MTguNzE2NDQ0LCJleHAiOjE3NzI4MTQ1MTguNjk3Njc5LCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.OyvvlsNJr_QSTKF6tS4i2WDdVErHDlw-nW6LUNw3OEn64R0ZIQWMUYDPqJMoBSQWAdIbSVDNdjTrY3hq1Tse_0UNJkDEp9QlKXHth-w0nreHmUSBrF5DGmfD85oQHpp8BR0HypNmU_JAN3oL0fjme_Dv_2atfpJUt4cOyn-ITXAy3WATd6W6CdFdok3GSedWLnrtvPtHr5l07TAbRaFyL5MzENZ-PhDJxZ7psfi4dRkMv6outytOTtYK60VsgXdhVtIXprmWUA0i9snbwhmYrv4KTtFeNGbgOIdGJp5rZz8NUpTdFZg9m7xEJf36-nUQbaiIudEJnxE0iSak9aOMcEXLoCmdUOweAGuTibsihn3C1RMKAQTxuvRM08y7DdjbMRoewS8iYkEfIXzQJZZDxaLPgknfMU6NiCsbzKaXFttBQAjyw4VJu3Nagnhn1Qz3VEyu3_zx7-TjLbclch-lJodQu_Z0tzfXmyesViLqrEP2Ma-Nd8qdZzbEXNGV33Eiw0GuYbAUJj_W0DsOs9ldrkwbTlb5_kokQTxhfd7xMd8OZJLVQGO2oAM31Z3v7UBuE6rgXmeus3LSvTC0Qux531Jb5t2iUupdcfZUDi_y9eMZidSpwgf1MyGRu9jTZq66VYtwdjrTzGNt8dloKf5I_CD0QQAbNs7fz5C40PsFlbY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"payment_way_id\":1,\r\n    \"total\":100,\r\n    \"payment_data\":\"ppd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/pullMoneyRequest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"pullMoneyRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showPullRequests",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNWZhNzNiZTQ3YjNmNzE5MWFiNjhiNjMyZmYxMjUyNzdjNDcxMDFiODU4NzAxYThhNjhiNWJhMmZlMjBkYjA5ZjFhMTZiNDc1N2ZjNDlkNzgiLCJpYXQiOjE3NDAxMTM5MzMuMzYyNDc5LCJuYmYiOjE3NDAxMTM5MzMuMzYyNDk3LCJleHAiOjE3NzE2NDk5MzMuMzQyNzA5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.qKw-Pe-JnWBB4NfLUthFKRyf1oarc3rFbWib15p0xNbA2ERelFvCh_b0mZwDFMo4NMdgQX3Mbx3hs3ZJGQ5kIw-_Bj0zVSh3LKMqh5lbfCM-FycHomMhJr1_9np1ZMUM1wlclp36bOOW-B7Bk6c1qC5TXv_FVw7w_QMdLI850rBstQ99lq3vyPfxG-bTv6Gdj-T6Enps2TiuG-ASbF6im4XRzHglGUZmib6O943yPR1xxLk67wx-j9PsiZCiRt9xH0DQH6FH6_sG04wetXsHlVmKG0TQYzywwqOWms9F8E5wl8FDOcSiLO5zz3-cDzwx_aUcpngplN53Ka0ojjTVYKoG3jEV9o4yDeNt6h79fIMZ9iSpaYs3aiR6TlbWsJVwHPjLRzHzDSJrZkhobebYLMUEroViRPKUg6MgjlQBaIHOHp-y4q6Kpz8g8yebZLcgCn2-43NNji6LoAkrarNpu2adMZ_4gBrbBureWK95TkH0WGTE4wxNrXc6vCaXek2vHNpt65HJ1LjVShb1qMd5FGmCfZPWVfogyORMF0uaXPraq3outmc3mEl7zJqdmPT0yMA0gowZU8mjONZOTC5jm25xG3ekSF_d4V6rcvEAZaAB0vCbVC-rhoaUcelcI21HAayUzh7trlXiwXZxkTZDBSt-o-4vaQTeoy_UxZv_CSk",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showPullRequests",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showPullRequests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePullRequest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzA1NWZlMTQ4NDc3ZTU2N2E1YTI5MGVhNDE2ZWI3MWE3Mjc0ZGNjNjNhMGY4ODg3NDYwZGVkMTgyZjYyOTJiMjRjY2JlYTE4ZjM4NjU1NDMiLCJpYXQiOjE3NDEyNzg1MTguNzE2NDMxLCJuYmYiOjE3NDEyNzg1MTguNzE2NDQ0LCJleHAiOjE3NzI4MTQ1MTguNjk3Njc5LCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.OyvvlsNJr_QSTKF6tS4i2WDdVErHDlw-nW6LUNw3OEn64R0ZIQWMUYDPqJMoBSQWAdIbSVDNdjTrY3hq1Tse_0UNJkDEp9QlKXHth-w0nreHmUSBrF5DGmfD85oQHpp8BR0HypNmU_JAN3oL0fjme_Dv_2atfpJUt4cOyn-ITXAy3WATd6W6CdFdok3GSedWLnrtvPtHr5l07TAbRaFyL5MzENZ-PhDJxZ7psfi4dRkMv6outytOTtYK60VsgXdhVtIXprmWUA0i9snbwhmYrv4KTtFeNGbgOIdGJp5rZz8NUpTdFZg9m7xEJf36-nUQbaiIudEJnxE0iSak9aOMcEXLoCmdUOweAGuTibsihn3C1RMKAQTxuvRM08y7DdjbMRoewS8iYkEfIXzQJZZDxaLPgknfMU6NiCsbzKaXFttBQAjyw4VJu3Nagnhn1Qz3VEyu3_zx7-TjLbclch-lJodQu_Z0tzfXmyesViLqrEP2Ma-Nd8qdZzbEXNGV33Eiw0GuYbAUJj_W0DsOs9ldrkwbTlb5_kokQTxhfd7xMd8OZJLVQGO2oAM31Z3v7UBuE6rgXmeus3LSvTC0Qux531Jb5t2iUupdcfZUDi_y9eMZidSpwgf1MyGRu9jTZq66VYtwdjrTzGNt8dloKf5I_CD0QQAbNs7fz5C40PsFlbY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deletePullRequest/4",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deletePullRequest",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addProductRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "addresse_id",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "product_name",
+							"value": "Screens",
+							"type": "text"
+						},
+						{
+							"key": "images_array[]",
+							"type": "file",
+							"src": [
+								"/C:/Users/ASUS/Pictures/التقاط.PNG",
+								"/C:/Users/ASUS/Pictures/لقطة الشاشة 2024-08-01 154904.png"
+							]
+						},
+						{
+							"key": "product_quantity",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "product_price",
+							"value": "310",
+							"type": "text"
+						},
+						{
+							"key": "product_disc",
+							"value": "abc",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addProductRequest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addProductRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showProductRequests",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showProductRequests",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showProductRequests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProductRequest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiN2VmMDdjZThjNzA4ZmU0ZjFmODVjZWUyZTVjNzQ5NzVjZDdkNjI2ZjUzNGNmNDBmNjA5MWJjNTJhNzg2YzM5ODM5MGM0NWQxY2Y4ZmY1MzAiLCJpYXQiOjE3Mzk0NjE4NzguMTgxNTA1LCJuYmYiOjE3Mzk0NjE4NzguMTgxNTA4LCJleHAiOjE3NzA5OTc4NzguMTc0MTA4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.FXKTKz4w83WIq7tjGaiy1nRze29-O9j5e9YUnKfVQjA-NYMhdFi-vjlC3ozEAlUCl_3_iaXbYlsS4ca2R_ZkfQEDVWuGkjl0HeXsLUX8pj2oQ7W00r8rfLM5HgvzQbH-AT8q5F4xWvHXIQl1BSHtgqVioRaP8MsGn_1TtB_w-Gafre_zaVofuSBPbil_hBaEUzq1FJeQrc__SdVIgNArMLcAxkVXkbmfPk9ZuECJ7qF3mIqGkA2uvY58pss5gTwnTcvsvFP45WCTu3GRMP7crCTqYNHECo34TIFq-MMVrn-WL7qMaR6z7FfQ1EjxzJx0p5ddvTfpl0Xr0cavG4eB6Ux7kjQr9ZmGX6qhb4piydunDgKzCYrPRoF4wNNwCuNmutcCnyBib_WtH5AqTmr6IjYy69pan_gmx0hkKcdkrTuPP3nFOjA7M5FasQew7rI1kCCKOhJj5Da7HrPye-MxddaDO8bqfzWZMwKnjHdZK9j_5wAacr-R4Y2nswVKf3Xv2TdNDj4DsAyd4OihW1vlubqjCRArYJRkoUbJtWoIVBefW2r_Ta7KdqxRueka4SyVYJN3JKO7CSL6FH_Z40KBoEvoRR_086FeGlRbFmbEnK7BJAdbCpY2vZclWrCSISA5DHHxhu5dbtORJasUcJl6aiRjvtPCWFYBBanRPnUxGRc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deleteProductRequest/14",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deleteProductRequest",
+						"14"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PullProductRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"product_id\":1,\r\n    \"quantity\":5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/PullProductRequest",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"PullProductRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showPullProductRequests",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showPullProductRequests",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showPullProductRequests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePullProductRequest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiN2VmMDdjZThjNzA4ZmU0ZjFmODVjZWUyZTVjNzQ5NzVjZDdkNjI2ZjUzNGNmNDBmNjA5MWJjNTJhNzg2YzM5ODM5MGM0NWQxY2Y4ZmY1MzAiLCJpYXQiOjE3Mzk0NjE4NzguMTgxNTA1LCJuYmYiOjE3Mzk0NjE4NzguMTgxNTA4LCJleHAiOjE3NzA5OTc4NzguMTc0MTA4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.FXKTKz4w83WIq7tjGaiy1nRze29-O9j5e9YUnKfVQjA-NYMhdFi-vjlC3ozEAlUCl_3_iaXbYlsS4ca2R_ZkfQEDVWuGkjl0HeXsLUX8pj2oQ7W00r8rfLM5HgvzQbH-AT8q5F4xWvHXIQl1BSHtgqVioRaP8MsGn_1TtB_w-Gafre_zaVofuSBPbil_hBaEUzq1FJeQrc__SdVIgNArMLcAxkVXkbmfPk9ZuECJ7qF3mIqGkA2uvY58pss5gTwnTcvsvFP45WCTu3GRMP7crCTqYNHECo34TIFq-MMVrn-WL7qMaR6z7FfQ1EjxzJx0p5ddvTfpl0Xr0cavG4eB6Ux7kjQr9ZmGX6qhb4piydunDgKzCYrPRoF4wNNwCuNmutcCnyBib_WtH5AqTmr6IjYy69pan_gmx0hkKcdkrTuPP3nFOjA7M5FasQew7rI1kCCKOhJj5Da7HrPye-MxddaDO8bqfzWZMwKnjHdZK9j_5wAacr-R4Y2nswVKf3Xv2TdNDj4DsAyd4OihW1vlubqjCRArYJRkoUbJtWoIVBefW2r_Ta7KdqxRueka4SyVYJN3JKO7CSL6FH_Z40KBoEvoRR_086FeGlRbFmbEnK7BJAdbCpY2vZclWrCSISA5DHHxhu5dbtORJasUcJl6aiRjvtPCWFYBBanRPnUxGRc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deletePullProductRequest/9",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deletePullProductRequest",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiN2Y4NjA0ODljZmRkMzcxNjIwODllZTdjMDg2M2I3Zjc5NzI4OTc5YzY1NmEwNTdkMzM0ZTdiMWY2ZWYyMGJmOTJlMmQyNDA3MTM0MzA2ZDQiLCJpYXQiOjE3NDA5MDA2ODUuMzcyNjgsIm5iZiI6MTc0MDkwMDY4NS4zNzI2ODUsImV4cCI6MTc3MjQzNjY4NS4zNjQ5NzgsInN1YiI6IjYiLCJzY29wZXMiOltdfQ.ZxTgnfRmffqVVsWYK56OWApShFZ8Oh7Ouj1WYH9ZLFrdt3drRS1CJ5wTzuv4EJt8liitLpEadlfec0HeQk31TOB_42_kW9Kf-JRq9-pE_UP8AO4XqystJtTbtD3sBrmMdvkrVUTakyRL_wgJinzy7J7pWfwfC7X0N8HGgpBk1FM92wG_vMw8w6TRaqkntuq93jKgVWsmxUzvx6yjv3f-DZRDMQ6CD4FxlGEQ-bWUsmaiVSMis7ubCEMHVnL9z1zLteHZUvMJhEQqBGA2OukeaAKkJhLnBynAMjxSRS2t3j-ZE_fcypVRgBOk-DAaJosH9fQKiJqfo26IKb4Qn37Haqx5rh8IZk8Gf3OadonSXv9p7_Fs6KJnT0_Z3xPVXB0KtT7uNWzpjjmeQ2Fpeq71U2skDKZ_HjNu0_Dizfo_NqK-f842G3lxsTuBVA9HwNgG0OXEuPKpcWShZeEml-jXlwFW9rRrlXuV5WHcYYRMXcouWBpFytFD3cWN5-PqBrqLd6cCRBXyabCo3yw9ifpI6jh5K9-GLbZ1Wxw-whAcEKG-loAfvz5urVgjp9vRbJpVucOcCz6G_5Oppzq62amGQi6Z3U3vVQq2Z2HUn_Te8ZRqU2TJ6K3FHo7WmNxD-VHcvEdL3u2Rc7rSVEYI8V_pgBr9qhFvGKgHwTdf1pmFJnA",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \r\n    \"addresse_id\":5,\r\n    \"customer_name\":\"abc\",\r\n    \"customer_number\":\"123\",\r\n    \"title\":\"xx\",\r\n    \"products\" : [\r\n     {\r\n        \"id\": 1,\r\n        \"cost_price\": 150,\r\n        \"color_id\": 0,\r\n        \"size_id\": 0,\r\n        \"price\": \"300\",\r\n        \"quantity\": 1\r\n     }\r\n]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/addOrder",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"addOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showProductInfo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showProductInfo/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showProductInfo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchProducts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"ad\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/searchProducts",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"searchProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "editCommission",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNDEyN2RiYTZiMDNiNzZiZjIyMGQ4OWQ5NTUzZDY3MzI0Nzk4MDA3YmZjM2FhMDYzZDgyNzM0ZDE1YTIzZjRkODI2NzAzOWQ3OGM4NTJkODEiLCJpYXQiOjE3Mzg4NDk2MjYuNjYzMDE4LCJuYmYiOjE3Mzg4NDk2MjYuNjYzMDI1LCJleHAiOjE3NzAzODU2MjUuMjg3MzksInN1YiI6IjEiLCJzY29wZXMiOltdfQ.LLHyVjqVRDBCQRudrpOq9WtJ9Ond3oDF-rxyzpKbfqrJ_ZlqXc3oFAYNzlgCULJhhl4f1RPbCvPG4tkISZHxy3MkWZ7RBxnq6wHgFdwopcP8UgtmP10R8mw2u9fncfWUrUkPWiKp7Hvi5Wk9yCJtOzhGH3_3ZylI_dh0XGbadg57kH9FjEmwp-vdgsaOUnDZlLYunYezamsxU_x0PaKB9jTADCiKdk9IX3K8UKdjD_rI50-0kPVOjc_FR3suTqbzf38W-kg1Giw6jP3bxVEYTyzewucSyHm4670U-ZfKyOvLBHKfdCTdYqWfkRANcrKP-KY-Ow7HltJkgnUU6Tzs-UP5vnaFlx3-SWKsJn-t-tpZdKIhe433RwZsYHx16_pdJJbq0mb9wEIoaaWGwNJUHmi1uxALeQ3cGIxwcf2hraLlaAIuNgzFiIkq7mOPKNLaI-rMGYNspWHXnXKgJsf8prE2IBtlNljpTgYfZnSyKNyFgNwipp3Zg2_6aN2LdA3T-wRhB1Ed_gqAoOCcyQvcjW7gMRqld7pFkbbnFCdcj1mdpNGGirlHlBMk9OoxLipAko1f7PzwndHrVR31OI0QclxcPROw2lurL9U6cMvdvjPZ3ZJ0f0l7iALAM2d0cnTc__bAWogbP4H7Vd2zqFtA2VcLDeBwhjiNJzaeJureZi8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"value\":\"35\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/editCommission",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"editCommission"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showSettings",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showSettings",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showSettings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "acceptPullMoneyRequest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOThmMTBjNzgyNDAyZjU4YWIzMTMwY2E5N2E3NmZkYjJlZjFjMDgzOGVkZDg4MzE0OTk2ZDAyZTM1MjVjMGUyZWVhODUyNGYzZWMwZDAxOTEiLCJpYXQiOjE3MzkwODUwNTcuNzUzMzgxLCJuYmYiOjE3MzkwODUwNTcuNzUzMzgzLCJleHAiOjE3NzA2MjEwNTcuNzQ1OTU0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.dWpF-3U5JCwQwmS5pyEtZG8VmCuLzeS41S1a88j6dJeiGVxzZSW2eowYgNSW6nna1bcAtNSAudpjTui0AgCkDFM7dJuIZfb8UEu2fXk95SapQSsBgCIAra2k6L7zjjsRMU8BtOG1UQrmeEhGFYTI3L9SckxkN4ms4pBfmmb68n9CeAlLEH6KbaX_bNFBvoG7VKYILh1pM_UWm27-OmguiGbLPM0e3r1YIMsehZ4n9NRhFiZOsA9H4YPC59wL2NpgCpZYhfePltnAHth4IiI38EyTTC_h657bMLm2hmFxU6zJzJ88HQ81BGJ53czI6B9m7agrzbmNKRIhp1LaoFWey6eaFYjtisDl9dFB4hJBHrJkhpupom2jJPb66bov504D9U39PM5G8wTqQxwllgnN3fKJu0CWbxBCLOgHVbt_nn-KlUEkwZ-jVVShJ-mJ2ZBtefEn7zxmSsj8fEvDDTlYNade1RASuJE73ItU99MVFbFLRnEGnhxouI3UZQUgDEE43R5_MJSVI-VhHgXYycJ4MdB9erYOOmIpWm45e4apwF0Jq5bix-z4224SuoMyL7lKC-_g8ModYOAHw8emL4guze2v2P55I5nRkPjOm3TlGxec3B50lseViDN4LYMMlUEfCeZF1qJzneLEUhWaqG9ZlYILweS0EHziuKN_aSAafu4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/acceptPullMoneyRequest/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"acceptPullMoneyRequest",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "acceptPullProductRequest",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOThmMTBjNzgyNDAyZjU4YWIzMTMwY2E5N2E3NmZkYjJlZjFjMDgzOGVkZDg4MzE0OTk2ZDAyZTM1MjVjMGUyZWVhODUyNGYzZWMwZDAxOTEiLCJpYXQiOjE3MzkwODUwNTcuNzUzMzgxLCJuYmYiOjE3MzkwODUwNTcuNzUzMzgzLCJleHAiOjE3NzA2MjEwNTcuNzQ1OTU0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.dWpF-3U5JCwQwmS5pyEtZG8VmCuLzeS41S1a88j6dJeiGVxzZSW2eowYgNSW6nna1bcAtNSAudpjTui0AgCkDFM7dJuIZfb8UEu2fXk95SapQSsBgCIAra2k6L7zjjsRMU8BtOG1UQrmeEhGFYTI3L9SckxkN4ms4pBfmmb68n9CeAlLEH6KbaX_bNFBvoG7VKYILh1pM_UWm27-OmguiGbLPM0e3r1YIMsehZ4n9NRhFiZOsA9H4YPC59wL2NpgCpZYhfePltnAHth4IiI38EyTTC_h657bMLm2hmFxU6zJzJ88HQ81BGJ53czI6B9m7agrzbmNKRIhp1LaoFWey6eaFYjtisDl9dFB4hJBHrJkhpupom2jJPb66bov504D9U39PM5G8wTqQxwllgnN3fKJu0CWbxBCLOgHVbt_nn-KlUEkwZ-jVVShJ-mJ2ZBtefEn7zxmSsj8fEvDDTlYNade1RASuJE73ItU99MVFbFLRnEGnhxouI3UZQUgDEE43R5_MJSVI-VhHgXYycJ4MdB9erYOOmIpWm45e4apwF0Jq5bix-z4224SuoMyL7lKC-_g8ModYOAHw8emL4guze2v2P55I5nRkPjOm3TlGxec3B50lseViDN4LYMMlUEfCeZF1qJzneLEUhWaqG9ZlYILweS0EHziuKN_aSAafu4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/acceptPullProductRequest/8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"acceptPullProductRequest",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "acceptAddProductRequest",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiN2VmMDdjZThjNzA4ZmU0ZjFmODVjZWUyZTVjNzQ5NzVjZDdkNjI2ZjUzNGNmNDBmNjA5MWJjNTJhNzg2YzM5ODM5MGM0NWQxY2Y4ZmY1MzAiLCJpYXQiOjE3Mzk0NjE4NzguMTgxNTA1LCJuYmYiOjE3Mzk0NjE4NzguMTgxNTA4LCJleHAiOjE3NzA5OTc4NzguMTc0MTA4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.FXKTKz4w83WIq7tjGaiy1nRze29-O9j5e9YUnKfVQjA-NYMhdFi-vjlC3ozEAlUCl_3_iaXbYlsS4ca2R_ZkfQEDVWuGkjl0HeXsLUX8pj2oQ7W00r8rfLM5HgvzQbH-AT8q5F4xWvHXIQl1BSHtgqVioRaP8MsGn_1TtB_w-Gafre_zaVofuSBPbil_hBaEUzq1FJeQrc__SdVIgNArMLcAxkVXkbmfPk9ZuECJ7qF3mIqGkA2uvY58pss5gTwnTcvsvFP45WCTu3GRMP7crCTqYNHECo34TIFq-MMVrn-WL7qMaR6z7FfQ1EjxzJx0p5ddvTfpl0Xr0cavG4eB6Ux7kjQr9ZmGX6qhb4piydunDgKzCYrPRoF4wNNwCuNmutcCnyBib_WtH5AqTmr6IjYy69pan_gmx0hkKcdkrTuPP3nFOjA7M5FasQew7rI1kCCKOhJj5Da7HrPye-MxddaDO8bqfzWZMwKnjHdZK9j_5wAacr-R4Y2nswVKf3Xv2TdNDj4DsAyd4OihW1vlubqjCRArYJRkoUbJtWoIVBefW2r_Ta7KdqxRueka4SyVYJN3JKO7CSL6FH_Z40KBoEvoRR_086FeGlRbFmbEnK7BJAdbCpY2vZclWrCSISA5DHHxhu5dbtORJasUcJl6aiRjvtPCWFYBBanRPnUxGRc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":15,\r\n    \"profit_rate\":15,\r\n    \"type_id\":3,\r\n    \"selling_price\":77\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/acceptAddProductRequest/15",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"acceptAddProductRequest",
+						"15"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/profile",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showUserInfo",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showUserInfo/8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showUserInfo",
+						"8"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showOrders",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showOrders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancelOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTNiNTU5OWMzZGUxNzkxOThiZjI2MjI2ZWYyNGYzZGJlY2E2OTUyZGRiZTVkZWM0NjY4YTkxY2Y1YTE1ZTFhZjJhNTUwYjg0OGRkMjcwNWMiLCJpYXQiOjE3Mzk2NzQ5OTIuODQyNTU5LCJuYmYiOjE3Mzk2NzQ5OTIuODQyNTY2LCJleHAiOjE3NzEyMTA5OTIuNzkxMDQ0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.AKIrDPbxDU_AVjPPZNNsyaCqzlIY-5QwI5LmuOxGuad-bHdWAyZZt56itBn63EkWWVV6BI0JAr3Dgjlon7qAtppC39GemcKB9l-CJ4fj0wWUgH6cbVftfh3NKsE0Hq-XzkzvVH9RUsbxSWlHWjzE8SFdW7SMdDxkGDyYkAK9nB_16VIuXkS5tmMgSEMPCA08VqdXsusJks_vJ0CH07sEFr3pfStS0clv7issge51xnhtBJSRpizHWiIWc_lN_potxaJPaNz2sMZml6Iqyg3iwtvQL-dDGZ_G53X0xpiYsxpPMlty4CARN99fIBlueA8XuSmL2z6ZhYAVFVeW9EDhTG8dJNjVO73Z3uyV--mfyY6qRiAOHf-WBQp_ZeKrOOHcE0H-J-qYAD5u2638X3Kro_7yVda_lyxEkg2BaWZCgtMul-gsQ-YYjgHOhULvj0j5CL_PPmTvWPC2RTBlHNVKiu8sDMAkgvCHJ2oX0iz4suOreV7djJZ9clyeYUsyhn6cQdwo1irUw2L-hYaKpS726Zc4x_RY8L-BJOa4NDgOCKqPb8x70dNbwoH5zMFYur0b0Rv56y5l4k1Pc2JM9nXTwMcTNn9PgA8Bji15VcRCO8z7xkEgp0k2N7q26GgWg1smf6CLdgd3r1JIzUjRQAFc1RBw-QRscMNDiVY4vdhN7BQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":15\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cancelOrder",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cancelOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "startWorkingOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTNiNTU5OWMzZGUxNzkxOThiZjI2MjI2ZWYyNGYzZGJlY2E2OTUyZGRiZTVkZWM0NjY4YTkxY2Y1YTE1ZTFhZjJhNTUwYjg0OGRkMjcwNWMiLCJpYXQiOjE3Mzk2NzQ5OTIuODQyNTU5LCJuYmYiOjE3Mzk2NzQ5OTIuODQyNTY2LCJleHAiOjE3NzEyMTA5OTIuNzkxMDQ0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.AKIrDPbxDU_AVjPPZNNsyaCqzlIY-5QwI5LmuOxGuad-bHdWAyZZt56itBn63EkWWVV6BI0JAr3Dgjlon7qAtppC39GemcKB9l-CJ4fj0wWUgH6cbVftfh3NKsE0Hq-XzkzvVH9RUsbxSWlHWjzE8SFdW7SMdDxkGDyYkAK9nB_16VIuXkS5tmMgSEMPCA08VqdXsusJks_vJ0CH07sEFr3pfStS0clv7issge51xnhtBJSRpizHWiIWc_lN_potxaJPaNz2sMZml6Iqyg3iwtvQL-dDGZ_G53X0xpiYsxpPMlty4CARN99fIBlueA8XuSmL2z6ZhYAVFVeW9EDhTG8dJNjVO73Z3uyV--mfyY6qRiAOHf-WBQp_ZeKrOOHcE0H-J-qYAD5u2638X3Kro_7yVda_lyxEkg2BaWZCgtMul-gsQ-YYjgHOhULvj0j5CL_PPmTvWPC2RTBlHNVKiu8sDMAkgvCHJ2oX0iz4suOreV7djJZ9clyeYUsyhn6cQdwo1irUw2L-hYaKpS726Zc4x_RY8L-BJOa4NDgOCKqPb8x70dNbwoH5zMFYur0b0Rv56y5l4k1Pc2JM9nXTwMcTNn9PgA8Bji15VcRCO8z7xkEgp0k2N7q26GgWg1smf6CLdgd3r1JIzUjRQAFc1RBw-QRscMNDiVY4vdhN7BQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/startWorkingOrder",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"startWorkingOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "endingOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTNiNTU5OWMzZGUxNzkxOThiZjI2MjI2ZWYyNGYzZGJlY2E2OTUyZGRiZTVkZWM0NjY4YTkxY2Y1YTE1ZTFhZjJhNTUwYjg0OGRkMjcwNWMiLCJpYXQiOjE3Mzk2NzQ5OTIuODQyNTU5LCJuYmYiOjE3Mzk2NzQ5OTIuODQyNTY2LCJleHAiOjE3NzEyMTA5OTIuNzkxMDQ0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.AKIrDPbxDU_AVjPPZNNsyaCqzlIY-5QwI5LmuOxGuad-bHdWAyZZt56itBn63EkWWVV6BI0JAr3Dgjlon7qAtppC39GemcKB9l-CJ4fj0wWUgH6cbVftfh3NKsE0Hq-XzkzvVH9RUsbxSWlHWjzE8SFdW7SMdDxkGDyYkAK9nB_16VIuXkS5tmMgSEMPCA08VqdXsusJks_vJ0CH07sEFr3pfStS0clv7issge51xnhtBJSRpizHWiIWc_lN_potxaJPaNz2sMZml6Iqyg3iwtvQL-dDGZ_G53X0xpiYsxpPMlty4CARN99fIBlueA8XuSmL2z6ZhYAVFVeW9EDhTG8dJNjVO73Z3uyV--mfyY6qRiAOHf-WBQp_ZeKrOOHcE0H-J-qYAD5u2638X3Kro_7yVda_lyxEkg2BaWZCgtMul-gsQ-YYjgHOhULvj0j5CL_PPmTvWPC2RTBlHNVKiu8sDMAkgvCHJ2oX0iz4suOreV7djJZ9clyeYUsyhn6cQdwo1irUw2L-hYaKpS726Zc4x_RY8L-BJOa4NDgOCKqPb8x70dNbwoH5zMFYur0b0Rv56y5l4k1Pc2JM9nXTwMcTNn9PgA8Bji15VcRCO8z7xkEgp0k2N7q26GgWg1smf6CLdgd3r1JIzUjRQAFc1RBw-QRscMNDiVY4vdhN7BQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/endingOrder",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"endingOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deliveringOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTNiNTU5OWMzZGUxNzkxOThiZjI2MjI2ZWYyNGYzZGJlY2E2OTUyZGRiZTVkZWM0NjY4YTkxY2Y1YTE1ZTFhZjJhNTUwYjg0OGRkMjcwNWMiLCJpYXQiOjE3Mzk2NzQ5OTIuODQyNTU5LCJuYmYiOjE3Mzk2NzQ5OTIuODQyNTY2LCJleHAiOjE3NzEyMTA5OTIuNzkxMDQ0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.AKIrDPbxDU_AVjPPZNNsyaCqzlIY-5QwI5LmuOxGuad-bHdWAyZZt56itBn63EkWWVV6BI0JAr3Dgjlon7qAtppC39GemcKB9l-CJ4fj0wWUgH6cbVftfh3NKsE0Hq-XzkzvVH9RUsbxSWlHWjzE8SFdW7SMdDxkGDyYkAK9nB_16VIuXkS5tmMgSEMPCA08VqdXsusJks_vJ0CH07sEFr3pfStS0clv7issge51xnhtBJSRpizHWiIWc_lN_potxaJPaNz2sMZml6Iqyg3iwtvQL-dDGZ_G53X0xpiYsxpPMlty4CARN99fIBlueA8XuSmL2z6ZhYAVFVeW9EDhTG8dJNjVO73Z3uyV--mfyY6qRiAOHf-WBQp_ZeKrOOHcE0H-J-qYAD5u2638X3Kro_7yVda_lyxEkg2BaWZCgtMul-gsQ-YYjgHOhULvj0j5CL_PPmTvWPC2RTBlHNVKiu8sDMAkgvCHJ2oX0iz4suOreV7djJZ9clyeYUsyhn6cQdwo1irUw2L-hYaKpS726Zc4x_RY8L-BJOa4NDgOCKqPb8x70dNbwoH5zMFYur0b0Rv56y5l4k1Pc2JM9nXTwMcTNn9PgA8Bji15VcRCO8z7xkEgp0k2N7q26GgWg1smf6CLdgd3r1JIzUjRQAFc1RBw-QRscMNDiVY4vdhN7BQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/deliveringOrder",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"deliveringOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "doneOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTNiNTU5OWMzZGUxNzkxOThiZjI2MjI2ZWYyNGYzZGJlY2E2OTUyZGRiZTVkZWM0NjY4YTkxY2Y1YTE1ZTFhZjJhNTUwYjg0OGRkMjcwNWMiLCJpYXQiOjE3Mzk2NzQ5OTIuODQyNTU5LCJuYmYiOjE3Mzk2NzQ5OTIuODQyNTY2LCJleHAiOjE3NzEyMTA5OTIuNzkxMDQ0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.AKIrDPbxDU_AVjPPZNNsyaCqzlIY-5QwI5LmuOxGuad-bHdWAyZZt56itBn63EkWWVV6BI0JAr3Dgjlon7qAtppC39GemcKB9l-CJ4fj0wWUgH6cbVftfh3NKsE0Hq-XzkzvVH9RUsbxSWlHWjzE8SFdW7SMdDxkGDyYkAK9nB_16VIuXkS5tmMgSEMPCA08VqdXsusJks_vJ0CH07sEFr3pfStS0clv7issge51xnhtBJSRpizHWiIWc_lN_potxaJPaNz2sMZml6Iqyg3iwtvQL-dDGZ_G53X0xpiYsxpPMlty4CARN99fIBlueA8XuSmL2z6ZhYAVFVeW9EDhTG8dJNjVO73Z3uyV--mfyY6qRiAOHf-WBQp_ZeKrOOHcE0H-J-qYAD5u2638X3Kro_7yVda_lyxEkg2BaWZCgtMul-gsQ-YYjgHOhULvj0j5CL_PPmTvWPC2RTBlHNVKiu8sDMAkgvCHJ2oX0iz4suOreV7djJZ9clyeYUsyhn6cQdwo1irUw2L-hYaKpS726Zc4x_RY8L-BJOa4NDgOCKqPb8x70dNbwoH5zMFYur0b0Rv56y5l4k1Pc2JM9nXTwMcTNn9PgA8Bji15VcRCO8z7xkEgp0k2N7q26GgWg1smf6CLdgd3r1JIzUjRQAFc1RBw-QRscMNDiVY4vdhN7BQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":17\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/doneOrder",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"doneOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showOrderInfo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYzA1NWZlMTQ4NDc3ZTU2N2E1YTI5MGVhNDE2ZWI3MWE3Mjc0ZGNjNjNhMGY4ODg3NDYwZGVkMTgyZjYyOTJiMjRjY2JlYTE4ZjM4NjU1NDMiLCJpYXQiOjE3NDEyNzg1MTguNzE2NDMxLCJuYmYiOjE3NDEyNzg1MTguNzE2NDQ0LCJleHAiOjE3NzI4MTQ1MTguNjk3Njc5LCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.OyvvlsNJr_QSTKF6tS4i2WDdVErHDlw-nW6LUNw3OEn64R0ZIQWMUYDPqJMoBSQWAdIbSVDNdjTrY3hq1Tse_0UNJkDEp9QlKXHth-w0nreHmUSBrF5DGmfD85oQHpp8BR0HypNmU_JAN3oL0fjme_Dv_2atfpJUt4cOyn-ITXAy3WATd6W6CdFdok3GSedWLnrtvPtHr5l07TAbRaFyL5MzENZ-PhDJxZ7psfi4dRkMv6outytOTtYK60VsgXdhVtIXprmWUA0i9snbwhmYrv4KTtFeNGbgOIdGJp5rZz8NUpTdFZg9m7xEJf36-nUQbaiIudEJnxE0iSak9aOMcEXLoCmdUOweAGuTibsihn3C1RMKAQTxuvRM08y7DdjbMRoewS8iYkEfIXzQJZZDxaLPgknfMU6NiCsbzKaXFttBQAjyw4VJu3Nagnhn1Qz3VEyu3_zx7-TjLbclch-lJodQu_Z0tzfXmyesViLqrEP2Ma-Nd8qdZzbEXNGV33Eiw0GuYbAUJj_W0DsOs9ldrkwbTlb5_kokQTxhfd7xMd8OZJLVQGO2oAM31Z3v7UBuE6rgXmeus3LSvTC0Qux531Jb5t2iUupdcfZUDi_y9eMZidSpwgf1MyGRu9jTZq66VYtwdjrTzGNt8dloKf5I_CD0QQAbNs7fz5C40PsFlbY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":7\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showOrderInfo",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showOrderInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blockProduct",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjA1NjdjMGMyYzM5OGY1NGU1MDVmZmU0OGNlNTZkMmZiOTljOWRlNTY2NDU5NzU1YjQ0NTMyNTFjYTU1MDk0ODg2NDk3NDJmODM3OTM0MzAiLCJpYXQiOjE3NDAwOTI0OTYuMjQ1NjM4LCJuYmYiOjE3NDAwOTI0OTYuMjQ1NjQ3LCJleHAiOjE3NzE2Mjg0OTYuMjI0NjA2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kiSElkkEF17b6NKyC-vz3Ga0IBJCuZmPGxE39l2CLSzNX9nCPg46kNVjFMLSoieS2ZD1jAw6w5J3_Z883s9PyUd9lk5m4Wg6YrJSrOHcPGFXiDUI8-KonkLF0ii6gnrmbTiMh_B8LTicrFJVClBoEJ0wj7Kfnv39Hd0ge7qGsaY7TW3Xyn9fQDZVxYUfWhEjLv3J1C6BhLLZ5AgQQ60LOFYbvE3daCM8KHJwMnI0LSm4MAwUv6i-n4cKBQeEAqcvYm7hkqYwJPId1AjERHB6n55HdVJWPp9b3dY8_xIRqBYMCkWDkQQRsBr-dy8fgDzVbwzeKgw68pML9eyA6M_UJapk79j6OJCjUuAcu3ZTkV4f8_yBP_YzlvI042mIhKdDagX2JB8UiRlc-Z79EBzyc0bjVIidB9Wvoyj3jsv7qKyDMpohpRFkT8sHhSdfA5hh_E569INGcFXRSRE2JzOgm-GLXZ90u7iQo-TY_xrgMRt_mlCjkII_Sg2vAmJlWf43L6yRlktzNqLaH7ljRRwXWzJN6gdkI6i1-N6uvlkvRJVJ07DkVCONHJlSRKLd_Lyr-IwTMh3EZ3FZBuEba6RADCO7cdz1Sc_2IGH3LcW2_b32Mr0TP8CnpbUOOFcrOdGfwqpGJczXuA54k7MZOlPf8XyJfsV-O9W9ko7-xfdKo-o",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/blockProduct/9",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"blockProduct",
+						"9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "blockAddresse",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZjA1NjdjMGMyYzM5OGY1NGU1MDVmZmU0OGNlNTZkMmZiOTljOWRlNTY2NDU5NzU1YjQ0NTMyNTFjYTU1MDk0ODg2NDk3NDJmODM3OTM0MzAiLCJpYXQiOjE3NDAwOTI0OTYuMjQ1NjM4LCJuYmYiOjE3NDAwOTI0OTYuMjQ1NjQ3LCJleHAiOjE3NzE2Mjg0OTYuMjI0NjA2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.kiSElkkEF17b6NKyC-vz3Ga0IBJCuZmPGxE39l2CLSzNX9nCPg46kNVjFMLSoieS2ZD1jAw6w5J3_Z883s9PyUd9lk5m4Wg6YrJSrOHcPGFXiDUI8-KonkLF0ii6gnrmbTiMh_B8LTicrFJVClBoEJ0wj7Kfnv39Hd0ge7qGsaY7TW3Xyn9fQDZVxYUfWhEjLv3J1C6BhLLZ5AgQQ60LOFYbvE3daCM8KHJwMnI0LSm4MAwUv6i-n4cKBQeEAqcvYm7hkqYwJPId1AjERHB6n55HdVJWPp9b3dY8_xIRqBYMCkWDkQQRsBr-dy8fgDzVbwzeKgw68pML9eyA6M_UJapk79j6OJCjUuAcu3ZTkV4f8_yBP_YzlvI042mIhKdDagX2JB8UiRlc-Z79EBzyc0bjVIidB9Wvoyj3jsv7qKyDMpohpRFkT8sHhSdfA5hh_E569INGcFXRSRE2JzOgm-GLXZ90u7iQo-TY_xrgMRt_mlCjkII_Sg2vAmJlWf43L6yRlktzNqLaH7ljRRwXWzJN6gdkI6i1-N6uvlkvRJVJ07DkVCONHJlSRKLd_Lyr-IwTMh3EZ3FZBuEba6RADCO7cdz1Sc_2IGH3LcW2_b32Mr0TP8CnpbUOOFcrOdGfwqpGJczXuA54k7MZOlPf8XyJfsV-O9W9ko7-xfdKo-o",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/blockAddresse/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"blockAddresse",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "uploadVideo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2IwMmJjNGFlNjA5ZjZhY2I0NjJlNWE1MjRhYzgxOTVhM2I5ZGQ2Yzc2YjQ4NDRhZGVhYmYxYjkxNDU1MDA4OTk0MmZhNzE2MzM2M2FmMGIiLCJpYXQiOjE3NDE1ODI4NzguOTAyNjMyLCJuYmYiOjE3NDE1ODI4NzguOTAyNjQ2LCJleHAiOjE3NzMxMTg4NzguMjAwMjIxLCJzdWIiOiIxMSIsInNjb3BlcyI6W119.MvysVXdcuuSDoyabYGkMnFP9aMqef95v94QgXhsQ1J7pOhmM2q13NnmafUEZGckoOD0OZHxHgCkyzFp0etwGgvhaOQ3jH_PY0nb7cLnE3RF0_bjzxVCP6YyxV4I0W3-nAZnjus00G8nl9l-OmbR6e29f3B3PPumQ72-JPAuWsqKoczgfbjjP5D-5SZ2elfoa7y8eNrYRNIQ00mPod37XxpaShasq6RfU6kMN3o1nFiPR8JAoyG0f2SoqMjgZcMgy7hKCUR5bzY46T1lhZiUFattxjq8Hi-1534izq75cJMyuamLFZBJ2-fpQocW8OVydJqC7nK42Dg8_po5uOGI1yNJjaufmg1qPQ12ZEudlFiVi0Ru5GkYqKATpTdB4Q59hZLNpZ9RUopiHJoWFpGwS7Ad056rR4GD0D-fa5-uZKcMUf9zOdRq8HJ6LarH1r1Ppg5rFD7X_kqoucXsJfEyWFUsAAZMGP1rZVHEnMejYhmfWmQkzXGnnr2qsKXzdtnnS-S2Ixp8NX8A7UqL78nvDdq18hyWZBAYCFyAEdRB65M6No94BUakvrqzfplKXaYWL1BHE0q_daSPuLCCZvGPurDv1ncnciEaP-64odUXLENuevYBBLu__baeEHQsHUrq2R4UhHNAzNZzPhCEeMZ-jPdk7zt5sMODG9krKCdMhUvw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/ASUS/Videos/Captures/‪Three.js Template - Google Chrome‬ 2023-03-16 22-15-01.mp4"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/uploadVideo",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"uploadVideo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "installVideo",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMTk5OTY3YjMzMmI4YjBlOGM4MThkMjBhMzdiMzg2YWQ1ZjA1ZDIwMjUzNDEzZWQwYWM1NGU0YTFhMWNlMGJiNzliMzE3MDc4NGM5Y2FhNGUiLCJpYXQiOjE3NDAxNzA5NzAuMDM2NzgyLCJuYmYiOjE3NDAxNzA5NzAuMDM2Nzg1LCJleHAiOjE3NzE3MDY5NjkuMzg3MDYyLCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.JIFdxRTccbmKbm2xIFJ0dN-v-Gw4FXGqS9K0KbXG4b9r54zZfyDOUvEJhZck6m_jY-xaU9QXJlnwEKq0y8shsZ4Es_6mXwohNeRs1GUZwgTO1CjXXL2Fb3GWvwEbYLEqbQ71Egv1K1NsEzLFzU8cls3pNoxhSQ-EdUkMHvCTnkiAOJ2d3K3Yf7qLtcbT7jnlKcSermdcndx9D8iffcxEz39zAwyAioQVUlifY-V54ImCfUQQDAaFutgyoyoX3ripV6CGdK-xc0Y8anKiQHjUoExxN5QDw_vmt3UmGqBai0a0p_fa3vaJbRFPp9qWa3CjcOQOfkfQn2bRfIGVBQ_Duri29lLlEXIPTtkyLyab3AtyGVLxAJ-RXi1cZHdzr0_TgI6b26I3u1llv8hty8nCG3meEThTQeO_HZk4H6vFG1g-r61-_CQWqQpmG4wn6_YMyTXhAfzz_1Jg4XpZo4kDb0DkxqXJGTUIwgJi4G0dSAszKrFbjscnTlRR_d8lFC4KrjsR20vF9bzJSzBfQQG41WdKUWkCXQdZj8zoV6x_taWEi9HU_TVfUhgdu5bkEMd538TzSfwfTA7gHWNos87Nwadba6xe2qikd1Z1Ragx9tGwn1IOLgvH62XcesxpI1WVoAvZIszGK2qWBn5vi6uaEX8uKYhgF1G3cpTKy_8s45g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"url\":\"http://127.0.0.1:8000/storage/videos/DJNHx7j94M2QsNCWtLVUanlhVeBEWlZHsCEY6zVM.png\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/installVideo",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"installVideo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUserData",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWE4N2UxMDg3NWRhOTk3NDcyMTI4YWI3M2Q0NmNjNWVhMGU3MTk4Mjk1NWFmOGNhMTEyODA1OGExMjQ2OTc1MDg4ZTg1YjgzNDEwMzA5NWYiLCJpYXQiOjE3NDA4NTg4MzEuOTQ3NzY0LCJuYmYiOjE3NDA4NTg4MzEuOTQ3NzczLCJleHAiOjE3NzIzOTQ4MzEuOTM1NTQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.iVewjobYCY8kbs2Lj0WegfzY-Vn9mbkWFVmsOLh9pk6B6jwfxZ-r0eyvOaMCanqLlgadyeHS__ApWUNQWrqpu12rVA_O-4d94rHi6d4QpUmGnMke0nCdm05YKHsSA0CUp9FNsrqYHncMDmzKyn99TpZ65bEZQso-45CohigVhI1cLBO20-mvVWZV8u_rblhuGU33-nSPNWfM-_rOTqnylHS80_fw0WESRRH3N_s-EOxaO3DCYlE7oTW2-8tQurwheelpmLFV8WiNwQz0Kf9ZThvvvFPpV5bAYOgkK9f_4GYpEXztCtNO-kluKQvcPBX_zWg-TWObw6h8deGIjW7uCKXnxWwmKuOccUZ3vIg_jRTMOHglyDU5xV0_Ypo0ljhD6HEHCIijXmh6xyleh2EnFTuUobtvWBRKb_Ai4Hvt0RVg-s6YzlAgoBKi8sGleMCEUBYzIPu-QYyHXqbS81aa5TC5cnxa1Ngu3hghAk2ZQfWzr81aVdXwRvJ5UgaLFTHP9jDI7_KjhMR4DTlCBeo9yJwFfz6gTKQxFtvnoOFDOZlqe_R7_tV0QewxQfHRh8G9imD7YEpLy_VIYZwvdzlPl9XQ3h-y1VC73jVncx5wbsl3gjFyajTQw-45k5f6BmNTwuFZc4ynfRCZmrDCk0a0rxi3wQPuTj_lBbHrWmtkt6A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "user_id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "2024",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/updateUserData",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"updateUserData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "showReport",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWE4N2UxMDg3NWRhOTk3NDcyMTI4YWI3M2Q0NmNjNWVhMGU3MTk4Mjk1NWFmOGNhMTEyODA1OGExMjQ2OTc1MDg4ZTg1YjgzNDEwMzA5NWYiLCJpYXQiOjE3NDA4NTg4MzEuOTQ3NzY0LCJuYmYiOjE3NDA4NTg4MzEuOTQ3NzczLCJleHAiOjE3NzIzOTQ4MzEuOTM1NTQ4LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.iVewjobYCY8kbs2Lj0WegfzY-Vn9mbkWFVmsOLh9pk6B6jwfxZ-r0eyvOaMCanqLlgadyeHS__ApWUNQWrqpu12rVA_O-4d94rHi6d4QpUmGnMke0nCdm05YKHsSA0CUp9FNsrqYHncMDmzKyn99TpZ65bEZQso-45CohigVhI1cLBO20-mvVWZV8u_rblhuGU33-nSPNWfM-_rOTqnylHS80_fw0WESRRH3N_s-EOxaO3DCYlE7oTW2-8tQurwheelpmLFV8WiNwQz0Kf9ZThvvvFPpV5bAYOgkK9f_4GYpEXztCtNO-kluKQvcPBX_zWg-TWObw6h8deGIjW7uCKXnxWwmKuOccUZ3vIg_jRTMOHglyDU5xV0_Ypo0ljhD6HEHCIijXmh6xyleh2EnFTuUobtvWBRKb_Ai4Hvt0RVg-s6YzlAgoBKi8sGleMCEUBYzIPu-QYyHXqbS81aa5TC5cnxa1Ngu3hghAk2ZQfWzr81aVdXwRvJ5UgaLFTHP9jDI7_KjhMR4DTlCBeo9yJwFfz6gTKQxFtvnoOFDOZlqe_R7_tV0QewxQfHRh8G9imD7YEpLy_VIYZwvdzlPl9XQ3h-y1VC73jVncx5wbsl3gjFyajTQw-45k5f6BmNTwuFZc4ynfRCZmrDCk0a0rxi3wQPuTj_lBbHrWmtkt6A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date1\":\"2025-5-1\",\r\n    \"date2\":\"2025-6-30\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/showReport",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"showReport"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/send",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"send"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "verify",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWVjZWQyNzU5NzNkZTk2NTE3YzI2OGE5MzI5NzA3OTBjYTM3ZTM2OGU0Mjg4YTk0MmEzNzUzNTY2YWRlODU3ZDUxYTQ1MDRjNGVmOTJkMjIiLCJpYXQiOjE3NDE2MjE0OTMuMjczOTU4LCJuYmYiOjE3NDE2MjE0OTMuMjczOTYxLCJleHAiOjE3NzMxNTc0OTMuMDYyMTE4LCJzdWIiOiIxMCIsInNjb3BlcyI6W119.kW1wmp9akrA-KMrJWhr02dve2T070w9EZVwMWTIc1_XknkMSEM80NvL97QCWAKTF-DFLariyFwlwshngYYtSHawlqPzmy_Y3Ppu0c6TiLEpvCFzuft9QajORSJjJQeGK83G9Wosx0K5Xb3LPlTmKdH8J89WAWgvd070XsKUuTsjB0Xw6ZjCbxM78kD33KayxOtXW18Gq2nopvtWns9ZL2qIQe9RO5AAREzpCj8cb2Eca0aFFr3RslLJLrk-W4l7eQj5OHr2ktcOYuVwdY7jsSRInuwJHUlEH1KYlNu-jkiUmh9dGIBEYRa9WLz3bQo-tPmcziXFuzl_HfAijxIt4Qcfu9M4BXvRN4KPlzldzHhfwJz2mB-uRdkePL5rWVWbMHl-vwYSZkAm84LUhsrzC2gYZiMKxWy90xfn1OcqfMpw93mwPV7uKBCwBGv6ots4JBOb4i87AyI8hHZfWQ8wy4t1t3yqJQ9d2_b2zgCK_OUea3ADMxYkVLHClCTdYYUWA-Vkk-5G_PA4KPQvDvp4bJNIgLkytNSJ7ICeUhD86CQUa2LJ0w4sshrXAuLtCzp4AiMslTKc9JMwCAQQnZ188asPOf_jpu57Mj3B6W965YbWM8I2FKFaI8_M0Xi4LKtJklNAj3K30FDPJS-RoMvab6IPf9pKQafkuV1ZcxnMdpAY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/verify",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTVjODdlNWVmZDY0Y2UyZDY0OTcyYzRhNDAxNGZiYWNhZGRlMDIxNzY3NWQ2Mzc2MDNhZTQ1ZTNmODBhMjQ4OTU3M2M3ODZhZDljNWM2YmQiLCJpYXQiOjE3NDE1NTc0NzcuMDAwNTQ2LCJuYmYiOjE3NDE1NTc0NzcuMDAwNTUzLCJleHAiOjE3NzMwOTM0NzUuNjY1ODU4LCJzdWIiOiIxMCIsInNjb3BlcyI6W119.iPA7ZEtxzEvhdKOztvhZkJpDUAzGxQKu69Mw92b1L9ivGuLXHeA7qVdxugXuSu0fiTDwRC9RbwN66Lk3rUOwHHzBC6FFHTrF1th5rJlPxuPdZthjDnKSC_aWBCzthOQnfcVe1fGQ6DFMoNBNB_d74zHe6o3JuF2pY3HFZjJB3PkZXlAmL4jdTLbZdVuyLrCDrbu3JBuRiVigqpbVL9j-1hjtCFSF9QBoBEcVm8eFwB9Jr4vFXZsruIfaRPfn584PSZHYXE6S5j6TFz-94O7-oHOnamGAff0JlcBSW92gp1Zj2k-skbsMkX5mUZqhNUmY5pIldtWCXzbf4WoAfGCMlEsqukLl11n7rImFbZRyTSlGXBlClVnnvRsbgQwDnQhw8hVWuuIy1RzOWpvfP7OVRlPFilovlIauaSpc1vvxu_mdUt64JPuqXa1JwBohgznmf1oH668Uf4YUeAUagR1qdhyCNRKTVZ9q7hi1mRI6_Ev1bwe2LAXPbaNpn40sWE1SuUyPo-kxiHcSK3rHHO6YifupFMxpkQbVpOJ2IGuVP2TijvUa5jD3C9pDIe3zmdkD-k3FB_AhJRsl9wzl5Ps9D_wuI3KMNelFOd4-CHnoBdTDX3oGI6rttvq3JE5W35JitdbRX_fH5meJ1FCT0c73MSpNxwM3yYcXz7Dw6aCq1do",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/email/verify/10/a33efc46de875a454dca8cb86590a6f8840eae70?expires=1741625146&signature=6c55e94f7c176f9659424e5d27e14361651f1484992ce9eedc60e3a7a03973d8",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"email",
+						"verify",
+						"10",
+						"a33efc46de875a454dca8cb86590a6f8840eae70"
+					],
+					"query": [
+						{
+							"key": "expires",
+							"value": "1741625146"
+						},
+						{
+							"key": "signature",
+							"value": "6c55e94f7c176f9659424e5d27e14361651f1484992ce9eedc60e3a7a03973d8"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
