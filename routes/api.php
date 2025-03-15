@@ -19,15 +19,9 @@ use App\Http\Middleware\AllowNonMerhers;
 use App\Http\Middleware\mark;
 use App\Http\Middleware\merch;
 use App\Http\Middleware\mm;
-use App\Mail\TestMail;
-use App\Mail\CustomVerificationEmail;
-use App\Models\User;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -133,15 +127,6 @@ Route::group(["middleware" => ["auth:api"]], function () {
             'message' => 'Email is already verified'
         ], 400);
     });
-});
-
-
-Route::get('send', function () {
-    Mail::to('zdiab6967@gmail.com')->send(new TestMail());
-    return response()->json([
-        'status' => true,
-        'message' => 'send successfully',
-    ]);
 });
 
 Route::get('products/{filename}', function ($filename) {
