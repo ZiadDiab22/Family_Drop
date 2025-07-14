@@ -68,52 +68,7 @@ Route::group(["middleware" => ["auth:api"]], function () {
     Route::post("addCity", [CityController::class, "addCity"])->middleware(adm_emp::class);
     Route::get("deleteCity/{id}", [CityController::class, "deleteCity"])->middleware(adm_emp::class);
     Route::post("editCity", [CityController::class, "editCity"])->middleware(adm_emp::class);
-    Route::post("addAddresse", [AddressController::class, "addAddresse"])->middleware(adm_emp::class);
-    Route::get("deleteAddresse/{id}", [AddressController::class, "deleteAddresse"])->middleware(adm_emp::class);
-    Route::post("editAddresse", [AddressController::class, "editAddresse"])->middleware(adm_emp::class);
-    Route::post("addOrderTag", [OrderController::class, "addOrderTag"])->middleware(AllowNonMerhers::class);
-    Route::post("addProduct", [ProductController::class, "addProduct"])->middleware(adm_emp::class);
-    Route::post("editProduct", [ProductController::class, "editProduct"])->middleware(adm_emp::class);
-    Route::get("deleteProduct/{id}", [ProductController::class, "deleteProduct"])->middleware(adm_emp::class);
-    Route::post("addSize", [SizeController::class, "addSize"])->middleware(adm_emp::class);
-    Route::post("addColor", [ColorController::class, "addColor"])->middleware(adm_emp::class);
-    Route::post("addProductSize", [SizeController::class, "addProductSize"])->middleware(adm_emp::class);
-    Route::post("addProductColor", [ColorController::class, "addProductColor"])->middleware(adm_emp::class);
-    Route::post("editSize", [SizeController::class, "editSize"])->middleware(adm_emp::class);
-    Route::post("editColor", [ColorController::class, "editColor"])->middleware(adm_emp::class);
-    Route::get("blockUser/{id}", [UserController::class, "blockUser"])->middleware(adm_emp::class);
-    Route::get("blockProduct/{id}", [ProductController::class, "blockProduct"])->middleware(adm_emp::class);
-    Route::get("blockAddresse/{id}", [AddressController::class, "blockAddresse"])->middleware(adm_emp::class);
-    Route::get("activatePaymentWay/{id}", [UserController::class, "activatePaymentWay"])->middleware(adm_emp::class);
-    Route::get("showUsers", [UserController::class, "showUsers"])->middleware(adm_emp::class);
-    Route::get("showRequests", [UserController::class, "showRequests"])->middleware(adm_emp::class);
-    Route::get("showUserOrders", [OrderController::class, "showUserOrders"])->middleware(mark::class);
-    Route::get("showOrders", [OrderController::class, "showOrders"])->middleware(adm_emp::class);
-    Route::post("pullMoneyRequest", [RequestController::class, "pullMoneyRequest"])->middleware(mm::class);
-    Route::get("acceptPullMoneyRequest/{id}", [RequestController::class, "acceptPullMoneyRequest"])->middleware(adm_emp::class);
-    Route::get("showPullRequests", [RequestController::class, "showPullRequests"]);
-    Route::get("deletePullRequest/{id}", [RequestController::class, "deletePullRequest"]);
-    Route::post("addProductRequest", [RequestController::class, "addProductRequest"])->middleware(merch::class);
-    Route::post("acceptAddProductRequest/{id}", [RequestController::class, "acceptAddProductRequest"])->middleware(adm_emp::class);
-    Route::get("showProductRequests", [RequestController::class, "showProductRequests"])->middleware(AllowNonMarketers::class);
-    Route::get("deleteProductRequest/{id}", [RequestController::class, "deleteProductRequest"])->middleware(adm_emp::class);
-    Route::post("PullProductRequest", [RequestController::class, "PullProductRequest"])->middleware(merch::class);
-    Route::get("acceptPullProductRequest/{id}", [RequestController::class, "acceptPullProductRequest"])->middleware(adm_emp::class);
-    Route::get("showPullProductRequests", [RequestController::class, "showPullProductRequests"])->middleware(AllowNonMarketers::class);
-    Route::get("deletePullProductRequest/{id}", [RequestController::class, "deletePullProductRequest"])->middleware(adm_emp::class);
-    Route::post("addOrder", [OrderController::class, "addOrder"])->middleware(mark::class);
-    Route::post("editCommission", [SettingController::class, "editCommission"])->middleware(adm_emp::class);
-    Route::get("profile", [UserController::class, "profile"])->middleware(mm::class);
-    Route::get("showUserInfo/{id}", [UserController::class, "showUserInfo"])->middleware(adm_emp::class);
-    Route::post("showOrderInfo", [OrderController::class, "showOrderInfo"])->middleware(AllowNonMerhers::class);
-    Route::post("cancelOrder", [OrderController::class, "cancelOrder"])->middleware(AllowNonMerhers::class);
-    Route::post("startWorkingOrder", [OrderController::class, "startWorkingOrder"])->middleware(adm_emp::class);
-    Route::post("endingOrder", [OrderController::class, "endingOrder"])->middleware(adm_emp::class);
-    Route::post("deliveringOrder", [OrderController::class, "deliveringOrder"])->middleware(adm_emp::class);
-    Route::post("doneOrder", [OrderController::class, "doneOrder"])->middleware(adm_emp::class);
-    Route::post("uploadVideo", [ProductController::class, "uploadVideo"]);
-    Route::post("showReport", [UserController::class, "showReport"])->middleware(AllowAdmin::class);
-
+ 
     Route::post('verify', function (Request $request) {
         if (!$request->user()->hasVerifiedEmail()) {
             $request->user()->sendEmailVerificationNotification();
